@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & Eventy | The Perfect Cup - Kawiarnia i Palarnia Kawy Kraków</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            50: '#fdfbf7',
+                            100: '#f7f1e3',
+                            200: '#eddcc7',
+                            300: '#dec39e',
+                            600: '#8c6239',
+                            700: '#6f4e37',
+                            800: '#4a3324',
+                            900: '#2c1e14',
+                        },
+                        copper: {
+                            DEFAULT: '#b87333',
+                            light: '#d49856',
+                            dark: '#965a25'
+                        },
+                        anthracite: {
+                            DEFAULT: '#1e1e1e',
+                            light: '#2d2d2d',
+                            dark: '#121212'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1e1e1e;
+            color: #f7f1e3;
+        }
+        .blog-hero-bg {
+            background: linear-gradient(rgba(28, 20, 15, 0.85), rgba(28, 20, 15, 0.92)), url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 30px -5px rgba(184, 115, 51, 0.15);
+        }
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-anthracite text-coffee-100 antialiased selection:bg-copper selection:text-white flex flex-col min-h-screen">
+
+    <!-- 1. Pasek Nawigacyjny (<header>, <nav>) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-anthracite/95 backdrop-blur-md border-b border-coffee-800/55 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Identyfikator marki -->
+            <a href="the_perfect_cup_kawiarnia_i_palarnia_kawy.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-copper flex items-center justify-center text-white text-xl font-bold group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-mug-hot"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-bold tracking-wider text-white">THE PERFECT CUP</span>
+                    <span class="text-xs text-copper tracking-widest uppercase">Kawiarnia & Palarnia</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 font-medium">
+                <a href="the_perfect_cup_kawiarnia_i_palarnia_kawy.html#o-nas" class="hover:text-copper transition-colors">O nas</a>
+                <a href="the_perfect_cup_kawiarnia_i_palarnia_kawy.html#oferta" class="hover:text-copper transition-colors">Oferta</a>
+                <a href="#blog-posts" class="text-copper font-semibold border-b-2 border-copper pb-1">Blog & Eventy</a>
+                <a href="the_perfect_cup_kawiarnia_i_palarnia_kawy.html#kontakt" class="hover:text-copper transition-colors">Kontakt</a>
+                <a href="the_perfect_cup_kawiarnia_i_palarnia_kawy.html#kontakt" class="bg-copper hover:bg-copper-light text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all shadow-lg shadow-copper/20">
+                    Zamów / Zapytaj
+                </a>
+            </nav>
+
+            <!-- Navbar-toggler (Mobile menu button) -->
+            <button id="nav-toggler" aria-label="Przełącz nawigację" class="md:hidden text-coffee-200 hover:text-white focus:outline-none p-2">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Container -->
+        <div id="mobile-menu" class="hidden md:hidden bg-anthracite-light border-b border-coffee-800 px-6 py-5 space-y-4 shadow-2xl">
+            <a href="the_perfect_cup_kawiarnia_i_palarnia_kawy.html#o-nas" class="mobile-link block text-lg font-medium hover:text-copper transition-colors">O nas</a>
+            <a href="the_perfect_cup_kawiarnia_i_palarnia_kawy.html#oferta" class="mobile-link block text-lg font-medium hover:text-copper transition-colors">Oferta</a>
+            <a href="#blog-posts" class="mobile-link block text-lg font-medium text-copper font-semibold">Blog & Eventy</a>
+            <a href="the_perfect_cup_kawiarnia_i_palarnia_kawy.html#kontakt" class="mobile-link block text-lg font-medium hover:text-copper transition-colors">Kontakt</a>
+            <div class="pt-2">
+                <a href="the_perfect_cup_kawiarnia_i_palarnia_kawy.html#kontakt" class="mobile-link block w-full text-center bg-copper text-white py-3 rounded-xl font-semibold shadow-md">
+                    Zamów / Zapytaj
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Hero Bloga z Filtrowaniem i Wyszukiwarką -->
+    <section class="blog-hero-bg pt-32 pb-20 px-4 sm:px-6 lg:px-8 border-b border-coffee-800/60 relative">
+        <div class="max-w-7xl mx-auto text-center space-y-6">
+            <span class="inline-flex items-center gap-2 bg-copper/20 border border-copper/40 text-copper px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide uppercase">
+                <i class="fa-solid fa-newspaper text-xs"></i> Firmowy Dziennik & Społeczność
+            </span>
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight">
+                Świat Kawy, Praca w Kawiarni <br class="hidden sm:inline">&amp; Eventy <span class="text-transparent bg-clip-text bg-gradient-to-r from-copper to-coffee-300">w Krakowie i Polsce</span>
+            </h1>
+            <p class="text-coffee-200 max-w-3xl mx-auto text-base sm:text-lg font-light leading-relaxed">
+                Poznaj kulisy pracy naszych baristów i roasterów, zobacz jak tworzymy spersonalizowane ziarna oraz bądź na bieżąco z cotygodniowymi cuppingami przy ul. Kawowej 15/2 i festiwalami kawowymi w całej Polsce.
+            </p>
+
+            <!-- Wyszukiwarka i Przyciski Filtrów -->
+            <div class="pt-6 max-w-4xl mx-auto space-y-6">
+                <!-- Field Wyszukiwania -->
+                <div class="relative max-w-xl mx-auto">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-coffee-600"></i>
+                    <input type="text" id="blog-search" placeholder="Szukaj artykułów (np. cupping, praca, barista, Kraków)..." class="w-full bg-anthracite-light/90 border border-coffee-800 rounded-full pl-11 pr-4 py-3.5 text-white placeholder-coffee-600 focus:outline-none focus:border-copper transition-colors shadow-xl">
+                </div>
+
+                <!-- Filtry Kategorii -->
+                <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm font-medium pt-2">
+                    <button class="filter-btn active bg-copper text-white px-4 py-2 rounded-full transition-all" data-category="all">
+                        Wszystkie wpisy
+                    </button>
+                    <button class="filter-btn bg-anthracite-light text-coffee-200 hover:bg-coffee-800 border border-coffee-800 px-4 py-2 rounded-full transition-all" data-category="praca-zespol">
+                        <i class="fa-solid fa-users mr-1.5 text-copper"></i> Praca &amp; Zespół
+                    </button>
+                    <button class="filter-btn bg-anthracite-light text-coffee-200 hover:bg-coffee-800 border border-coffee-800 px-4 py-2 rounded-full transition-all" data-category="cuppingi-krakow">
+                        <i class="fa-solid fa-mug-saucer mr-1.5 text-copper"></i> Cuppingi w Krakowie
+                    </button>
+                    <button class="filter-btn bg-anthracite-light text-coffee-200 hover:bg-coffee-800 border border-coffee-800 px-4 py-2 rounded-full transition-all" data-category="eventy-polska">
+                        <i class="fa-solid fa-map-location-dot mr-1.5 text-copper"></i> Eventy w Polsce
+                    </button>
+                    <button class="filter-btn bg-anthracite-light text-coffee-200 hover:bg-coffee-800 border border-coffee-800 px-4 py-2 rounded-full transition-all" data-category="edukacja-b2b">
+                        <i class="fa-solid fa-graduation-cap mr-1.5 text-copper"></i> Edukacja &amp; B2B
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Sekcja Wyróżnionego Wpisu (Featured Post) -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-anthracite">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-xs uppercase tracking-widest text-copper font-bold mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-star"></i> Artykuł Wyróżniony
+            </div>
+
+            <div class="bg-anthracite-light border border-coffee-800/80 rounded-3xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 custom-shadow hover:border-copper/40 transition-all duration-300">
+                <div class="lg:col-span-7 relative min-h-[300px] lg:min-h-[420px] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=1200&auto=format&fit=crop" alt="Praca baristy i roastera w kawiarni The Perfect Cup Kraków" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700">
+                    <div class="absolute top-4 left-4 bg-copper text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
+                        Praca &amp; Zespół
+                    </div>
+                </div>
+                <div class="lg:col-span-5 p-6 sm:p-10 flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 text-xs text-coffee-300 font-medium">
+                            <span><i class="fa-regular fa-calendar mr-1"></i> 20 Października 2026</span>
+                            <span><i class="fa-regular fa-clock mr-1"></i> 6 min czytania</span>
+                            <span><i class="fa-regular fa-user mr-1"></i> Michał Roaster</span>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-white hover:text-copper transition-colors leading-snug">
+                            Jak wygląda dzień baristy i roastera w The Perfect Cup? Pasja, precyzja i spersonalizowany napar
+                        </h2>
+                        <p class="text-coffee-200 text-sm sm:text-base leading-relaxed">
+                            Praca w naszej kawiarnio-palarni przy ul. Kawowej 15/2 w Krakowie to coś więcej niż parzenie espresso. Zobacz, jak nasz zespół roasterów i baristów współtworzy unikalny profil smakowy dla każdego gościa, dopasowując stopień palenia ziaren oraz metodę ekstrakcji w czasie rzeczywistym.
+                        </p>
+                    </div>
+
+                    <div class="pt-4 border-t border-coffee-800/60 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-copper/20 border border-copper/40 flex items-center justify-center text-copper font-bold text-sm">
+                                MR
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-white">Michał Wiśniewski</h4>
+                                <p class="text-[11px] text-coffee-300">Head Roaster &amp; Trainer</p>
+                            </div>
+                        </div>
+                        <a href="#modal-read" onclick="openReadModal('Jak wygląda dzień baristy i roastera w The Perfect Cup?', 'Praca & Zespół')" class="bg-copper/10 hover:bg-copper text-copper hover:text-white px-5 py-2.5 rounded-full text-xs font-bold transition-all border border-copper/30">
+                            Czytaj więcej <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Główna Siatka Artykułów z Filtracją JS (<section id="blog-posts">) -->
+    <section id="blog-posts" class="py-16 px-4 sm:px-6 lg:px-8 bg-anthracite border-t border-coffee-800/40">
+        <div class="max-w-7xl mx-auto space-y-10">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest text-copper font-bold">Aktualności &amp; Wiedza</h2>
+                    <h3 class="text-3xl font-bold text-white mt-1">Ostatnie Artykuły i Relacje</h3>
+                </div>
+                <p class="text-sm text-coffee-300">Wyświetlanie wpisów dopasowanych do wybranych kryteriów</p>
+            </div>
+
+            <!-- Grid z kartami artykułów -->
+            <div id="posts-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Post 1: Praca & Zespół -->
+                <article class="post-card bg-anthracite-light border border-coffee-800/80 rounded-3xl overflow-hidden flex flex-col justify-between hover:border-copper/60 transition-all duration-300 group custom-shadow" data-category="praca-zespol" data-title="wplyw spersonalizowanego wypalania praca baristy rekrutacja">
+                    <div>
+                        <div class="relative h-52 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop" alt="Praca zespołu w kawiarni Kraków" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-4 left-4 bg-copper text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Praca &amp; Zespół</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center gap-3 text-xs text-coffee-300">
+                                <span><i class="fa-regular fa-calendar"></i> 15 Paź 2026</span>
+                                <span>•</span>
+                                <span><i class="fa-regular fa-clock"></i> 4 min</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-copper transition-colors leading-snug">
+                                Wpływ spersonalizowanego wypalania na codzienną pracę baristy
+                            </h3>
+                            <p class="text-coffee-200 text-sm line-clamp-3 leading-relaxed">
+                                Praca na młynkach i przy piecu w The Perfect Cup wymaga unikalnych umiejętności sensorycznych. Zobacz jak nasz zespół uczy się wyczuwać subtelne różnice w profilach smakowych ziaren z Kolumbii i Etiopii.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-2 border-t border-coffee-800/40 flex items-center justify-between text-xs">
+                        <span class="text-coffee-300">Autor: Anna Kowalska</span>
+                        <button onclick="openReadModal('Wpływ spersonalizowanego wypalania na codzienną pracę baristy', 'Praca & Zespół')" class="text-copper hover:text-copper-light font-bold flex items-center gap-1">
+                            Czytaj <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Post 2: Cuppingi Kraków -->
+                <article class="post-card bg-anthracite-light border border-coffee-800/80 rounded-3xl overflow-hidden flex flex-col justify-between hover:border-copper/60 transition-all duration-300 group custom-shadow" data-category="cuppingi-krakow" data-title="otwarty cupping krakow ul kawowa 15 specialty coffee sensoryka">
+                    <div>
+                        <div class="relative h-52 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=800&auto=format&fit=crop" alt="Cupping kawowy w Krakowie" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-4 left-4 bg-copper text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Cuppingi Kraków</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center gap-3 text-xs text-coffee-300">
+                                <span><i class="fa-regular fa-calendar"></i> 12 Paź 2026</span>
+                                <span>•</span>
+                                <span><i class="fa-regular fa-clock"></i> 5 min</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-copper transition-colors leading-snug">
+                                Cotygodniowy Otwarty Cupping przy ul. Kawowej 15/2 – Odkryj nuty Specialty
+                            </h3>
+                            <p class="text-coffee-200 text-sm line-clamp-3 leading-relaxed">
+                                W każdy czwartek o 18:00 otwieramy drzwi naszej krakowskiej palarni dla wszystkich entuzjastów kawy. Uczymy się siorbania, oceniania punktacji Q-Graderów i rozpoznawania owocowych nut.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-2 border-t border-coffee-800/40 flex items-center justify-between text-xs">
+                        <span class="text-coffee-300">Miejsce: Kraków</span>
+                        <button onclick="openReadModal('Cotygodniowy Otwarty Cupping przy ul. Kawowej 15/2', 'Cuppingi Kraków')" class="text-copper hover:text-copper-light font-bold flex items-center gap-1">
+                            Czytaj <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Post 3: Eventy Polska -->
+                <article class="post-card bg-anthracite-light border border-coffee-800/80 rounded-3xl overflow-hidden flex flex-col justify-between hover:border-copper/60 transition-all duration-300 group custom-shadow" data-category="eventy-polska" data-title="the perfect cup w trasie festiwale kawy warszawa wroclaw poznan gdansk targi">
+                    <div>
+                        <div class="relative h-52 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop" alt="Festiwal kawy w Polsce" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-4 left-4 bg-copper text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Eventy w Polsce</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center gap-3 text-xs text-coffee-300">
+                                <span><i class="fa-regular fa-calendar"></i> 08 Paź 2026</span>
+                                <span>•</span>
+                                <span><i class="fa-regular fa-clock"></i> 7 min</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-copper transition-colors leading-snug">
+                                The Perfect Cup w Trasie: Nadchodzące Festiwale Kawy (Warszawa, Wrocław, Gdańsk)
+                            </h3>
+                            <p class="text-coffee-200 text-sm line-clamp-3 leading-relaxed">
+                                Nasz mobilny bar i mobilny piec do wypalania wyruszają w trasę po największych miastach Polski. Sprawdź, gdzie będziesz mógł spróbować naszych unikalnych blendów w tym sezonie!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-2 border-t border-coffee-800/40 flex items-center justify-between text-xs">
+                        <span class="text-coffee-300">Zasięg: Ogólnopolski</span>
+                        <button onclick="openReadModal('The Perfect Cup w Trasie: Nadchodzące Festiwale Kawy', 'Eventy w Polsce')" class="text-copper hover:text-copper-light font-bold flex items-center gap-1">
+                            Czytaj <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Post 4: Praca & Zespół / Rekrutacja -->
+                <article class="post-card bg-anthracite-light border border-coffee-800/80 rounded-3xl overflow-hidden flex flex-col justify-between hover:border-copper/60 transition-all duration-300 group custom-shadow" data-category="praca-zespol" data-title="rekrutacja barista praca kawiarnia krakow zespol atmosfera dołącz do nas">
+                    <div>
+                        <div class="relative h-52 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=800&auto=format&fit=crop" alt="Praca w zespole kawiarni" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-4 left-4 bg-copper text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Praca &amp; Zespół</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center gap-3 text-xs text-coffee-300">
+                                <span><i class="fa-regular fa-calendar"></i> 02 Paź 2026</span>
+                                <span>•</span>
+                                <span><i class="fa-regular fa-clock"></i> 3 min</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-copper transition-colors leading-snug">
+                                Dołącz do zespołu! Jakie cechy posiada idealny Barista The Perfect Cup?
+                            </h3>
+                            <p class="text-coffee-200 text-sm line-clamp-3 leading-relaxed">
+                                Poszukujemy pasjonatów, którzy kochają kontakt z ludźmi i pragną zgłębiać tajniki palenia ziaren. Szukamy osób do naszego krakowskiego lokalu na stanowiska Baristy i Assistant Roastera.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-2 border-t border-coffee-800/40 flex items-center justify-between text-xs">
+                        <span class="text-copper font-medium">Rekrutacja Kraków</span>
+                        <button onclick="openReadModal('Dołącz do zespołu! Jakie cechy posiada idealny Barista?', 'Praca & Zespół')" class="text-copper hover:text-copper-light font-bold flex items-center gap-1">
+                            Czytaj <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Post 5: Cuppingi & Kraków -->
+                <article class="post-card bg-anthracite-light border border-coffee-800/80 rounded-3xl overflow-hidden flex flex-col justify-between hover:border-copper/60 transition-all duration-300 group custom-shadow" data-category="cuppingi-krakow" data-title="krakowska scena kawowa warsztaty alternatywy drip aeropress chemex krakow">
+                    <div>
+                        <div class="relative h-52 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop" alt="Alternatywne metody parzenia kawy Kraków" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-4 left-4 bg-copper text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Cuppingi Kraków</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center gap-3 text-xs text-coffee-300">
+                                <span><i class="fa-regular fa-calendar"></i> 25 Wrze 2026</span>
+                                <span>•</span>
+                                <span><i class="fa-regular fa-clock"></i> 5 min</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-copper transition-colors leading-snug">
+                                Krakowska Scena Kawowa: Warsztaty Alternatywnych Metod Parzenia (Drip, V60, Chemex)
+                            </h3>
+                            <p class="text-coffee-200 text-sm line-clamp-3 leading-relaxed">
+                                Przegląd najciekawszych inicjatyw kawowych w Małopolsce oraz podsumowanie naszych weekendowych warsztatów przelewowych z gościnnym udziałem Mistrza Polski Baristów.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-2 border-t border-coffee-800/40 flex items-center justify-between text-xs">
+                        <span class="text-coffee-300">Warsztaty Kraków</span>
+                        <button onclick="openReadModal('Krakowska Scena Kawowa: Warsztaty Alternatyw', 'Cuppingi Kraków')" class="text-copper hover:text-copper-light font-bold flex items-center gap-1">
+                            Czytaj <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Post 6: Edukacja & B2B -->
+                <article class="post-card bg-anthracite-light border border-coffee-800/80 rounded-3xl overflow-hidden flex flex-col justify-between hover:border-copper/60 transition-all duration-300 group custom-shadow" data-category="edukacja-b2b" data-title="b2b warsztaty firmowe cuppingi biznesowe pokazy latte art biura hotele licencje cała polska">
+                    <div>
+                        <div class="relative h-52 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop" alt="Firmowy cupping i eventy B2B" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-4 left-4 bg-copper text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Edukacja &amp; B2B</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center gap-3 text-xs text-coffee-300">
+                                <span><i class="fa-regular fa-calendar"></i> 18 Wrze 2026</span>
+                                <span>•</span>
+                                <span><i class="fa-regular fa-clock"></i> 6 min</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-copper transition-colors leading-snug">
+                                B2B &amp; Eventy Firmowe: Jak organizujemy cuppingi i pokazy latte art dla korporacji
+                            </h3>
+                            <p class="text-coffee-200 text-sm line-clamp-3 leading-relaxed">
+                                Poznaj naszą ofertę mobilnych stoisk kawowych oraz zamkniętych warsztatów sensorycznych dla zespołów firmowych na terenie całej Polski. Budujemy zaangażowanie przy aromacie świeżej kawy.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-2 border-t border-coffee-800/40 flex items-center justify-between text-xs">
+                        <span class="text-coffee-300">Oferta dla Biznesu</span>
+                        <button onclick="openReadModal('B2B & Eventy Firmowe: Pokazy i Cuppingi', 'Edukacja & B2B')" class="text-copper hover:text-copper-light font-bold flex items-center gap-1">
+                            Czytaj <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- Informacja w przypadku braku wyników wyszukiwania -->
+            <div id="no-results" class="hidden text-center py-12 space-y-4">
+                <i class="fa-solid fa-mug-hot text-4xl text-coffee-600"></i>
+                <h4 class="text-xl font-bold text-white">Brak artykułów spełniających kryteria</h4>
+                <p class="text-coffee-300 text-sm">Spróbuj zmienić słowa kluczowe w wyszukiwarce lub kliknij inną kategorię.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Kalendarz Nadchodzących Wydarzeń i Cuppingów (<section id="eventy-kalendarz">) -->
+    <section id="eventy-kalendarz" class="py-20 px-4 sm:px-6 lg:px-8 bg-anthracite-light border-y border-coffee-800/80">
+        <div class="max-w-7xl mx-auto space-y-12">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <span class="text-xs uppercase tracking-widest text-copper font-bold">Zapisz się &amp; Bądź z nami</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white">Kalendarz Wydarzeń &amp; Cuppingów</h2>
+                <div class="w-16 h-1 bg-copper mx-auto rounded-full"></div>
+                <p class="text-coffee-200 text-sm sm:text-base">
+                    Dołącz do otwartych spotkań degustacyjnych w naszej kawiarni w Krakowie oraz odwiedź nasze stoiska na targach w całej Polsce.
+                </p>
+            </div>
+
+            <!-- Lista Nadchodzących Eventów -->
+            <div class="space-y-4 max-w-5xl mx-auto">
+
+                <!-- Event Item 1 -->
+                <div class="bg-anthracite border border-coffee-800 rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:border-copper/50 transition-all">
+                    <div class="flex items-center gap-6">
+                        <div class="w-16 h-16 rounded-2xl bg-copper/10 border border-copper/30 flex flex-col items-center justify-center text-copper shrink-0">
+                            <span class="text-xs font-bold uppercase">Czw</span>
+                            <span class="text-xl font-extrabold text-white">29</span>
+                            <span class="text-[10px] text-coffee-300">Paź</span>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 text-xs text-copper font-semibold mb-1">
+                                <i class="fa-solid fa-location-dot"></i> Kraków, ul. Kawowa 15/2 • g. 18:00
+                            </div>
+                            <h3 class="text-lg font-bold text-white">Otwarty Cupping: Nowa Dostawa z Etiopii i Kenii</h3>
+                            <p class="text-xs text-coffee-300 mt-1">Degustacja 8 najnowszych micro-lotów wypalonych w tym tygodniu. wstęp wolny, obowiązuje rezerwacja miejsc.</p>
+                        </div>
+                    </div>
+                    <button onclick="openEventModal('Otwarty Cupping: Nowa Dostawa z Etiopii i Kenii', '29 Października 2026, 18:00', 'Kraków, ul. Kawowa 15/2')" class="w-full md:w-auto bg-copper hover:bg-copper-light text-white font-bold px-6 py-3 rounded-xl text-xs whitespace-nowrap transition-all shadow-md">
+                        Zarezerwuj miejsce
+                    </button>
+                </div>
+
+                <!-- Event Item 2 -->
+                <div class="bg-anthracite border border-coffee-800 rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:border-copper/50 transition-all">
+                    <div class="flex items-center gap-6">
+                        <div class="w-16 h-16 rounded-2xl bg-copper/10 border border-copper/30 flex flex-col items-center justify-center text-copper shrink-0">
+                            <span class="text-xs font-bold uppercase">Sob</span>
+                            <span class="text-xl font-extrabold text-white">07</span>
+                            <span class="text-[10px] text-coffee-300">Lis</span>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 text-xs text-copper font-semibold mb-1">
+                                <i class="fa-solid fa-map-pin"></i> Warszawa, EXPO XXI • Cały dzień
+                            </div>
+                            <h3 class="text-lg font-bold text-white">Warsaw Coffee Festival 2026 – Stoisko The Perfect Cup</h3>
+                            <p class="text-xs text-coffee-300 mt-1">Pokazy personalizowanego palenia na żywo, warsztaty z baristami oraz premierowe degustacje.</p>
+                        </div>
+                    </div>
+                    <button onclick="openEventModal('Warsaw Coffee Festival 2026 - Stoisko The Perfect Cup', '07 Listopada 2026', 'Warszawa EXPO XXI')" class="w-full md:w-auto bg-coffee-800 hover:bg-copper text-white font-bold px-6 py-3 rounded-xl text-xs whitespace-nowrap transition-all border border-coffee-700">
+                        Odbierz darmowy voucher
+                    </button>
+                </div>
+
+                <!-- Event Item 3 -->
+                <div class="bg-anthracite border border-coffee-800 rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:border-copper/50 transition-all">
+                    <div class="flex items-center gap-6">
+                        <div class="w-16 h-16 rounded-2xl bg-copper/10 border border-copper/30 flex flex-col items-center justify-center text-copper shrink-0">
+                            <span class="text-xs font-bold uppercase">Sob</span>
+                            <span class="text-xl font-extrabold text-white">14</span>
+                            <span class="text-[10px] text-coffee-300">Lis</span>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 text-xs text-copper font-semibold mb-1">
+                                <i class="fa-solid fa-location-dot"></i> Kraków, ul. Kawowa 15/2 • g. 11:00
+                            </div>
+                            <h3 class="text-lg font-bold text-white">Warsztaty Home Barista: Metody Przelewowe od A do Z</h3>
+                            <p class="text-xs text-coffee-300 mt-1">Intensywny 3-godzinny kurs praktyczny z parzenia Drippa V60, Aeropressu oraz Chemexa. Kameralna grupa (max 6 osób).</p>
+                        </div>
+                    </div>
+                    <button onclick="openEventModal('Warsztaty Home Barista: Metody Przelewowe', '14 Listopada 2026, 11:00', 'Kraków, ul. Kawowa 15/2')" class="w-full md:w-auto bg-copper hover:bg-copper-light text-white font-bold px-6 py-3 rounded-xl text-xs whitespace-nowrap transition-all shadow-md">
+                        Zapisz się na kurs
+                    </button>
+                </div>
+
+                <!-- Event Item 4 -->
+                <div class="bg-anthracite border border-coffee-800 rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:border-copper/50 transition-all">
+                    <div class="flex items-center gap-6">
+                        <div class="w-16 h-16 rounded-2xl bg-copper/10 border border-copper/30 flex flex-col items-center justify-center text-copper shrink-0">
+                            <span class="text-xs font-bold uppercase">Nied</span>
+                            <span class="text-xl font-extrabold text-white">22</span>
+                            <span class="text-[10px] text-coffee-300">Lis</span>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 text-xs text-copper font-semibold mb-1">
+                                <i class="fa-solid fa-map-pin"></i> Wrocław, Hala Stulecia • 10:00 - 18:00
+                            </div>
+                            <h3 class="text-lg font-bold text-white">Wrocławski Festiwal Kawy i Czekolady</h3>
+                            <p class="text-xs text-coffee-300 mt-1">Prezentacja naszej oferty B2B, degustacje kaw speciality z miodowymi nutami oraz prelekcja o subskrypcji on-line.</p>
+                        </div>
+                    </div>
+                    <button onclick="openEventModal('Wrocławski Festiwal Kawy i Czekolady', '22 Listopada 2026', 'Wrocław, Hala Stulecia')" class="w-full md:w-auto bg-coffee-800 hover:bg-copper text-white font-bold px-6 py-3 rounded-xl text-xs whitespace-nowrap transition-all border border-coffee-700">
+                        Dowiedz się więcej
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Newsletter Kawowy i Rekrutacja -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-anthracite relative overflow-hidden">
+        <div class="max-w-4xl mx-auto bg-gradient-to-r from-coffee-900 to-anthracite-light p-8 sm:p-12 rounded-3xl border border-copper/30 custom-shadow text-center space-y-6 relative z-10">
+            <div class="w-16 h-16 rounded-full bg-copper/20 border border-copper/40 flex items-center justify-center text-copper text-2xl mx-auto">
+                <i class="fa-regular fa-envelope-open"></i>
+            </div>
+            <h2 class="text-2xl sm:text-4xl font-bold text-white">Bądź na bieżąco ze światem The Perfect Cup</h2>
+            <p class="text-coffee-200 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+                Zapisz się do naszego newslettera! Otrzymuj informacje o nowych dostawach ziaren z palarni, zaproszenia na otwarte cuppingi w Krakowie oraz powiadomienia o rekrutacji do zespołu.
+            </p>
+
+            <form id="newsletter-form" onsubmit="handleNewsletterSubmit(event)" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto pt-2">
+                <input type="email" id="newsletter-email" required placeholder="Wpisz swój adres e-mail..." class="w-full bg-anthracite border border-coffee-800 rounded-xl sm:rounded-full px-5 py-3.5 text-white placeholder-coffee-600 focus:outline-none focus:border-copper text-sm">
+                <button type="submit" class="bg-copper hover:bg-copper-light text-white font-bold px-8 py-3.5 rounded-xl sm:rounded-full transition-all text-sm shrink-0 shadow-lg">
+                    Dołącz teraz
+                </button>
+            </form>
+
+            <div id="newsletter-success" class="hidden text-xs text-emerald-400 font-medium pt-2">
+                <i class="fa-solid fa-circle-check mr-1"></i> Dziękujemy za zapis! Twój e-mail został dodany do listy naszej społeczności.
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Stopka Serwisu (<footer>) -->
+    <footer class="bg-anthracite-dark border-t border-coffee-800/80 py-12 px-4 sm:px-6 lg:px-8 text-sm mt-auto">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <!-- Dane identyfikacyjne podmiotu -->
+            <div class="space-y-1">
+                <span class="text-white font-bold tracking-wider text-base">The Perfect Cup Sp. z o.o.</span>
+                <p class="text-coffee-200 text-xs">Kawiarnia &amp; Palarnia Kawy | ul. Kawowa 15/2, 31-000 Kraków</p>
+                <p class="text-coffee-300 text-xs">NIP: 1234567890 | REGON: 123456789</p>
+            </div>
+
+            <!-- Links -->
+            <div class="flex flex-wrap justify-center gap-6 text-xs text-coffee-200">
+                <a href="the_perfect_cup_kawiarnia_i_palarnia_kawy.html" class="hover:text-copper transition-colors">Strona Główna</a>
+                <a href="the_perfect_cup_kawiarnia_i_palarnia_kawy.html#o-nas" class="hover:text-copper transition-colors">O nas</a>
+                <a href="the_perfect_cup_kawiarnia_i_palarnia_kawy.html#oferta" class="hover:text-copper transition-colors">Oferta B2B</a>
+                <a href="#blog-posts" class="hover:text-copper transition-colors">Blog</a>
+                <a href="the_perfect_cup_kawiarnia_i_palarnia_kawy.html#kontakt" class="hover:text-copper transition-colors">Kontakt</a>
+            </div>
+
+            <!-- Nota prawna z oznaczeniem praw autorskich i bieżącym rokiem -->
+            <div class="text-coffee-300 text-xs">
+                &copy; <span id="current-year">2026</span> The Perfect Cup. Wszelkie prawa zastrzeżone.
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL 1: Zapis na Event / Cupping -->
+    <div id="event-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-anthracite-light border border-coffee-800 rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-6 relative shadow-2xl">
+            <button onclick="closeEventModal()" class="absolute top-5 right-5 text-coffee-300 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="space-y-2">
+                <span class="text-xs text-copper font-bold uppercase tracking-wider"><i class="fa-solid fa-ticket mr-1"></i> Rezerwacja Wydarzenia</span>
+                <h3 id="modal-event-title" class="text-2xl font-bold text-white">Tytuł Wydarzenia</h3>
+                <p id="modal-event-details" class="text-xs text-coffee-300">Data i Miejsce</p>
+            </div>
+
+            <form id="event-booking-form" onsubmit="handleEventBooking(event)" class="space-y-4">
+                <div class="space-y-1">
+                    <label class="text-xs text-coffee-200 font-medium">Imię i Nazwisko *</label>
+                    <input type="text" required placeholder="np. Anna Nowak" class="w-full bg-anthracite border border-coffee-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-copper">
+                </div>
+                <div class="space-y-1">
+                    <label class="text-xs text-coffee-200 font-medium">Adres E-mail *</label>
+                    <input type="email" required placeholder="twoj@email.pl" class="w-full bg-anthracite border border-coffee-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-copper">
+                </div>
+                <div class="space-y-1">
+                    <label class="text-xs text-coffee-200 font-medium">Liczba miejsc / Uwagi</label>
+                    <select class="w-full bg-anthracite border border-coffee-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-copper">
+                        <option value="1">1 Osoba</option>
+                        <option value="2">2 Osoby</option>
+                        <option value="3">3 Osoby</option>
+                        <option value="4+">Grupa (4+ osoby)</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="w-full bg-copper hover:bg-copper-light text-white font-bold py-3 rounded-xl transition-all text-sm mt-2">
+                    Potwierdź rezerwację
+                </button>
+            </form>
+            
+            <div id="modal-booking-success" class="hidden p-3 bg-emerald-900/40 border border-emerald-500/50 rounded-xl text-emerald-300 text-center text-xs">
+                <i class="fa-solid fa-circle-check mr-1"></i> Rezerwacja przyjęta! Wysłaliśmy potwierdzenie na podany adres e-mail.
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: Czytaj Artykuł Podgląd -->
+    <div id="read-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-anthracite-light border border-coffee-800 rounded-3xl max-w-2xl w-full p-6 sm:p-8 space-y-6 relative shadow-2xl max-h-[85vh] overflow-y-auto">
+            <button onclick="closeReadModal()" class="absolute top-5 right-5 text-coffee-300 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="space-y-2 border-b border-coffee-800 pb-4">
+                <span id="read-category" class="bg-copper text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Kategoria</span>
+                <h3 id="read-title" class="text-2xl font-bold text-white leading-snug">Tytuł Artykułu</h3>
+                <p class="text-xs text-coffee-300">Opublikowano: Październik 2026 | Zespół The Perfect Cup Kraków</p>
+            </div>
+            <div class="space-y-4 text-coffee-200 text-sm leading-relaxed">
+                <p>
+                    W kawiarni i palarni <strong>The Perfect Cup</strong> przy ul. Kawowej 15/2 w Krakowie tworzymy miejsce z pasją do ziaren najwyższej jakości. Nasza filozofia opiera się na ciągłym rozwoju, edukacji sensorycznej oraz współdzieleniu wiedzy z naszą społecznością.
+                </p>
+                <p>
+                    Każdy z naszych baristów przechodzi intensywne szkolenia z zakresu profilowania palenia ziaren, analizy sensorycznej według standardów SCA (Specialty Coffee Association) oraz obsługi nowoczesnych pieców rzemieślniczych.
+                </p>
+                <p>
+                    Dzięki temu zamawiając spersonalizowany napój – zarówno na miejscu w kawiarni, jak i w subskrypcji on-line do domu lub biura – otrzymujesz idealnie skomponowaną filiżankę, dokładnie odpowiadającą Twoim preferencjom smakowym.
+                </p>
+                <div class="p-4 bg-anthracite rounded-2xl border-l-4 border-copper text-coffee-100 italic text-xs">
+                    "Kawa to nie tylko napój – to opowieść o plantacji, pracy ludzi, precyzji palenia i kunszcie baristy."
+                </div>
+            </div>
+            <div class="pt-4 border-t border-coffee-800 flex justify-end">
+                <button onclick="closeReadModal()" class="bg-coffee-800 hover:bg-copper text-white px-6 py-2.5 rounded-xl text-xs font-bold transition-all">
+                    Zamknij czytnik
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skrypty Interaktywne (JS) -->
+    <script>
+        // Menu Mobilne
+        const navToggler = document.getElementById('nav-toggler');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        navToggler.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Ustawienie Roku
+        document.getElementById('current-year').textContent = new Date().getFullYear() || 2026;
+
+        // Filtrowanie Artykułów na Blogu
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const postCards = document.querySelectorAll('.post-card');
+        const searchInput = document.getElementById('blog-search');
+        const noResults = document.getElementById('no-results');
+
+        let currentCategory = 'all';
+
+        function filterPosts() {
+            const query = searchInput.value.toLowerCase().trim();
+            let visibleCount = 0;
+
+            postCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                const title = card.getAttribute('data-title').toLowerCase();
+
+                const matchesCategory = (currentCategory === 'all' || category === currentCategory);
+                const matchesSearch = title.includes(query);
+
+                if (matchesCategory && matchesSearch) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            if (visibleCount === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+            }
+        }
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-copper', 'text-white');
+                    b.classList.add('bg-anthracite-light', 'text-coffee-200');
+                });
+                btn.classList.add('active', 'bg-copper', 'text-white');
+                btn.classList.remove('bg-anthracite-light', 'text-coffee-200');
+
+                currentCategory = btn.getAttribute('data-category');
+                filterPosts();
+            });
+        });
+
+        searchInput.addEventListener('input', filterPosts);
+
+        // Obsługa Modali Eventowych
+        const eventModal = document.getElementById('event-modal');
+        const modalEventTitle = document.getElementById('modal-event-title');
+        const modalEventDetails = document.getElementById('modal-event-details');
+        const bookingSuccess = document.getElementById('modal-booking-success');
+        const bookingForm = document.getElementById('event-booking-form');
+
+        function openEventModal(title, date, location) {
+            modalEventTitle.textContent = title;
+            modalEventDetails.textContent = date + " • " + location;
+            bookingSuccess.classList.add('hidden');
+            bookingForm.reset();
+            eventModal.classList.remove('hidden');
+        }
+
+        function closeEventModal() {
+            eventModal.classList.add('hidden');
+        }
+
+        function handleEventBooking(e) {
+            e.preventDefault();
+            bookingSuccess.classList.remove('hidden');
+            setTimeout(() => {
+                closeEventModal();
+            }, 3000);
+        }
+
+        // Obsługa Modala Czytania Artykułu
+        const readModal = document.getElementById('read-modal');
+        const readTitle = document.getElementById('read-title');
+        const readCategory = document.getElementById('read-category');
+
+        function openReadModal(title, category) {
+            readTitle.textContent = title;
+            readCategory.textContent = category;
+            readModal.classList.remove('hidden');
+        }
+
+        function closeReadModal() {
+            readModal.classList.add('hidden');
+        }
+
+        // Obsługa Newslettera
+        function handleNewsletterSubmit(e) {
+            e.preventDefault();
+            const successBox = document.getElementById('newsletter-success');
+            const form = document.getElementById('newsletter-form');
+            successBox.classList.remove('hidden');
+            form.reset();
+            setTimeout(() => {
+                successBox.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
