@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & Życie Kawiarni | The Perfect Cup</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            50: '#fdfbf7',
+                            100: '#f7f1e3',
+                            200: '#eddcc7',
+                            300: '#dec39e',
+                            600: '#8c6239',
+                            700: '#6f4e37',
+                            800: '#4a3324',
+                            900: '#2c1e14',
+                        },
+                        copper: {
+                            DEFAULT: '#b87333',
+                            light: '#d49856',
+                            dark: '#965a25'
+                        },
+                        lightbg: {
+                            DEFAULT: '#ffffff',
+                            alt: '#f4ede2',
+                            card: '#ffffff'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #2c1e14;
+        }
+        /* Zachowanie naturalnych kolorów zdjęcia z delikatną ciemną nakładką */
+        .hero-blog-bg {
+            background: linear-gradient(rgba(28, 20, 20, 0.6), rgba(28, 20, 20, 0.7)), url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 30px -5px rgba(111, 78, 55, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-white text-coffee-900 antialiased selection:bg-copper selection:text-white flex flex-col min-h-screen">
+
+    <!-- 1. Pasek Nawigacyjny (<header>, <nav>) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b-2 border-coffee-200 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo / Identyfikator marki -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-copper to-coffee-700 flex items-center justify-center text-white text-xl font-bold group-hover:scale-105 transition-transform shadow-md">
+                    <i class="fa-solid fa-mug-hot"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-extrabold tracking-wider text-coffee-900">THE PERFECT CUP</span>
+                    <span class="text-xs text-copper font-bold tracking-widest uppercase">Kawiarnia & Palarnia</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center gap-7 font-semibold text-coffee-900">
+                <a href="index.html#o-nas" class="hover:text-copper transition-colors">O nas</a>
+                <a href="index.html#oferta" class="hover:text-copper transition-colors">Oferta</a>
+                <a href="index.html#kontakt" class="hover:text-copper transition-colors">Kontakt</a>
+		<a href="sklep.html" class="hover:text-copper transition-colors">Sklep online</a>
+                <a href="blog.html" class="hover:text-copper transition-colors">Blog</a>
+                <a href="#kontakt" class="bg-gradient-to-r from-copper to-coffee-700 hover:from-copper-dark hover:to-coffee-800 text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-md hover:shadow-lg">
+                    Zamów / Zapytaj
+                </a>
+            </nav>
+
+            <!-- Mobile menu button -->
+            <button id="nav-toggler" aria-label="Przełącz nawigację" class="md:hidden text-coffee-900 hover:text-copper focus:outline-none p-2">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Container -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b-2 border-coffee-200 px-6 py-5 space-y-4 shadow-xl">
+            <a href="index.html#o-nas" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">O nas</a>
+            <a href="index.html#oferta" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Oferta</a>
+            <a href="index.html#kontakt" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Kontakt</a>
+	    <a href="sklep.html" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Sklep online</a>
+            <a href="blog.html" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Blog</a>
+            <div class="pt-2">
+                <a href="#kontakt" class="mobile-link block w-full text-center bg-gradient-to-r from-copper to-coffee-700 text-white py-3 rounded-xl font-bold shadow-md">
+                    Zamów / Zapytaj
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Hero Section Bloga -->
+    <section class="hero-blog-bg pt-32 pb-20 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto space-y-6 z-10 relative">
+            <span class="inline-flex items-center gap-2 bg-black/40 border border-copper/60 text-coffee-100 px-4 py-1.5 rounded-full text-xs font-extrabold tracking-widest uppercase backdrop-blur-sm shadow-md">
+                <i class="fa-solid fa-newspaper text-copper-light"></i> Blog The Perfect Cup
+            </span>
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight drop-shadow-md">
+                Aktualności i <span class="text-transparent bg-clip-text bg-gradient-to-r from-copper-light via-coffee-300 to-copper-light">Życie Kawiarni</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-coffee-100 max-w-2xl mx-auto font-medium leading-relaxed drop-shadow">
+                Odkryj historie naszych bariści i roasterów, zobacz relacje z cuppingów oraz wydarzeń branżowych, i poznaj kulisy tworzenia Twojej ulubionej kawy.
+            </p>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white to-transparent"></div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+
+        <!-- 3. Kategorie / Filtrowanie -->
+        <div class="flex flex-wrap items-center justify-center gap-3 mb-14">
+            <button onclick="filterCategory('all')" class="filter-btn active bg-coffee-900 text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-md hover:scale-105 transition-all">
+                Wszystkie wpisy
+            </button>
+            <button onclick="filterCategory('cupping')" class="filter-btn bg-lightbg-alt border border-coffee-200 text-coffee-900 hover:border-copper px-5 py-2.5 rounded-full text-sm font-bold shadow-sm transition-all">
+                <i class="fa-solid fa-mug-saucer text-copper mr-1"></i> Cuppingi & Warsztaty
+            </button>
+            <button onclick="filterCategory('zespol')" class="filter-btn bg-lightbg-alt border border-coffee-200 text-coffee-900 hover:border-copper px-5 py-2.5 rounded-full text-sm font-bold shadow-sm transition-all">
+                <i class="fa-solid fa-users text-copper mr-1"></i> Zespół & Palarnia
+            </button>
+            <button onclick="filterCategory('eventy')" class="filter-btn bg-lightbg-alt border border-coffee-200 text-coffee-900 hover:border-copper px-5 py-2.5 rounded-full text-sm font-bold shadow-sm transition-all">
+                <i class="fa-solid fa-calendar-check text-copper mr-1"></i> Eventy & Targi
+            </button>
+            <button onclick="filterCategory('wspolpraca')" class="filter-btn bg-lightbg-alt border border-coffee-200 text-coffee-900 hover:border-copper px-5 py-2.5 rounded-full text-sm font-bold shadow-sm transition-all">
+                <i class="fa-solid fa-handshake text-copper mr-1"></i> Współpraca & B2B
+            </button>
+        </div>
+
+        <!-- 4. Wyróżniony wpis (Featured Post) -->
+        <div class="blog-card featured mb-12 bg-lightbg-alt border-2 border-copper/40 rounded-3xl overflow-hidden shadow-xl grid grid-cols-1 lg:grid-cols-7 gap-0" data-category="cupping">
+    <div class="lg:col-span-18 relative h-32 sm:h-32 lg:h-auto overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=1200&auto=format&fit=crop" alt="Cupping z Mistrzem" class="w-full h-full object-cover transform hover:scale-105 transition duration-700">
+        <span class="absolute top-3 left-3 bg-gradient-to-r from-copper to-coffee-700 text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow">
+            Wyróżniony wpis
+        </span>
+    </div>
+    <div class="lg:col-span-6 p-6 sm:p-8 flex flex-col justify-between">
+        <div class="space-y-3">
+            <div class="flex items-center gap-3 text-xs font-bold text-copper">
+                <span><i class="fa-solid fa-calendar mr-1"></i> 18 Października 2026</span>
+                <span>•</span>
+                <span><i class="fa-solid fa-user mr-1"></i> Redakcja TPC</span>
+            </div>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-coffee-900 leading-tight">
+                Cupping z Mistrzem Świata – warsztaty sensoryczne w Krakowie
+            </h2>
+            <p class="text-coffee-800 text-sm leading-relaxed font-medium">
+                Już w przyszły weekend w naszym krakowskim lokalu odbędą się wyjątkowe warsztaty z rozpoznawania nut smakowych w kawach Speciality. Gościem specjalnym będzie Mistrz World Cup Tasters. Zobacz, jak dołączyć do wydarzenia!
+            </p>
+        </div>
+        <div class="pt-4 mt-4 border-t border-coffee-200 flex items-center justify-between">
+            <span class="text-xs font-bold text-coffee-700 uppercase tracking-wider">Kategoria: Cuppingi</span>
+            <button onclick="openModal('Cupping z Mistrzem Świata – warsztaty sensoryczne w Krakowie', 'W miniony weekend mieliśmy niezwykłą przyjemność gościć w naszej krakowskiej kawiarni Mistrza World Cup Tasters. Wydarzenie zgromadziło ponad 50 pasjonatów czarnego naparu, którzy pod okiem eksperta uczyli się identyfikować subtelne nuty jaśminu, bergamotki oraz owoców leśnych w ziarnach typu Micro-lot z Etiopii i Kolumbii.\n\nPodczas 3-godzinnego panelu uczestnicy poznali tajniki oceny formularzem SCA, techniki siorbania zapewniające optymalne rozprowadzenie naparu na kubkach smakowych oraz zasady doboru optymalnej temperatury wody. Dziękujemy wszystkim za frekwencję i wkrótce ogłosimy terminy kolejnych edycji!')" class="bg-gradient-to-r from-copper to-coffee-700 hover:from-copper-dark hover:to-coffee-800 text-white text-xs font-bold px-5 py-2.5 rounded-full transition-all shadow-md">
+                Czytaj więcej <i class="fa-solid fa-arrow-right ml-1"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+        <!-- 5. Siatka Artykułów (Blog Grid) -->
+        <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Wpis 1 -->
+            <article class="blog-card bg-white border-2 border-coffee-200 rounded-3xl overflow-hidden hover:border-copper transition-all duration-300 flex flex-col justify-between custom-shadow" data-category="zespol">
+                <div>
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1507138086030-616c3b6db73c?q=80&w=800&auto=format&fit=crop" alt="Główny Roaster" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                        <span class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-coffee-900 text-xs font-bold px-3 py-1 rounded-full border border-coffee-200">
+                            Zespół & Palarnia
+                        </span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <div class="text-xs font-semibold text-copper">
+                            <i class="fa-solid fa-clock mr-1"></i> 12 Października 2026
+                        </div>
+                        <h3 class="text-xl font-extrabold text-coffee-900 leading-snug">
+                            Poznaj naszego Głównego Roastera – Michał o sztuce wypalania ziaren
+                        </h3>
+                        <p class="text-coffee-800 text-sm leading-relaxed font-medium line-clamp-3">
+                            Jak wygląda proces budowania profilu palenia dla ziaren Mycia i Natural? Michał opowiada o codziennej pracy przy piecu Giesen, precyzji temperatury i miłości do kawiarnianego rzemiosła.
+                        </p>
+                    </div>
+                </div>
+                <div class="p-6 pt-3 border-t border-coffee-100 flex items-center justify-between mt-4">
+                    <span class="text-xs text-coffee-600 font-bold">Autor: Zespół TPC</span>
+                    <button onclick="openModal('Poznaj naszego Głównego Roastera – Michał o sztuce wypalania ziaren', 'Michał związany jest z naszą palarnią od samego początku jej istnienia. To on odpowiada za charakterystyczny profil wypału, z którego słynie The Perfect Cup.\n\n\'Wypalanie kawy to połączenie ścisłej nauki z intuicją. Każda partia ziaren ma inną gęstość i wilgotność, dlatego krzywe prażenia dostosowujemy z dokładnością do ułamków stopni Celsjusza\' – wyjaśnia Michał. W artykule przeczytasz także o wyzwaniach związanych ze świeżymi zbiorami z Ameryki Południowej.')" class="text-copper hover:text-coffee-900 font-bold text-sm flex items-center gap-1">
+                        Czytaj więcej <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Wpis 2 -->
+            <article class="blog-card bg-white border-2 border-coffee-200 rounded-3xl overflow-hidden hover:border-copper transition-all duration-300 flex flex-col justify-between custom-shadow" data-category="eventy">
+                <div>
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop" alt="Festiwal Kawy" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                        <span class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-coffee-900 text-xs font-bold px-3 py-1 rounded-full border border-coffee-200">
+                            Eventy & Targi
+                        </span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <div class="text-xs font-semibold text-copper">
+                            <i class="fa-solid fa-clock mr-1"></i> 02 Października 2026
+                        </div>
+                        <h3 class="text-xl font-extrabold text-coffee-900 leading-snug">
+                            The Perfect Cup na Festiwalu Kawy 2026 – relacja z wydarzenia
+                        </h3>
+                        <p class="text-coffee-800 text-sm leading-relaxed font-medium line-clamp-3">
+                            Byliśmy obecni na tegorocznym Międzynarodowym Festiwalu Kawy! Nasze stoisko z personalizacją mieszanek przyciągnęło setki odwiedzających. Przeczytaj naszą pełną relację i zobacz zdjęcia.
+                        </p>
+                    </div>
+                </div>
+                <div class="p-6 pt-3 border-t border-coffee-100 flex items-center justify-between mt-4">
+                    <span class="text-xs text-coffee-600 font-bold">Autor: Event Manager</span>
+                    <button onclick="openModal('The Perfect Cup na Festiwalu Kawy 2026 – relacja z wydarzenia', 'Tegoroczna edycja Festiwalu Kawy przejdzie do historii! Zaprezentowaliśmy nasze innowacyjne podejście do dostosowywania mieszanek kawowych pod życzenie klienta na żywo.\n\nPrzez trzy dni przygotowaliśmy ponad 1500 spersonalizowanych filiżanek espresso oraz Dripa. Cieszymy się ze wszystkich rozmów z branżą, nawiązanych kontaktów i entuzjastycznych opinii na temat naszych świeżo palonych ziaren. Dziękujemy, że byliście z nami!')" class="text-copper hover:text-coffee-900 font-bold text-sm flex items-center gap-1">
+                        Czytaj więcej <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Wpis 3 -->
+            <article class="blog-card bg-white border-2 border-coffee-200 rounded-3xl overflow-hidden hover:border-copper transition-all duration-300 flex flex-col justify-between custom-shadow" data-category="wspolpraca">
+                <div>
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1518832553480-cd0e625ed3e6?q=80&w=800&auto=format&fit=crop" alt="Współpraca Gwatemala" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                        <span class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-coffee-900 text-xs font-bold px-3 py-1 rounded-full border border-coffee-200">
+                            Współpraca & Direct Trade
+                        </span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <div class="text-xs font-semibold text-copper">
+                            <i class="fa-solid fa-clock mr-1"></i> 25 Września 2026
+                        </div>
+                        <h3 class="text-xl font-extrabold text-coffee-900 leading-snug">
+                            Nasza współpraca z lokalną plantacją w Gwatemali – Sprawiedliwy Handel
+                        </h3>
+                        <p class="text-coffee-800 text-sm leading-relaxed font-medium line-clamp-3">
+                            Bez pośredników, prosto od farmera. Podpisaliśmy długoterminową umowę Direct Trade z rodzinną plantacją z regionu Huehuetenango. Zobacz, jak wpływa to na jakość ziaren.
+                        </p>
+                    </div>
+                </div>
+                <div class="p-6 pt-3 border-t border-coffee-100 flex items-center justify-between mt-4">
+                    <span class="text-xs text-coffee-600 font-bold">Autor: Sourcing Team</span>
+                    <button onclick="openModal('Nasza współpraca z lokalną plantacją w Gwatemali – Sprawiedliwy Handel', 'Relacje Direct Trade to filar naszej filozofii. Odwiedziliśmy rolników z regionu Huehuetenango w Gwatemali, aby osobiście sprawdzić warunki upraw i ocenić tegoroczny zbiór ziaren Arabica Bourbon.\n\nDzięki wyeliminowaniu pośredników zapewniamy farmerom godziwe wynagrodzenie znacznie przewyższające giełdowe stawki Fair Trade, a naszym Klientom w Krakowie gwarantujemy pełną identyfikowalność pochodzenia każdej paczki kawy.')" class="text-copper hover:text-coffee-900 font-bold text-sm flex items-center gap-1">
+                        Czytaj więcej <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Wpis 4 -->
+            <article class="blog-card bg-white border-2 border-coffee-200 rounded-3xl overflow-hidden hover:border-copper transition-all duration-300 flex flex-col justify-between custom-shadow" data-category="zespol">
+                <div>
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop" alt="Dzień w palarni" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                        <span class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-coffee-900 text-xs font-bold px-3 py-1 rounded-full border border-coffee-200">
+                            Życie firmy
+                        </span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <div class="text-xs font-semibold text-copper">
+                            <i class="fa-solid fa-clock mr-1"></i> 14 Września 2026
+                        </div>
+                        <h3 class="text-xl font-extrabold text-coffee-900 leading-snug">
+                            Jak wygląda dzień w naszej palarni? Kulisy pracy zespołu
+                        </h3>
+                        <p class="text-coffee-800 text-sm leading-relaxed font-medium line-clamp-3">
+                            Od porannego sprawdzania zielonego ziarna, przez wypalanie i kontrolę jakości, po pakowanie zamówień subskrypcyjnych. Zobacz wideo-fotoreportaż z życia naszej kawiarni.
+                        </p>
+                    </div>
+                </div>
+                <div class="p-6 pt-3 border-t border-coffee-100 flex items-center justify-between mt-4">
+                    <span class="text-xs text-coffee-600 font-bold">Autor: Redakcja TPC</span>
+                    <button onclick="openModal('Jak wygląda dzień w naszej palarni? Kulisy pracy zespołu', 'Praca w The Perfect Cup rozpoczyna się wcześnie rano od kalibracji młynków oraz testowego zaparzenia espresso z poprzedniego dnia wypału. Następnie nasz roaster przygotowuje zielone ziarna i rozpoczyna cykl prażenia.\n\nKażda paczka przechodzi rygorystyczną kontrolę jakości przed trafieniem na półki lub wysyłką do Klientów subskrypcyjnych. Poznaj nasz zespół baristów, którzy dwoją się i troją, by Twoja poranna kawa była niezmiennie perfekcyjna!')" class="text-copper hover:text-coffee-900 font-bold text-sm flex items-center gap-1">
+                        Czytaj więcej <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Wpis 5 -->
+            <article class="blog-card bg-white border-2 border-coffee-200 rounded-3xl overflow-hidden hover:border-copper transition-all duration-300 flex flex-col justify-between custom-shadow" data-category="wspolpraca">
+                <div>
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=800&auto=format&fit=crop" alt="Inicjatywy B2B" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                        <span class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-coffee-900 text-xs font-bold px-3 py-1 rounded-full border border-coffee-200">
+                            Inicjatywy & B2B
+                        </span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <div class="text-xs font-semibold text-copper">
+                            <i class="fa-solid fa-clock mr-1"></i> 01 Września 2026
+                        </div>
+                        <h3 class="text-xl font-extrabold text-coffee-900 leading-snug">
+                            Ekologiczne opakowania i subskrypcja – nowości w naszej ofercie B2B
+                        </h3>
+                        <p class="text-coffee-800 text-sm leading-relaxed font-medium line-clamp-3">
+                            Wprowadzamy w 100% biodegradowalne opakowania ziaren bez powłok plastikowych oraz rozbudowany panel zarządczy dla biur i restauracji korzystających z naszych licencji.
+                        </p>
+                    </div>
+                </div>
+                <div class="p-6 pt-3 border-t border-coffee-100 flex items-center justify-between mt-4">
+                    <span class="text-xs text-coffee-600 font-bold">Autor: B2B Department</span>
+                    <button onclick="openModal('Ekologiczne opakowania i subskrypcja – nowości w naszej ofercie B2B', 'Troska o środowisko to dla nas priorytet. Wszelkie paczki wyjeżdżające z naszej palarni pakowane są teraz w nowe, w pełni kompostowalne torebki z barierą z włókien roślinnych.\n\nDla naszych partnerów biznesowych (hoteli, biur i lokali partnerskich) udostępniliśmy także zautomatyzowany panel zamawiania ziaren w ramach elastycznego abonamentu B2B, umożliwiający stały dostęp do świeżo palonej kawy.')" class="text-copper hover:text-coffee-900 font-bold text-sm flex items-center gap-1">
+                        Czytaj więcej <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Wpis 6 -->
+            <article class="blog-card bg-white border-2 border-coffee-200 rounded-3xl overflow-hidden hover:border-copper transition-all duration-300 flex flex-col justify-between custom-shadow" data-category="cupping">
+                <div>
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?q=80&w=800&auto=format&fit=crop" alt="Warsztaty z parzenia" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                        <span class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-coffee-900 text-xs font-bold px-3 py-1 rounded-full border border-coffee-200">
+                            Cuppingi & Warsztaty
+                        </span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <div class="text-xs font-semibold text-copper">
+                            <i class="fa-solid fa-clock mr-1"></i> 20 Sierpnia 2026
+                        </div>
+                        <h3 class="text-xl font-extrabold text-coffee-900 leading-snug">
+                            Jak parzyć kawę metodami alternatywnymi? Poradnik od Baristy
+                        </h3>
+                        <p class="text-coffee-800 text-sm leading-relaxed font-medium line-clamp-3">
+                            Chemex, Aeropress czy tradycyjny Drip V60? Sprawdź nasz przejrzysty przewodnik po proporcjach, stopniu mielenia i temperaturze wody dla metod przelewowych.
+                        </p>
+                    </div>
+                </div>
+                <div class="p-6 pt-3 border-t border-coffee-100 flex items-center justify-between mt-4">
+                    <span class="text-xs text-coffee-600 font-bold">Autor: Head Barista</span>
+                    <button onclick="openModal('Jak parzyć kawę metodami alternatywnymi? Poradnik od Baristy', 'Domowe parzenie kawy nie musi być skomplikowane! W naszym najnowszym wpisie bierzemy na warsztat popularny Drip V60 oraz Aeropress.\n\nPoznaj podstawowe zasady: stosunek 6g kawy na każde 100g wody, temperatura około 92°C oraz odpowiednia grubość mielenia przypominająca kryształki soli morskiej. Wprowadzenie tych kilku prostych kroków znacząco podniesie jakość Twojego codziennego naparu w domu.')" class="text-copper hover:text-coffee-900 font-bold text-sm flex items-center gap-1">
+                        Czytaj więcej <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+            </article>
+
+        </div>
+
+    </main>
+
+    <!-- 6. Sekcja Newsletter / Klub Kawosza -->
+    <section class="bg-lightbg-alt border-y-2 border-coffee-200 py-16 px-4 sm:px-6 lg:px-8 my-12">
+        <div class="max-w-4xl mx-auto text-center space-y-6">
+            <div class="w-12 h-12 rounded-full bg-copper/20 text-copper flex items-center justify-center mx-auto text-xl font-bold">
+                <i class="fa-solid fa-envelope-open-text"></i>
+            </div>
+            <h2 class="text-3xl font-extrabold text-coffee-900">Bądź na bieżąco z wydarzeniami!</h2>
+            <p class="text-coffee-800 text-base font-medium max-w-xl mx-auto">
+                Zapisz się do naszego Klubu Kawosza. Otrzymuj zaproszenia na zamknięte cuppingi, warsztaty baristyczne i ekskluzywne kody rabatowe do sklepu online.
+            </p>
+            <form onsubmit="handleNewsletterSubmit(event)" class="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto pt-2">
+                <input type="email" required placeholder="Wpisz swój adres e-mail" class="w-full bg-white border-2 border-coffee-200 rounded-full px-5 py-3.5 text-coffee-900 focus:outline-none focus:border-copper font-medium text-sm">
+                <button type="submit" class="w-full sm:w-auto bg-gradient-to-r from-copper to-coffee-700 hover:from-copper-dark hover:to-coffee-800 text-white font-bold px-8 py-3.5 rounded-full shadow-md text-sm whitespace-nowrap transition-all">
+                    Dołącz teraz
+                </button>
+            </form>
+            <p id="newsletter-msg" class="hidden text-sm font-bold text-emerald-700 pt-2">
+                <i class="fa-solid fa-circle-check mr-1"></i> Dziękujemy za zapisanie się do Klubu Kawosza!
+            </p>
+        </div>
+    </section>
+
+    <!-- 7. Modal czytania wpisu -->
+    <div id="article-modal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 space-y-6 shadow-2xl border-2 border-coffee-200 max-h-[90vh] overflow-y-auto relative">
+            <button onclick="closeModal()" class="absolute top-5 right-5 text-coffee-600 hover:text-coffee-900 text-2xl font-bold focus:outline-none">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <span class="inline-block bg-copper/10 text-copper text-xs font-bold px-3 py-1 rounded-full uppercase">
+                Aktualności TPC
+            </span>
+            <h3 id="modal-title" class="text-2xl sm:text-3xl font-extrabold text-coffee-900 leading-snug"></h3>
+            <div id="modal-content" class="text-coffee-800 text-base leading-relaxed space-y-4 font-medium whitespace-pre-line border-t border-coffee-100 pt-4"></div>
+            <div class="pt-4 flex justify-end">
+                <button onclick="closeModal()" class="bg-coffee-900 text-white font-bold px-6 py-2.5 rounded-full text-sm hover:bg-coffee-800 transition-colors">
+                    Zamknij artykuł
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. Stopka Serwisu (<footer>) -->
+    <footer class="bg-coffee-900 border-t-2 border-coffee-800 py-12 px-4 sm:px-6 lg:px-8 text-sm text-coffee-100 mt-auto">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div class="space-y-1">
+                <span class="text-white font-extrabold tracking-wider text-base">The Perfect Cup Sp. z o.o.</span>
+                <p class="text-coffee-300 text-xs">NIP: 1234567890 | REGON: 123456789</p>
+            </div>
+
+            <div class="text-coffee-300 text-xs font-medium">
+                &copy; <span id="current-year">2026</span> The Perfect Cup. Wszelkie prawa zastrzeżone.
+            </div>
+
+            <div class="flex items-center gap-4 text-coffee-200">
+                <a href="#" class="hover:text-copper transition-colors" aria-label="Przejdź na górę strony">
+                    <i class="fa-solid fa-arrow-up text-lg"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Skrypty Interaktywne -->
+    <script>
+        // Obsługa menu mobilnego
+        const navToggler = document.getElementById('nav-toggler');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        navToggler.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        document.getElementById('current-year').textContent = new Date().getFullYear() || 2026;
+
+        // Filtrowanie kategorii
+        function filterCategory(category) {
+            const cards = document.querySelectorAll('.blog-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            // Zmiana stylów przycisków
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-coffee-900', 'text-white');
+                btn.classList.add('bg-lightbg-alt', 'text-coffee-900');
+            });
+
+            event.currentTarget.classList.remove('bg-lightbg-alt');
+            event.currentTarget.classList.add('bg-coffee-900', 'text-white');
+
+            // Filtrowanie kart
+            cards.forEach(card => {
+                const cardCat = card.getAttribute('data-category');
+                if (category === 'all' || cardCat === category) {
+                    card.style.display = 'flex';
+                    if(card.classList.contains('featured') && window.innerWidth >= 1024) {
+                        card.style.display = 'grid';
+                    }
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Obsługa Modala Artykułów
+        function openModal(title, content) {
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-content').textContent = content;
+            document.getElementById('article-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('article-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Zamknięcie modala po kliknięciu poza treść
+        document.getElementById('article-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Newsletter Submit
+        function handleNewsletterSubmit(e) {
+            e.preventDefault();
+            const msg = document.getElementById('newsletter-msg');
+            msg.classList.remove('hidden');
+            e.target.reset();
+            setTimeout(() => {
+                msg.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

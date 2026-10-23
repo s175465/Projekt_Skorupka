@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Perfect Cup | Kawiarnia i Palarnia Kawy</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            50: '#fdfbf7',
+                            100: '#f7f1e3',
+                            200: '#eddcc7',
+                            300: '#dec39e',
+                            600: '#8c6239',
+                            700: '#6f4e37',
+                            800: '#4a3324',
+                            900: '#2c1e14',
+                        },
+                        copper: {
+                            DEFAULT: '#b87333',
+                            light: '#d49856',
+                            dark: '#965a25'
+                        },
+                        lightbg: {
+                            DEFAULT: '#ffffff',
+                            alt: '#f4ede2',
+                            card: '#ffffff'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #2c1e14;
+        }
+        /* Zachowanie naturalnych kolorów zdjęcia z delikatną ciemną nakładką gwarantującą czytelność tekstu */
+        .hero-bg {
+            background: linear-gradient(rgba(28, 20, 20, 0.55), rgba(28, 20, 20, 0.65)), url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 30px -5px rgba(111, 78, 55, 0.18);
+        }
+    </style>
+</head>
+<body class="bg-white text-coffee-900 antialiased selection:bg-copper selection:text-white">
+
+    <!-- 1. Pasek Nawigacyjny (<header>, <nav>) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b-2 border-coffee-200 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Identyfikator marki -->
+            <a href="#hero" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-copper to-coffee-700 flex items-center justify-center text-white text-xl font-bold group-hover:scale-105 transition-transform shadow-md">
+                    <i class="fa-solid fa-mug-hot"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-extrabold tracking-wider text-coffee-900">THE PERFECT CUP</span>
+                    <span class="text-xs text-copper font-bold tracking-widest uppercase">Kawiarnia & Palarnia</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center gap-7 font-semibold text-coffee-900">
+                <a href="#o-nas" class="hover:text-copper transition-colors">O nas</a>
+                <a href="#oferta" class="hover:text-copper transition-colors">Oferta</a>
+                <a href="#kontakt" class="hover:text-copper transition-colors">Kontakt</a>
+		<a href="sklep.html" class="hover:text-copper transition-colors">Sklep online</a>
+                <a href="blog.html" class="hover:text-copper transition-colors">Blog</a>
+                <a href="#kontakt" class="bg-gradient-to-r from-copper to-coffee-700 hover:from-copper-dark hover:to-coffee-800 text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-md hover:shadow-lg">
+                    Zamów / Zapytaj
+                </a>
+            </nav>
+
+            <!-- Navbar-toggler (Mobile menu button) -->
+            <button id="nav-toggler" aria-label="Przełącz nawigację" class="md:hidden text-coffee-900 hover:text-copper focus:outline-none p-2">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Container -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b-2 border-coffee-200 px-6 py-5 space-y-4 shadow-xl">
+            <a href="#o-nas" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">O nas</a>
+            <a href="#oferta" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Oferta</a>
+            <a href="#kontakt" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Kontakt</a>
+	    <a href="sklep.html" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Sklep online</a>
+            <a href="blog.html" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Blog</a>
+            <div class="pt-2">
+                <a href="#kontakt" class="mobile-link block w-full text-center bg-gradient-to-r from-copper to-coffee-700 text-white py-3 rounded-xl font-bold shadow-md">
+                    Zamów / Zapytaj
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Sekcja Wiodąca (<section id="hero">) -->
+    <section id="hero" class="hero-bg min-h-screen flex items-center justify-center pt-20 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto space-y-8 z-10 py-12">
+            <span class="inline-flex items-center gap-2 bg-black/40 border border-copper/60 text-coffee-100 px-4 py-1.5 rounded-full text-sm font-extrabold tracking-wide uppercase backdrop-blur-sm shadow-md">
+                <i class="fa-solid fa-fire text-xs text-copper-light"></i> Świeżo wypalane na miejscu
+            </span>
+            <!-- Główny nagłówek strony (<h1>) -->
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-tight drop-shadow-md">
+                Stwórz swoją <span class="text-transparent bg-clip-text bg-gradient-to-r from-copper-light via-coffee-300 to-copper-light">idealną filiżankę</span> kawy
+            </h1>
+            <!-- Podtytuł charakteryzujący obszar działalności -->
+            <p class="text-lg sm:text-xl text-coffee-100 max-w-2xl mx-auto font-medium leading-relaxed drop-shadow">
+                W naszej rzemieślniczej kawiarni i palarni komponujesz napój od podstaw. Sam wybierasz ziarna, stopień wypalenia, rodzaj mleka oraz dodatki, a my wypalamy kawę specjalnie dla Ciebie – stacjonarnie oraz w subskrypcji on-line.
+            </p>
+            <!-- Przycisk wezwania do działania (Call to Action) -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                <a href="#oferta" class="w-full sm:w-auto bg-gradient-to-r from-copper to-coffee-700 hover:from-copper-dark hover:to-coffee-800 text-white font-bold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5">
+                    Sprawdź ofertę <i class="fa-solid fa-arrow-right ml-2"></i>
+                </a>
+                <a href="#kontakt" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border-2 border-white/80 backdrop-blur-sm font-bold px-8 py-4 rounded-full transition-all shadow-sm">
+                    Skontaktuj się z nami
+                </a>
+            </div>
+        </div>
+        <!-- Łagodne przejście z hero do jasnej sekcji poniżej -->
+        <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-lightbg-alt to-transparent"></div>
+    </section>
+
+    <!-- 3. Sekcja O Firmie / Inicjatywie (<section id="o-nas">) -->
+    <section id="o-nas" class="py-24 px-4 sm:px-6 lg:px-8 bg-lightbg-alt relative border-y border-coffee-200">
+        <div class="max-w-7xl mx-auto">
+            <!-- Nagłówek sekcji -->
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <h2 class="text-xs uppercase tracking-widest text-copper font-extrabold">O naszej filozofii</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-coffee-900">Kawiarnia-palarnia nowej generacji</h3>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-copper to-coffee-700 mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Zestawienie dwukolumnowe -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <!-- Kolumna tekstu: Opis profilu, misji, wizji i strategii -->
+                <div class="space-y-6 text-coffee-900 leading-relaxed text-base sm:text-lg">
+                    <p>
+                        <strong class="text-coffee-900 font-bold border-b-2 border-copper/40 pb-0.5">The perfect cup</strong> powstawało z pasji do bezkompromisowej jakości oraz głębokiego przekonania, że każdy miłośnik kawy zasługuje na napój skrojony w 100% pod jego unikalne preferencje. Naszą misją jest stworzenie miejsca, w którym Klient przejmuje stery: stawia wymagania, wybiera ziarna, decyduje o stopniu wypalenia, rodzaju mleka oraz autorskich dodatkach.
+                    </p>
+                    <p>
+                        <strong class="text-coffee-900 font-bold">Wizja:</strong> Wyznaczamy nowy standard na rynku kawiarnianym. Dążymy do maksymalnej personalizacji napojów oraz popularyzacji tego modelu w innych lokalach za pomocą elastycznych licencji.
+                    </p>
+                    <p>
+                        <strong class="text-coffee-900 font-bold">Strategia:</strong> Wychodzimy poza mury kawiarni. Budujemy silne partnerstwa z hotelami, biurami i korporacjami. Umożliwiamy delektowanie się ulubionym profilem smakowym w podróży, w miejscu pracy oraz we własnym domu dzięki paczkom ziaren i subskrypcji on-line.
+                    </p>
+                    <div class="pt-4 flex flex-wrap gap-6 text-sm text-coffee-800 font-bold">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-check-circle text-copper"></i> Wypalanie na miejscu</span>
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-check-circle text-copper"></i> Spersonalizowana cena</span>
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-check-circle text-copper"></i> Standardy B2B i Licencje</span>
+                    </div>
+                </div>
+
+                <!-- Kolumna graficzna ze zdjęciem ziaren kawy -->
+                <div class="relative group">
+                    <div class="absolute -inset-1.5 bg-gradient-to-r from-copper via-coffee-700 to-copper-dark rounded-3xl blur opacity-30 group-hover:opacity-60 transition duration-1000"></div>
+                    <div class="relative rounded-3xl overflow-hidden border-2 border-coffee-300 bg-white shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?q=80&w=800&auto=format&fit=crop" alt="Proces wypalania ziaren kawy w The Perfect Cup" class="w-full h-[420px] object-cover transform group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-coffee-900/90 via-coffee-900/30 to-transparent flex items-end p-8">
+                            <div class="space-y-2">
+                                <span class="bg-gradient-to-r from-copper to-coffee-700 text-white text-xs px-3.5 py-1.5 rounded-full font-extrabold tracking-wide shadow">Rzemiosło</span>
+                                <h4 class="text-2xl font-extrabold text-white">Ziarna palone na zamówienie</h4>
+                                <p class="text-sm text-coffee-100 font-medium">Świeżość wyczuwalna w każdej kropli naparu.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Sekcja Kluczowej Oferty (<section id="oferta">) -->
+    <section id="oferta" class="py-24 px-4 sm:px-6 lg:px-8 bg-white border-b border-coffee-200">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <h2 class="text-xs uppercase tracking-widest text-copper font-extrabold">Nasze Usługi</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-coffee-900">Kluczowe obszary działalności</h3>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-copper to-coffee-700 mx-auto rounded-full"></div>
+                <p class="text-coffee-800 font-medium pt-2">Poznaj trzy filary, na których opiera się doświadczenie The Perfect Cup.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Karta 1 -->
+                <div class="bg-lightbg-alt border-2 border-coffee-200 rounded-3xl p-8 flex flex-col justify-between hover:border-copper transition-all duration-300 group custom-shadow">
+                    <div class="space-y-6">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-copper/20 to-coffee-700/20 border border-copper/30 flex items-center justify-center text-copper text-2xl group-hover:bg-gradient-to-br group-hover:from-copper group-hover:to-coffee-700 group-hover:text-white transition-all shadow-sm">
+                            <i class="fa-solid fa-mug-saucer"></i>
+                        </div>
+                        <h4 class="text-2xl font-extrabold text-coffee-900">Personalizowana kawa na miejscu</h4>
+                        <p class="text-coffee-800 text-sm leading-relaxed font-medium">
+                            Zbuduj swój idealny napój filiżanka po filiżance. Wybierz profil ziaren, stopień wypalenia, ulubione mleko, syropy oraz dodatki. Cena kalkulowana jest na żywo w oparciu o użyte półprodukty i przejrzystą marżę.
+                        </p>
+                    </div>
+                    <div class="pt-8 mt-6 border-t-2 border-coffee-200 flex items-center justify-between text-sm">
+                        <span class="text-copper font-bold">Stacjonarne menu</span>
+                        <a href="#kontakt" class="text-coffee-900 hover:text-copper font-bold flex items-center gap-1">Dowiedz się więcej <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                    </div>
+                </div>
+
+                <!-- Karta 2 -->
+                <div id="sklep" class="bg-lightbg-alt border-2 border-copper rounded-3xl p-8 flex flex-col justify-between hover:shadow-xl transition-all duration-300 group custom-shadow relative">
+                    <div class="absolute -top-3 right-6 bg-gradient-to-r from-copper to-coffee-700 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Najwyższa świeżość</div>
+                    <div class="space-y-6">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-copper/20 to-coffee-700/20 border border-copper/30 flex items-center justify-center text-copper text-2xl group-hover:bg-gradient-to-br group-hover:from-copper group-hover:to-coffee-700 group-hover:text-white transition-all shadow-sm">
+                            <i class="fa-solid fa-box-open"></i>
+                        </div>
+                        <h4 class="text-2xl font-extrabold text-coffee-900">Paczki ziaren i subskrypcja on-line</h4>
+                        <p class="text-coffee-800 text-sm leading-relaxed font-medium">
+                            Zabierz nasze ziarna do domu lub biura. Kupuj wybrane paczki stacjonarnie lub zapisz się na subskrypcję on-line, dzięki której świeżo wypalona kawa trafia do Twoich drzwi w regularnych odstępach czasu.
+                        </p>
+                    </div>
+                    <div class="pt-8 mt-6 border-t-2 border-coffee-200 flex items-center justify-between text-sm">
+                        <span class="text-copper font-bold">Sklep & Subskrypcja</span>
+                        <a href="#kontakt" class="text-coffee-900 hover:text-copper font-bold flex items-center gap-1">Zamów paczkę <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                    </div>
+                </div>
+
+                <!-- Karta 3 -->
+                <div class="bg-lightbg-alt border-2 border-coffee-200 rounded-3xl p-8 flex flex-col justify-between hover:border-copper transition-all duration-300 group custom-shadow">
+                    <div class="space-y-6">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-copper/20 to-coffee-700/20 border border-copper/30 flex items-center justify-center text-copper text-2xl group-hover:bg-gradient-to-br group-hover:from-copper group-hover:to-coffee-700 group-hover:text-white transition-all shadow-sm">
+                            <i class="fa-solid fa-building-user"></i>
+                        </div>
+                        <h4 class="text-2xl font-extrabold text-coffee-900">Oferta dla biznesu i licencje</h4>
+                        <p class="text-coffee-800 text-sm leading-relaxed font-medium">
+                            Współpracujemy z hotelami, biurami i korporacjami dostarczając najwyższej jakości sprzęt i ziarna. Udostępniamy również licencje na prowadzenie palarni kawy oraz wdrażanie standardu w innych instytucjach.
+                        </p>
+                    </div>
+                    <div class="pt-8 mt-6 border-t-2 border-coffee-200 flex items-center justify-between text-sm">
+                        <span class="text-copper font-bold">Rozwiązania B2B</span>
+                        <a href="#kontakt" class="text-coffee-900 hover:text-copper font-bold flex items-center gap-1">Rozpocznij współpracę <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Sekcja Kontaktowa z Formularzem (<section id="kontakt">) -->
+    <section id="kontakt" class="py-24 px-4 sm:px-6 lg:px-8 bg-lightbg-alt relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <h2 class="text-xs uppercase tracking-widest text-copper font-extrabold">Skontaktuj się z nami</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-coffee-900">Porozmawiajmy o Twojej kawie</h3>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-copper to-coffee-700 mx-auto rounded-full"></div>
+                <p class="text-coffee-800 font-medium pt-2">Masz pytania dotyczące subskrypcji, oferty B2B lub chcesz zamówić spersonalizowany zestaw? Napisz do nas!</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Dane teleadresowe -->
+                <div class="lg:col-span-5 space-y-8 bg-white p-8 sm:p-10 rounded-3xl border-2 border-coffee-200 shadow-sm">
+                    <h4 class="text-2xl font-extrabold text-coffee-900 border-b-2 border-coffee-100 pb-3">Dane teleadresowe</h4>
+                    <p class="text-coffee-800 text-sm leading-relaxed font-medium">
+                        Odwiedź naszą kawiarnię-palarnię stacjonarnie lub skontaktuj się za pomocą wybranego kanału komunikacji.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-copper/20 to-coffee-700/20 text-copper flex items-center justify-center shrink-0 text-lg border border-copper/30 shadow-sm">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-coffee-900 font-bold">Adres</h5>
+                                <p class="text-coffee-800 text-sm mt-1 font-medium">ul. Kawowa 15/2<br>31-000 Kraków, Polska</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-copper/20 to-coffee-700/20 text-copper flex items-center justify-center shrink-0 text-lg border border-copper/30 shadow-sm">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-coffee-900 font-bold">Adres e-mail</h5>
+                                <p class="text-coffee-800 text-sm mt-1 font-medium">kontakt@theperfectcup.pl<br>b2b@theperfectcup.pl</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-copper/20 to-coffee-700/20 text-copper flex items-center justify-center shrink-0 text-lg border border-copper/30 shadow-sm">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-coffee-900 font-bold">Telefon</h5>
+                                <p class="text-coffee-800 text-sm mt-1 font-medium">+48 123 456 789<br>Pon. - Sob.: 8:00 - 18:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formularz zapytania ofertowego -->
+                <div class="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl border-2 border-coffee-200 shadow-sm">
+                    <form id="contact-form" class="space-y-6" onsubmit="handleFormSubmit(event)">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label for="name" class="block text-sm font-bold text-coffee-900">Imię i nazwisko <span class="text-copper">*</span></label>
+                                <input type="text" id="name" required class="w-full bg-lightbg-alt border-2 border-coffee-200 rounded-xl px-4 py-3 text-coffee-900 focus:outline-none focus:border-copper focus:bg-white transition-colors placeholder:text-coffee-600 font-medium" placeholder="Jan Kowalski">
+                            </div>
+                            <div class="space-y-2">
+                                <label for="email" class="block text-sm font-bold text-coffee-900">Adres e-mail <span class="text-copper">*</span></label>
+                                <input type="email" id="email" required class="w-full bg-lightbg-alt border-2 border-coffee-200 rounded-xl px-4 py-3 text-coffee-900 focus:outline-none focus:border-copper focus:bg-white transition-colors placeholder:text-coffee-600 font-medium" placeholder="jan@example.com">
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label for="topic" class="block text-sm font-bold text-coffee-900">Temat wiadomości <span class="text-copper">*</span></label>
+                            <select id="topic" required class="w-full bg-lightbg-alt border-2 border-coffee-200 rounded-xl px-4 py-3 text-coffee-900 focus:outline-none focus:border-copper focus:bg-white transition-colors font-medium">
+                                <option value="" disabled selected>Wybierz temat zapytania</option>
+                                <option value="kawiarnia">Zapytanie o kawiarnię i personalizację</option>
+                                <option value="subskrypcja">Subskrypcja ziaren on-line</option>
+                                <option value="b2b">Oferta B2B / Licencje na palarnię</option>
+                                <option value="inne">Inne zapytanie</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label for="message" class="block text-sm font-bold text-coffee-900">Treść zapytania <span class="text-copper">*</span></label>
+                            <textarea id="message" rows="4" required class="w-full bg-lightbg-alt border-2 border-coffee-200 rounded-xl px-4 py-3 text-coffee-900 focus:outline-none focus:border-copper focus:bg-white transition-colors placeholder:text-coffee-600 font-medium" placeholder="Napisz szczegóły swojego zapytania..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-gradient-to-r from-copper to-coffee-700 hover:from-copper-dark hover:to-coffee-800 text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all">
+                            Wyślij wiadomość
+                        </button>
+
+                        <div id="form-success" class="hidden p-4 bg-emerald-50 border-2 border-emerald-300 rounded-xl text-emerald-800 text-center text-sm font-bold">
+                            <i class="fa-solid fa-circle-check mr-2 text-emerald-600"></i> Dziękujemy! Twoja wiadomość została pomyślnie wysłana. Odpowiadamy w ciągu 24 godzin.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Stopka Serwisu (<footer>) -->
+    <footer class="bg-coffee-900 border-t-2 border-coffee-800 py-12 px-4 sm:px-6 lg:px-8 text-sm text-coffee-100">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div class="space-y-1">
+                <span class="text-white font-extrabold tracking-wider text-base">The Perfect Cup Sp. z o.o.</span>
+                <p class="text-coffee-300 text-xs">NIP: 1234567890 | REGON: 123456789</p>
+            </div>
+
+            <div class="text-coffee-300 text-xs font-medium">
+                &copy; <span id="current-year">2026</span> The Perfect Cup. Wszelkie prawa zastrzeżone.
+            </div>
+
+            <div class="flex items-center gap-4 text-coffee-200">
+                <a href="#hero" class="hover:text-copper transition-colors" aria-label="Przejdź na górę strony">
+                    <i class="fa-solid fa-arrow-up text-lg"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Skrypty interaktywne -->
+    <script>
+        const navToggler = document.getElementById('nav-toggler');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        navToggler.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        document.getElementById('current-year').textContent = new Date().getFullYear() || 2026;
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const successBox = document.getElementById('form-success');
+            const form = document.getElementById('contact-form');
+            
+            successBox.classList.remove('hidden');
+            form.reset();
+
+            setTimeout(() => {
+                successBox.classList.add('hidden');
+            }, 6000);
+        }
+    </script>
+</body>
+</html>
