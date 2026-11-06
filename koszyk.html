@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koszyk zakupowy | The Perfect Cup</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            50: '#fdfbf7',
+                            100: '#f7f1e3',
+                            200: '#eddcc7',
+                            300: '#dec39e',
+                            600: '#8c6239',
+                            700: '#6f4e37',
+                            800: '#4a3324',
+                            900: '#2c1e14',
+                        },
+                        copper: {
+                            DEFAULT: '#b87333',
+                            light: '#d49856',
+                            dark: '#965a25'
+                        },
+                        lightbg: {
+                            DEFAULT: '#ffffff',
+                            alt: '#f4ede2',
+                            card: '#ffffff'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #2c1e14;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 30px -5px rgba(111, 78, 55, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-white text-coffee-900 antialiased selection:bg-copper selection:text-white flex flex-col min-h-screen">
+
+    <!-- 1. Pasek Nawigacyjny (<header>, <nav>) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b-2 border-coffee-200 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Identyfikator marki (Logo) -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-copper to-coffee-700 flex items-center justify-center text-white text-xl font-bold group-hover:scale-105 transition-transform shadow-md">
+                    <i class="fa-solid fa-mug-hot"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-extrabold tracking-wider text-coffee-900">THE PERFECT CUP</span>
+                    <span class="text-xs text-copper font-bold tracking-widest uppercase">Kawiarnia & Palarnia</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center gap-7 font-semibold text-coffee-900">
+                <a href="index.html#o-nas" class="hover:text-copper transition-colors">O nas</a>
+                <a href="index.html#oferta" class="hover:text-copper transition-colors">Oferta</a>
+                <a href="index.html#kontakt" class="hover:text-copper transition-colors">Kontakt</a>
+                <a href="blog.html" class="hover:text-copper transition-colors">Blog</a>
+                <a href="sklep.html" class="bg-gradient-to-r from-copper to-coffee-700 hover:from-copper-dark hover:to-coffee-800 text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-md hover:shadow-lg">
+                    Sklep online
+                </a>
+            </nav>
+
+            <!-- Ikony Konta, Koszyka oraz Menu Mobilne -->
+            <div class="flex items-center gap-3">
+                <a href="konto.html" aria-label="Konto użytkownika" class="text-coffee-900 hover:text-copper transition-colors text-lg p-2 relative">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+                <a href="koszyk.html" aria-label="Koszyk zakupowy" class="text-copper transition-colors text-lg p-2 relative">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="absolute top-0 right-0 bg-copper text-white text-[10px] font-extrabold w-4 h-4 rounded-full flex items-center justify-center shadow-sm">
+                        2
+                    </span>
+                </a>
+                <button id="nav-toggler" aria-label="Przełącz nawigację" class="md:hidden text-coffee-900 hover:text-copper focus:outline-none p-2 ml-1">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Container -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b-2 border-coffee-200 px-6 py-5 space-y-4 shadow-xl">
+            <a href="index.html#o-nas" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">O nas</a>
+            <a href="index.html#oferta" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Oferta</a>
+            <a href="index.html#kontakt" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Kontakt</a>
+			<a href="blog.html" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Blog</a>
+            <a href="sklep.html" class="bg-gradient-to-r from-copper to-coffee-700 hover:from-copper-dark hover:to-coffee-800 text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-md hover:shadow-lg">Sklep online</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Główna zawartość koszyka -->
+    <main class="flex-grow pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+
+        <!-- Nawigacja Okruszkowa (breadcrumb) -->
+        <nav aria-label="breadcrumb" class="mb-8">
+            <ol class="flex flex-wrap items-center gap-2 text-xs sm:text-sm font-bold text-coffee-600">
+                <li>
+                    <a href="index.html" class="hover:text-copper transition-colors flex items-center gap-1">
+                        <i class="fa-solid fa-house text-xs"></i> Strona Główna
+                    </a>
+                </li>
+                <li><i class="fa-solid fa-chevron-right text-[10px] text-coffee-400"></i></li>
+                <li>
+                    <a href="sklep.html" class="hover:text-copper transition-colors">Sklep</a>
+                </li>
+                <li><i class="fa-solid fa-chevron-right text-[10px] text-coffee-400"></i></li>
+                <li class="text-copper" aria-current="page">Koszyk</li>
+            </ol>
+        </nav>
+
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-coffee-900 mb-8">Twój koszyk</h1>
+
+        <!-- Układ dwukolumnowy: Tabela produktów po lewej, podsumowanie po prawej -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+
+            <!-- LEWA STRONA: Tabela Produktów oraz Kody Rabatowe (8 kolumn) -->
+            <div class="lg:col-span-8 space-y-8">
+
+                <!-- 1. Tabela Produktów w Koszyku -->
+                <div class="bg-lightbg-alt border-2 border-coffee-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
+                    <h2 class="text-xl font-extrabold text-coffee-900 border-b border-coffee-200 pb-4">Pozycje w koszyku (2)</h2>
+                    
+                    <!-- Klasa responsywna tabeli -->
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="border-b-2 border-coffee-200 text-xs font-extrabold text-coffee-700 uppercase tracking-wider">
+                                    <th class="pb-4 pr-4">Produkt</th>
+                                    <th class="pb-4 px-4 text-center">Cena jednostkowa</th>
+                                    <th class="pb-4 px-4 text-center">Ilość</th>
+                                    <th class="pb-4 px-4 text-right">Wartość łączna</th>
+                                    <th class="pb-4 pl-4 text-center">Akcja</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-coffee-200 text-sm font-medium text-coffee-900">
+                                
+                                <!-- Pozycja 1 -->
+                                <tr class="hover:bg-white/50 transition-colors">
+                                    <td class="py-4 pr-4">
+                                        <div class="flex items-center gap-4">
+                                            <div class="w-16 h-16 rounded-2xl overflow-hidden bg-coffee-100 border border-coffee-200 shrink-0">
+                                                <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?q=80&w=200&auto=format&fit=crop" alt="Etiopia Yirgacheffe" class="w-full h-full object-cover">
+                                            </div>
+                                            <div>
+                                                <h3 class="font-extrabold text-coffee-900 line-clamp-1">Etiopia Yirgacheffe 250g</h3>
+                                                <span class="text-xs text-coffee-600">Ziarna całe / Jasny wypal</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 px-4 text-center font-bold">49,00 zł</td>
+                                    <td class="py-4 px-4 text-center">
+                                        <input type="number" value="1" min="1" max="10" class="w-16 bg-white border-2 border-coffee-200 rounded-xl px-2 py-1.5 text-center font-bold text-coffee-900 focus:outline-none focus:border-copper">
+                                    </td>
+                                    <td class="py-4 px-4 text-right font-extrabold text-coffee-900">49,00 zł</td>
+                                    <td class="py-4 pl-4 text-center">
+                                        <button onclick="removeItem(this)" aria-label="Usuń pozycję" class="text-red-600 hover:text-red-800 p-2 transition-colors">
+                                            <i class="fa-solid fa-trash-can text-base"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                <!-- Pozycja 2 -->
+                                <tr class="hover:bg-white/50 transition-colors">
+                                    <td class="py-4 pr-4">
+                                        <div class="flex items-center gap-4">
+                                            <div class="w-16 h-16 rounded-2xl overflow-hidden bg-coffee-100 border border-coffee-200 shrink-0">
+                                                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=200&auto=format&fit=crop" alt="Kolumbia Huila" class="w-full h-full object-cover">
+                                            </div>
+                                            <div>
+                                                <h3 class="font-extrabold text-coffee-900 line-clamp-1">Kolumbia Huila 250g</h3>
+                                                <span class="text-xs text-coffee-600">Mielona pod ekspres</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 px-4 text-center font-bold">46,00 zł</td>
+                                    <td class="py-4 px-4 text-center">
+                                        <input type="number" value="1" min="1" max="10" class="w-16 bg-white border-2 border-coffee-200 rounded-xl px-2 py-1.5 text-center font-bold text-coffee-900 focus:outline-none focus:border-copper">
+                                    </td>
+                                    <td class="py-4 px-4 text-right font-extrabold text-coffee-900">46,00 zł</td>
+                                    <td class="py-4 pl-4 text-center">
+                                        <button onclick="removeItem(this)" aria-label="Usuń pozycję" class="text-red-600 hover:text-red-800 p-2 transition-colors">
+                                            <i class="fa-solid fa-trash-can text-base"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 2. Strefa Kodów Rabatowych -->
+                <div class="bg-lightbg-alt border-2 border-coffee-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-4">
+                    <h2 class="text-lg font-extrabold text-coffee-900 flex items-center gap-2">
+                        <i class="fa-solid fa-ticket text-copper"></i> Masz kod rabatowy?
+                    </h2>
+                    <form onsubmit="handleDiscountApply(event)" class="flex flex-col sm:flex-row items-center gap-3">
+                        <input type="text" id="discount-code" placeholder="Wpisz kod promocyjny (np. COFFEE10)" class="w-full bg-white border-2 border-coffee-200 rounded-2xl px-4 py-3 text-coffee-900 font-medium text-sm focus:outline-none focus:border-copper uppercase">
+                        <button type="submit" class="w-full sm:w-auto bg-coffee-900 hover:bg-coffee-800 text-white font-bold px-6 py-3 rounded-2xl text-sm transition-all whitespace-nowrap shadow-md">
+                            Aktywuj kod
+                        </button>
+                    </form>
+                    <div id="discount-msg" class="hidden text-xs font-bold text-emerald-700">
+                        <i class="fa-solid fa-circle-check mr-1"></i> Kod rabatowy został pomyślnie aktywowany! Naliczono -10% zniżki.
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- PRAWA STRONA: Karta Podsumowania Zamówienia (4 kolumny) -->
+            <aside class="lg:col-span-4 space-y-6">
+                
+                <!-- 3. Karta Podsumowania Zamówienia -->
+                <div class="bg-lightbg-alt border-2 border-coffee-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
+                    <h2 class="text-xl font-extrabold text-coffee-900 border-b border-coffee-200 pb-4">Podsumowanie</h2>
+
+                    <div class="space-y-3 text-sm font-medium text-coffee-800">
+                        <div class="flex justify-between">
+                            <span>Suma częściowa:</span>
+                            <span class="font-bold text-coffee-900">95,00 zł</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Szacowany koszt dostawy:</span>
+                            <span class="font-bold text-coffee-900">14,99 zł</span>
+                        </div>
+                        <div id="discount-row" class="hidden flex justify-between text-emerald-700 font-bold">
+                            <span>Rabat (10%):</span>
+                            <span>-9,50 zł</span>
+                        </div>
+                        <div class="pt-4 border-t-2 border-coffee-200 flex justify-between text-lg font-extrabold text-coffee-900">
+                            <span>Łączna kwota brutto:</span>
+                            <span id="total-price" class="text-copper">109,99 zł</span>
+                        </div>
+                    </div>
+
+                    <!-- Przycisk CTA prowadzący do zamowienie.html -->
+                    <div class="pt-4">
+                        <a href="zamowienie.html" class="block w-full text-center bg-gradient-to-r from-copper to-coffee-700 hover:from-copper-dark hover:to-coffee-800 text-white font-bold py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all text-base">
+                            Przejdź do kasy <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+
+                    <div class="pt-2 text-center text-xs text-coffee-600 font-medium">
+                        <p><i class="fa-solid fa-shield-halved text-copper mr-1"></i> Bezpieczne płatności online i Blik</p>
+                    </div>
+                </div>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+    <!-- 4. Stopka Serwisu (<footer>) -->
+    <footer class="bg-coffee-900 border-t-2 border-coffee-800 py-12 px-4 sm:px-6 lg:px-8 text-sm text-coffee-100 mt-auto">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div class="space-y-1">
+                <span class="text-white font-extrabold tracking-wider text-base">The Perfect Cup Sp. z o.o.</span>
+                <p class="text-coffee-300 text-xs">NIP: 1234567890 | REGON: 123456789</p>
+            </div>
+
+            <div class="text-coffee-300 text-xs font-medium">
+                &copy; <span id="current-year">2026</span> The Perfect Cup. Wszelkie prawa zastrzeżone.
+            </div>
+
+            <div class="flex items-center gap-4 text-coffee-200">
+                <a href="#" class="hover:text-copper transition-colors" aria-label="Przejdź na górę strony">
+                    <i class="fa-solid fa-arrow-up text-lg"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Skrypty Interaktywne -->
+    <script>
+        const navToggler = document.getElementById('nav-toggler');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        navToggler.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        document.getElementById('current-year').textContent = new Date().getFullYear() || 2026;
+
+        // Usuwanie pozycji z tabeli
+        function removeItem(btn) {
+            const row = btn.closest('tr');
+            row.remove();
+            alert('Produkt został usunięty z koszyka.');
+        }
+
+        // Symulacja aktywacji kodu rabatowego
+        function handleDiscountApply(e) {
+            e.preventDefault();
+            const codeInput = document.getElementById('discount-code').value.trim();
+            const msg = document.getElementById('discount-msg');
+            const discountRow = document.getElementById('discount-row');
+            const totalElement = document.getElementById('total-price');
+
+            if (codeInput.length > 0) {
+                msg.classList.remove('hidden');
+                discountRow.classList.remove('hidden');
+                totalElement.textContent = '100,49 zł';
+            } else {
+                alert('Proszę wpisać kod rabatowy.');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Klienta | The Perfect Cup</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            50: '#fdfbf7',
+                            100: '#f7f1e3',
+                            200: '#eddcc7',
+                            300: '#dec39e',
+                            600: '#8c6239',
+                            700: '#6f4e37',
+                            800: '#4a3324',
+                            900: '#2c1e14',
+                        },
+                        copper: {
+                            DEFAULT: '#b87333',
+                            light: '#d49856',
+                            dark: '#965a25'
+                        },
+                        lightbg: {
+                            DEFAULT: '#ffffff',
+                            alt: '#f4ede2',
+                            card: '#ffffff'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #2c1e14;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 30px -5px rgba(111, 78, 55, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-white text-coffee-900 antialiased selection:bg-copper selection:text-white flex flex-col min-h-screen">
+
+    <!-- 1. Pasek Nawigacyjny (<header>, <nav>) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b-2 border-coffee-200 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Identyfikator marki (Logo) -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-copper to-coffee-700 flex items-center justify-center text-white text-xl font-bold group-hover:scale-105 transition-transform shadow-md">
+                    <i class="fa-solid fa-mug-hot"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-extrabold tracking-wider text-coffee-900">THE PERFECT CUP</span>
+                    <span class="text-xs text-copper font-bold tracking-widest uppercase">Kawiarnia & Palarnia</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center gap-7 font-semibold text-coffee-900">
+                <a href="index.html#o-nas" class="hover:text-copper transition-colors">O nas</a>
+                <a href="index.html#oferta" class="hover:text-copper transition-colors">Oferta</a>
+                <a href="index.html#kontakt" class="hover:text-copper transition-colors">Kontakt</a>
+                <a href="blog.html" class="hover:text-copper transition-colors">Blog</a>
+                <a href="sklep.html" class="bg-gradient-to-r from-copper to-coffee-700 hover:from-copper-dark hover:to-coffee-800 text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-md hover:shadow-lg">
+                    Sklep online
+                </a>
+            </nav>
+
+            <!-- Ikony Konta, Koszyka oraz Menu Mobilne -->
+            <div class="flex items-center gap-3">
+                <a href="konto.html" aria-label="Konto użytkownika" class="text-copper transition-colors text-lg p-2 relative">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+                <a href="koszyk.html" aria-label="Koszyk zakupowy" class="text-coffee-900 hover:text-copper transition-colors text-lg p-2 relative">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="absolute top-0 right-0 bg-copper text-white text-[10px] font-extrabold w-4 h-4 rounded-full flex items-center justify-center shadow-sm">
+                        2
+                    </span>
+                </a>
+                <button id="nav-toggler" aria-label="Przełącz nawigację" class="md:hidden text-coffee-900 hover:text-copper focus:outline-none p-2 ml-1">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Container -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b-2 border-coffee-200 px-6 py-5 space-y-4 shadow-xl">
+            <a href="index.html#o-nas" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">O nas</a>
+            <a href="index.html#oferta" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Oferta</a>
+            <a href="index.html#kontakt" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Kontakt</a>
+			<a href="blog.html" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Blog</a>
+            <a href="sklep.html" class="bg-gradient-to-r from-copper to-coffee-700 hover:from-copper-dark hover:to-coffee-800 text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-md hover:shadow-lg">Sklep online</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Główna zawartość panelu klienta -->
+    <main class="flex-grow pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+
+        <!-- Nawigacja Okruszkowa (breadcrumb) -->
+        <nav aria-label="breadcrumb" class="mb-8">
+            <ol class="flex flex-wrap items-center gap-2 text-xs sm:text-sm font-bold text-coffee-600">
+                <li>
+                    <a href="index.html" class="hover:text-copper transition-colors flex items-center gap-1">
+                        <i class="fa-solid fa-house text-xs"></i> Strona Główna
+                    </a>
+                </li>
+                <li><i class="fa-solid fa-chevron-right text-[10px] text-coffee-400"></i></li>
+                <li class="text-copper" aria-current="page">Panel klienta</li>
+            </ol>
+        </nav>
+
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-coffee-900 mb-8">Centrum Zarządzania Kontem</h1>
+
+        <!-- Układ Panelu Dwukolumnowy: Boczne Menu (<aside>) + Główny Obszar (<main>) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+            <!-- 1. BOCZNE MENU NAWIGACYJNE KLIENTA (4 kolumny) -->
+            <aside class="lg:col-span-4 space-y-4">
+                <div class="bg-lightbg-alt border-2 border-coffee-200 rounded-3xl p-6 shadow-sm space-y-2">
+                    <div class="flex items-center gap-3 pb-4 border-b border-coffee-200 mb-2">
+                        <div class="w-12 h-12 rounded-full bg-copper text-white font-extrabold flex items-center justify-center text-lg shadow">
+                            JS
+                        </div>
+                        <div>
+                            <h3 class="font-extrabold text-coffee-900 text-base">Joanna Skorupka</h3>
+                            <span class="text-xs text-coffee-600 font-bold">s175465@student.uken.krakow.pl</span>
+                        </div>
+                    </div>
+
+                    <nav class="flex flex-col space-y-1 font-bold text-sm">
+                        <a href="#pulpit" onclick="switchSection(event, 'section-pulpit')" class="nav-tab active flex items-center gap-3 px-4 py-3 rounded-2xl bg-coffee-900 text-white transition-all">
+                            <i class="fa-solid fa-gauge w-5 text-center text-copper"></i> Pulpit
+                        </a>
+                        <a href="#zamowienia" onclick="switchSection(event, 'section-zamowienia')" class="nav-tab flex items-center gap-3 px-4 py-3 rounded-2xl text-coffee-900 hover:bg-coffee-100 transition-all">
+                            <i class="fa-solid fa-box-open w-5 text-center text-copper"></i> Moje zamówienia
+                        </a>
+                        <a href="#adresy" onclick="switchSection(event, 'section-adresy')" class="nav-tab flex items-center gap-3 px-4 py-3 rounded-2xl text-coffee-900 hover:bg-coffee-100 transition-all">
+                            <i class="fa-solid fa-location-dot w-5 text-center text-copper"></i> Adresy dostawy
+                        </a>
+                        <a href="#ustawienia" onclick="switchSection(event, 'section-ustawienia')" class="nav-tab flex items-center gap-3 px-4 py-3 rounded-2xl text-coffee-900 hover:bg-coffee-100 transition-all">
+                            <i class="fa-solid fa-gear w-5 text-center text-copper"></i> Ustawienia konta
+                        </a>
+                        <a href="index.html" onclick="alert('Zostałeś pomyślnie wylogowany.')" class="flex items-center gap-3 px-4 py-3 rounded-2xl text-red-600 hover:bg-red-50 transition-all pt-3 border-t border-coffee-200 mt-2">
+                            <i class="fa-solid fa-right-from-bracket w-5 text-center"></i> Wyloguj
+                        </a>
+                    </nav>
+                </div>
+            </aside>
+
+            <!-- 2. GŁÓWNY OBSZAR PANELU (8 kolumn) -->
+            <div class="lg:col-span-8 space-y-8">
+
+                <!-- SEKCJA: PULPIT -->
+                <section id="section-pulpit" class="panel-section space-y-8">
+                    
+                    <!-- Powitanie użytkownika i syntetyczne podsumowanie -->
+                    <div class="bg-lightbg-alt border-2 border-coffee-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-4">
+                        <div class="flex items-center gap-2 text-copper text-xs font-extrabold uppercase tracking-wider">
+                            <i class="fa-solid fa-circle-check"></i> Status konta: Aktywne
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-coffee-900">
+                            Witaj ponownie, Joanno!
+                        </h2>
+                        <p class="text-coffee-800 text-sm sm:text-base font-medium leading-relaxed">
+                            Z poziomu swojego panelu klienta możesz w każdej chwili sprawdzić status bieżących zamówień, edytować domyślny adres dostawy oraz zarządzać preferencjami subskrypcji kawowych.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-coffee-200">
+                            <div class="bg-white p-4 rounded-2xl border border-coffee-200 text-center">
+                                <span class="block text-2xl font-extrabold text-copper">3</span>
+                                <span class="text-xs font-bold text-coffee-700 uppercase">Wszystkie zamówienia</span>
+                            </div>
+                            <div class="bg-white p-4 rounded-2xl border border-coffee-200 text-center">
+                                <span class="block text-2xl font-extrabold text-emerald-700">1</span>
+                                <span class="text-xs font-bold text-coffee-700 uppercase">W realizacji</span>
+                            </div>
+                            <div class="bg-white p-4 rounded-2xl border border-coffee-200 text-center">
+                                <span class="block text-2xl font-extrabold text-coffee-900">1</span>
+                                <span class="text-xs font-bold text-coffee-700 uppercase">Aktywna subskrypcja</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skrót historii zamówień na pulpicie -->
+                    <div class="bg-lightbg-alt border-2 border-coffee-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
+                        <div class="flex items-center justify-between border-b border-coffee-200 pb-4">
+                            <h3 class="text-xl font-extrabold text-coffee-900">Ostatnie zamówienia</h3>
+                            <a href="#zamowienia" onclick="switchSection(event, 'section-zamowienia')" class="text-xs font-bold text-copper hover:underline">
+                                Zobacz wszystkie <i class="fa-solid fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse text-sm">
+                                <thead>
+                                    <tr class="border-b border-coffee-200 text-xs font-extrabold text-coffee-700 uppercase tracking-wider">
+                                        <th class="pb-3">Nr zamówienia</th>
+                                        <th class="pb-3">Data</th>
+                                        <th class="pb-3">Kwota</th>
+                                        <th class="pb-3">Status</th>
+                                        <th class="pb-3 text-right">Akcja</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-coffee-200 font-medium text-coffee-900">
+                                    <tr>
+                                        <td class="py-3 font-bold text-copper">#TPC-2026-892</td>
+                                        <td class="py-3">18 Października 2026</td>
+                                        <td class="py-3 font-bold">109,99 zł</td>
+                                        <td class="py-3"><span class="bg-amber-100 text-amber-800 text-xs px-2.5 py-1 rounded-full font-bold">W realizacji</span></td>
+                                        <td class="py-3 text-right"><a href="#" class="text-copper hover:underline font-bold text-xs">Szczegóły</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 font-bold text-copper">#TPC-2026-714</td>
+                                        <td class="py-3">02 Października 2026</td>
+                                        <td class="py-3 font-bold">92,00 zł</td>
+                                        <td class="py-3"><span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-full font-bold">Wysłane</span></td>
+                                        <td class="py-3 text-right"><a href="#" class="text-copper hover:underline font-bold text-xs">Szczegóły</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </section>
+
+                <!-- SEKCJA: MOJE ZAMÓWIENIA -->
+                <section id="section-zamowienia" class="panel-section hidden space-y-6">
+                    <div class="bg-lightbg-alt border-2 border-coffee-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
+                        <h2 class="text-xl font-extrabold text-coffee-900 border-b border-coffee-200 pb-4">Pełna historia zamówień</h2>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse text-sm">
+                                <thead>
+                                    <tr class="border-b border-coffee-200 text-xs font-extrabold text-coffee-700 uppercase tracking-wider">
+                                        <th class="pb-3">Nr zamówienia</th>
+                                        <th class="pb-3">Data</th>
+                                        <th class="pb-3">Kwota</th>
+                                        <th class="pb-3">Status</th>
+                                        <th class="pb-3 text-right">Akcja</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-coffee-200 font-medium text-coffee-900">
+                                    <tr>
+                                        <td class="py-3 font-bold text-copper">#TPC-2026-892</td>
+                                        <td class="py-3">18 Października 2026</td>
+                                        <td class="py-3 font-bold">109,99 zł</td>
+                                        <td class="py-3"><span class="bg-amber-100 text-amber-800 text-xs px-2.5 py-1 rounded-full font-bold">W realizacji</span></td>
+                                        <td class="py-3 text-right"><a href="#" class="text-copper hover:underline font-bold text-xs">Szczegóły</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 font-bold text-copper">#TPC-2026-714</td>
+                                        <td class="py-3">02 Października 2026</td>
+                                        <td class="py-3 font-bold">92,00 zł</td>
+                                        <td class="py-3"><span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-full font-bold">Wysłane</span></td>
+                                        <td class="py-3 text-right"><a href="#" class="text-copper hover:underline font-bold text-xs">Szczegóły</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 font-bold text-copper">#TPC-2026-530</td>
+                                        <td class="py-3">14 Września 2026</td>
+                                        <td class="py-3 font-bold">145,50 zł</td>
+                                        <td class="py-3"><span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-full font-bold">Wysłane</span></td>
+                                        <td class="py-3 text-right"><a href="#" class="text-copper hover:underline font-bold text-xs">Szczegóły</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SEKCJA: ADRESY DOSTAWY -->
+                <section id="section-adresy" class="panel-section hidden space-y-6">
+                    <div class="bg-lightbg-alt border-2 border-coffee-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
+                        <div class="flex items-center justify-between border-b border-coffee-200 pb-4">
+                            <h2 class="text-xl font-extrabold text-coffee-900">Zapisane adresy dostawy</h2>
+                            <button onclick="alert('Formularz dodawania nowego adresu.')" class="bg-coffee-900 text-white text-xs font-bold px-4 py-2 rounded-xl shadow">Dodaj adres</button>
+                        </div>
+
+                        <!-- Domyślny adres z możliwością edycji -->
+                        <div class="bg-white border-2 border-copper/60 rounded-2xl p-6 space-y-4 shadow-sm relative">
+                            <span class="absolute top-4 right-4 bg-copper text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase">Domyślny adres</span>
+                            <h3 class="font-extrabold text-coffee-900 text-base">Joanna Skorupka</h3>
+                            <p class="text-coffee-800 text-sm font-medium leading-relaxed">
+                                ul. Kawowa 15/2<br>
+                                31-000 Kraków<br>
+                                Polska<br>
+                                Tel: +48 123 456 789
+                            </p>
+                            <div class="pt-2 flex gap-3">
+                                <button onclick="alert('Edycja adresu dostawy.')" class="bg-lightbg-alt border border-coffee-200 text-coffee-900 hover:border-copper font-bold text-xs px-4 py-2 rounded-xl transition-all">Edytuj adres</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SEKCJA: USTAWIENIA KONTA -->
+                <section id="section-ustawienia" class="panel-section hidden space-y-6">
+                    <div class="bg-lightbg-alt border-2 border-coffee-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
+                        <h2 class="text-xl font-extrabold text-coffee-900 border-b border-coffee-200 pb-4">Ustawienia i bezpieczeństwo konta</h2>
+                        <form onsubmit="handleSettingsUpdate(event)" class="space-y-4 text-sm font-medium text-coffee-900">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="space-y-1">
+                                    <label class="block text-xs font-bold text-coffee-700">Imię</label>
+                                    <input type="text" value="Joanna" class="w-full bg-white border border-coffee-200 rounded-xl px-4 py-2.5 text-coffee-900 font-medium focus:outline-none focus:border-copper">
+                                </div>
+                                <div class="space-y-1">
+                                    <label class="block text-xs font-bold text-coffee-700">Nazwisko</label>
+                                    <input type="text" value="Skorupka" class="w-full bg-white border border-coffee-200 rounded-xl px-4 py-2.5 text-coffee-900 font-medium focus:outline-none focus:border-copper">
+                                </div>
+                            </div>
+                            <div class="space-y-1">
+                                <label class="block text-xs font-bold text-coffee-700">Adres e-mail</label>
+                                <input type="email" value="s175465@student.uken.krakow.pl" class="w-full bg-white border border-coffee-200 rounded-xl px-4 py-2.5 text-coffee-900 font-medium focus:outline-none focus:border-copper">
+                            </div>
+                            <div class="pt-4 border-t border-coffee-200 space-y-4">
+                                <h3 class="font-extrabold text-coffee-900 text-base">Zmiana hasła</h3>
+                                <div class="space-y-1">
+                                    <label class="block text-xs font-bold text-coffee-700">Obecne hasło</label>
+                                    <input type="password" placeholder="••••••••" class="w-full bg-white border border-coffee-200 rounded-xl px-4 py-2.5 text-coffee-900 font-medium focus:outline-none focus:border-copper">
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div class="space-y-1">
+                                        <label class="block text-xs font-bold text-coffee-700">Nowe hasło</label>
+                                        <input type="password" placeholder="••••••••" class="w-full bg-white border border-coffee-200 rounded-xl px-4 py-2.5 text-coffee-900 font-medium focus:outline-none focus:border-copper">
+                                    </div>
+                                    <div class="space-y-1">
+                                        <label class="block text-xs font-bold text-coffee-700">Powtórz nowe hasło</label>
+                                        <input type="password" placeholder="••••••••" class="w-full bg-white border border-coffee-200 rounded-xl px-4 py-2.5 text-coffee-900 font-medium focus:outline-none focus:border-copper">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pt-4">
+                                <button type="submit" class="bg-gradient-to-r from-copper to-coffee-700 hover:from-copper-dark hover:to-coffee-800 text-white font-bold px-6 py-3 rounded-xl shadow transition-all text-xs">
+                                    Zapisz zmiany
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- 3. Stopka Serwisu (<footer>) -->
+    <footer class="bg-coffee-900 border-t-2 border-coffee-800 py-12 px-4 sm:px-6 lg:px-8 text-sm text-coffee-100 mt-auto">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div class="space-y-1">
+                <span class="text-white font-extrabold tracking-wider text-base">The Perfect Cup Sp. z o.o.</span>
+                <p class="text-coffee-300 text-xs">NIP: 1234567890 | REGON: 123456789</p>
+            </div>
+
+            <div class="text-coffee-300 text-xs font-medium">
+                &copy; <span id="current-year">2026</span> The Perfect Cup. Wszelkie prawa zastrzeżone.
+            </div>
+
+            <div class="flex items-center gap-4 text-coffee-200">
+                <a href="#" class="hover:text-copper transition-colors" aria-label="Przejdź na górę strony">
+                    <i class="fa-solid fa-arrow-up text-lg"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Skrypty Interaktywne -->
+    <script>
+        const navToggler = document.getElementById('nav-toggler');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        navToggler.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        document.getElementById('current-year').textContent = new Date().getFullYear() || 2026;
+
+        // Przełączanie zakładek panelu klienta
+        function switchSection(event, sectionId) {
+            event.preventDefault();
+            const sections = document.querySelectorAll('.panel-section');
+            const tabs = document.querySelectorAll('.nav-tab');
+
+            sections.forEach(sec => sec.classList.add('hidden'));
+            tabs.forEach(tab => {
+                tab.classList.remove('bg-coffee-900', 'text-white', 'shadow');
+                tab.classList.add('text-coffee-900', 'hover:bg-coffee-100');
+            });
+
+            document.getElementById(sectionId).classList.remove('hidden');
+            event.currentTarget.classList.remove('text-coffee-900', 'hover:bg-coffee-100');
+            event.currentTarget.classList.add('bg-coffee-900', 'text-white', 'shadow');
+        }
+
+        // Zapis ustawień
+        function handleSettingsUpdate(e) {
+            e.preventDefault();
+            alert('Zmiany w ustawieniach konta zostały pomyślnie zapisane.');
+        }
+    </script>
+</body>
+</html>

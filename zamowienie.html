@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realizacja zamówienia (Kasa) | The Perfect Cup</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            50: '#fdfbf7',
+                            100: '#f7f1e3',
+                            200: '#eddcc7',
+                            300: '#dec39e',
+                            600: '#8c6239',
+                            700: '#6f4e37',
+                            800: '#4a3324',
+                            900: '#2c1e14',
+                        },
+                        copper: {
+                            DEFAULT: '#b87333',
+                            light: '#d49856',
+                            dark: '#965a25'
+                        },
+                        lightbg: {
+                            DEFAULT: '#ffffff',
+                            alt: '#f4ede2',
+                            card: '#ffffff'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #2c1e14;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 30px -5px rgba(111, 78, 55, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-white text-coffee-900 antialiased selection:bg-copper selection:text-white flex flex-col min-h-screen">
+
+    <!-- 1. Pasek Nawigacyjny (<header>, <nav>) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b-2 border-coffee-200 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Identyfikator marki (Logo) -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-copper to-coffee-700 flex items-center justify-center text-white text-xl font-bold group-hover:scale-105 transition-transform shadow-md">
+                    <i class="fa-solid fa-mug-hot"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-extrabold tracking-wider text-coffee-900">THE PERFECT CUP</span>
+                    <span class="text-xs text-copper font-bold tracking-widest uppercase">Kawiarnia & Palarnia</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center gap-7 font-semibold text-coffee-900">
+                <a href="index.html#o-nas" class="hover:text-copper transition-colors">O nas</a>
+                <a href="index.html#oferta" class="hover:text-copper transition-colors">Oferta</a>
+                <a href="index.html#kontakt" class="hover:text-copper transition-colors">Kontakt</a>
+                <a href="blog.html" class="hover:text-copper transition-colors">Blog</a>
+                <a href="sklep.html" class="bg-gradient-to-r from-copper to-coffee-700 hover:from-copper-dark hover:to-coffee-800 text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-md hover:shadow-lg">
+                    Sklep online
+                </a>
+            </nav>
+
+            <!-- Ikony Konta, Koszyka oraz Menu Mobilne -->
+            <div class="flex items-center gap-3">
+                <a href="konto.html" aria-label="Konto użytkownika" class="text-coffee-900 hover:text-copper transition-colors text-lg p-2 relative">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+                <a href="koszyk.html" aria-label="Koszyk zakupowy" class="text-coffee-900 hover:text-copper transition-colors text-lg p-2 relative">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="absolute top-0 right-0 bg-copper text-white text-[10px] font-extrabold w-4 h-4 rounded-full flex items-center justify-center shadow-sm">
+                        2
+                    </span>
+                </a>
+                <button id="nav-toggler" aria-label="Przełącz nawigację" class="md:hidden text-coffee-900 hover:text-copper focus:outline-none p-2 ml-1">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Container -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b-2 border-coffee-200 px-6 py-5 space-y-4 shadow-xl">
+            <a href="index.html#o-nas" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">O nas</a>
+            <a href="index.html#oferta" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Oferta</a>
+            <a href="index.html#kontakt" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Kontakt</a>
+			<a href="blog.html" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Blog</a>
+            <a href="sklep.html" class="bg-gradient-to-r from-copper to-coffee-700 hover:from-copper-dark hover:to-coffee-800 text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-md hover:shadow-lg">Sklep online</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Główna zawartość kasy -->
+    <main class="flex-grow pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+
+        <!-- Nawigacja Okruszkowa (breadcrumb) -->
+        <nav aria-label="breadcrumb" class="mb-8">
+            <ol class="flex flex-wrap items-center gap-2 text-xs sm:text-sm font-bold text-coffee-600">
+                <li>
+                    <a href="index.html" class="hover:text-copper transition-colors flex items-center gap-1">
+                        <i class="fa-solid fa-house text-xs"></i> Strona Główna
+                    </a>
+                </li>
+                <li><i class="fa-solid fa-chevron-right text-[10px] text-coffee-400"></i></li>
+				<li>
+                    <a href="sklep.html" class="hover:text-copper transition-colors">Sklep</a>
+                </li>
+                <li><i class="fa-solid fa-chevron-right text-[10px] text-coffee-400"></i></li>
+                <li>
+                    <a href="koszyk.html" class="hover:text-copper transition-colors">Koszyk</a>
+                </li>
+                <li><i class="fa-solid fa-chevron-right text-[10px] text-coffee-400"></i></li>
+                <li class="text-copper" aria-current="page">Realizacja zamówienia</li>
+            </ol>
+        </nav>
+
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-coffee-900 mb-8">Kasa – Finalizacja Zamówienia</h1>
+
+        <!-- Formularz kasy opakowany w tag <form> -->
+        <form onsubmit="handleCheckoutSubmit(event)">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+
+                <!-- 1. KOLUMNA FORMULARZA DANYCH (7 kolumn) -->
+                <div class="lg:col-span-7 space-y-8">
+
+                    <!-- Sekcja danych bilingowych i adresu dostawy -->
+                    <div class="bg-lightbg-alt border-2 border-coffee-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
+                        <h2 class="text-xl font-extrabold text-coffee-900 border-b border-coffee-200 pb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-address-book text-copper"></i> Adres dostawy i dane kontaktowe
+                        </h2>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label for="first-name" class="block text-sm font-bold text-coffee-900">Imię <span class="text-copper">*</span></label>
+                                <input type="text" id="first-name" required placeholder="np. Jan" class="w-full bg-white border-2 border-coffee-200 rounded-xl px-4 py-3 text-coffee-900 font-medium text-sm focus:outline-none focus:border-copper">
+                            </div>
+                            <div class="space-y-2">
+                                <label for="last-name" class="block text-sm font-bold text-coffee-900">Nazwisko <span class="text-copper">*</span></label>
+                                <input type="text" id="last-name" required placeholder="np. Kowalski" class="w-full bg-white border-2 border-coffee-200 rounded-xl px-4 py-3 text-coffee-900 font-medium text-sm focus:outline-none focus:border-copper">
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label for="street" class="block text-sm font-bold text-coffee-900">Ulica i numer domu/mieszkania <span class="text-copper">*</span></label>
+                            <input type="text" id="street" required placeholder="np. ul. Kawowa 15/2" class="w-full bg-white border-2 border-coffee-200 rounded-xl px-4 py-3 text-coffee-900 font-medium text-sm focus:outline-none focus:border-copper">
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label for="zip" class="block text-sm font-bold text-coffee-900">Kod pocztowy <span class="text-copper">*</span></label>
+                                <input type="text" id="zip" required placeholder="31-000" class="w-full bg-white border-2 border-coffee-200 rounded-xl px-4 py-3 text-coffee-900 font-medium text-sm focus:outline-none focus:border-copper">
+                            </div>
+                            <div class="space-y-2">
+                                <label for="city" class="block text-sm font-bold text-coffee-900">Miasto <span class="text-copper">*</span></label>
+                                <input type="text" id="city" required placeholder="Kraków" class="w-full bg-white border-2 border-coffee-200 rounded-xl px-4 py-3 text-coffee-900 font-medium text-sm focus:outline-none focus:border-copper">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label for="phone" class="block text-sm font-bold text-coffee-900">Telefon <span class="text-copper">*</span></label>
+                                <input type="tel" id="phone" required placeholder="+48 123 456 789" class="w-full bg-white border-2 border-coffee-200 rounded-xl px-4 py-3 text-coffee-900 font-medium text-sm focus:outline-none focus:border-copper">
+                            </div>
+                            <div class="space-y-2">
+                                <label for="email" class="block text-sm font-bold text-coffee-900">Adres e-mail <span class="text-copper">*</span></label>
+                                <input type="email" id="email" required placeholder="jan@example.com" class="w-full bg-white border-2 border-coffee-200 rounded-xl px-4 py-3 text-coffee-900 font-medium text-sm focus:outline-none focus:border-copper">
+                            </div>
+                        </div>
+
+                        <!-- Opcjonalny checkbox faktury na firmę -->
+                        <div class="pt-2 border-t border-coffee-200 space-y-4">
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input type="checkbox" id="invoice-checkbox" onchange="toggleInvoiceFields()" class="w-4 h-4 rounded border-coffee-300 text-copper focus:ring-copper">
+                                <span class="text-sm font-extrabold text-coffee-900">Chcę otrzymać fakturę na firmę</span>
+                            </label>
+
+                            <div id="invoice-fields" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+                                <div class="space-y-2">
+                                    <label for="company-name" class="block text-sm font-bold text-coffee-900">Nazwa firmy</label>
+                                    <input type="text" id="company-name" placeholder="The Perfect Cup Sp. z o.o." class="w-full bg-white border-2 border-coffee-200 rounded-xl px-4 py-3 text-coffee-900 font-medium text-sm focus:outline-none focus:border-copper">
+                                </div>
+                                <div class="space-y-2">
+                                    <label for="company-nip" class="block text-sm font-bold text-coffee-900">Numer NIP</label>
+                                    <input type="text" id="company-nip" placeholder="1234567890" class="w-full bg-white border-2 border-coffee-200 rounded-xl px-4 py-3 text-coffee-900 font-medium text-sm focus:outline-none focus:border-copper">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sekcja wyboru metody dostawy -->
+                    <div class="bg-lightbg-alt border-2 border-coffee-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-4">
+                        <h2 class="text-xl font-extrabold text-coffee-900 border-b border-coffee-200 pb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-truck text-copper"></i> Wybierz metodę dostawy
+                        </h2>
+
+                        <div class="space-y-3">
+                            <label class="flex items-center justify-between p-4 rounded-2xl bg-white border-2 border-coffee-200 cursor-pointer hover:border-copper transition-colors">
+                                <div class="flex items-center gap-3">
+                                    <input type="radio" name="shipping" value="courier" checked onchange="updateShipping(14.99, 'Kurier')" class="w-4 h-4 text-copper focus:ring-copper">
+                                    <span class="font-bold text-coffee-900 text-sm">Kurier (DPD / InPost)</span>
+                                </div>
+                                <span class="font-extrabold text-coffee-900 text-sm">14,99 zł</span>
+                            </label>
+
+                            <label class="flex items-center justify-between p-4 rounded-2xl bg-white border-2 border-coffee-200 cursor-pointer hover:border-copper transition-colors">
+                                <div class="flex items-center gap-3">
+                                    <input type="radio" name="shipping" value="paczkomat" onchange="updateShipping(11.99, 'Paczkomat InPost')" class="w-4 h-4 text-copper focus:ring-copper">
+                                    <span class="font-bold text-coffee-900 text-sm">Paczkomat InPost</span>
+                                </div>
+                                <span class="font-extrabold text-coffee-900 text-sm">11,99 zł</span>
+                            </label>
+
+                            <label class="flex items-center justify-between p-4 rounded-2xl bg-white border-2 border-coffee-200 cursor-pointer hover:border-copper transition-colors">
+                                <div class="flex items-center gap-3">
+                                    <input type="radio" name="shipping" value="pickup" onchange="updateShipping(0.00, 'Odbiór osobisty (Kraków)')" class="w-4 h-4 text-copper focus:ring-copper">
+                                    <span class="font-bold text-coffee-900 text-sm">Odbiór osobisty (ul. Kawowa 15/2, Kraków)</span>
+                                </div>
+                                <span class="font-extrabold text-emerald-700 text-sm">0,00 zł</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Sekcja wyboru metody płatności -->
+                    <div class="bg-lightbg-alt border-2 border-coffee-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-4">
+                        <h2 class="text-xl font-extrabold text-coffee-900 border-b border-coffee-200 pb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-credit-card text-copper"></i> Wybierz metodę płatności
+                        </h2>
+
+                        <div class="space-y-3">
+                            <label class="flex items-center gap-3 p-4 rounded-2xl bg-white border-2 border-coffee-200 cursor-pointer hover:border-copper transition-colors">
+                                <input type="radio" name="payment" value="blik" checked class="w-4 h-4 text-copper focus:ring-copper">
+                                <span class="font-bold text-coffee-900 text-sm"><i class="fa-solid fa-mobile-screen text-copper mr-2"></i> BLIK</span>
+                            </label>
+
+                            <label class="flex items-center gap-3 p-4 rounded-2xl bg-white border-2 border-coffee-200 cursor-pointer hover:border-copper transition-colors">
+                                <input type="radio" name="payment" value="card" class="w-4 h-4 text-copper focus:ring-copper">
+                                <span class="font-bold text-coffee-900 text-sm"><i class="fa-solid fa-credit-card text-copper mr-2"></i> Karta płatnicza (Visa / Mastercard)</span>
+                            </label>
+
+                            <label class="flex items-center gap-3 p-4 rounded-2xl bg-white border-2 border-coffee-200 cursor-pointer hover:border-copper transition-colors">
+                                <input type="radio" name="payment" value="transfer" class="w-4 h-4 text-copper focus:ring-copper">
+                                <span class="font-bold text-coffee-900 text-sm"><i class="fa-solid fa-building-columns text-copper mr-2"></i> Szybki przelew online (PayU / Przelewy24)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 2. KOLUMNA SKRÓCONEGO PODSUMOWANIA ZAMÓWIENIA (5 kolumn) -->
+                <div class="lg:col-span-5 space-y-6">
+                    
+                    <div class="bg-lightbg-alt border-2 border-coffee-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6 sticky top-28">
+                        <h2 class="text-xl font-extrabold text-coffee-900 border-b border-coffee-200 pb-4">Twoje zamówienie</h2>
+
+                        <!-- Skrócona lista zakupów -->
+                        <div class="space-y-4 max-h-60 overflow-y-auto pr-2">
+                            <div class="flex items-center justify-between text-sm">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 rounded-xl bg-coffee-100 border border-coffee-200 overflow-hidden shrink-0">
+                                        <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?q=80&w=150&auto=format&fit=crop" alt="Etiopia" class="w-full h-full object-cover">
+                                    </div>
+                                    <div>
+                                        <h4 class="font-extrabold text-coffee-900 line-clamp-1">Etiopia Yirgacheffe 250g</h4>
+                                        <span class="text-xs text-coffee-600">Ilość: 1</span>
+                                    </div>
+                                </div>
+                                <span class="font-bold text-coffee-900">49,00 zł</span>
+                            </div>
+
+                            <div class="flex items-center justify-between text-sm">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 rounded-xl bg-coffee-100 border border-coffee-200 overflow-hidden shrink-0">
+                                        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=150&auto=format&fit=crop" alt="Kolumbia" class="w-full h-full object-cover">
+                                    </div>
+                                    <div>
+                                        <h4 class="font-extrabold text-coffee-900 line-clamp-1">Kolumbia Huila 250g</h4>
+                                        <span class="text-xs text-coffee-600">Ilość: 1</span>
+                                    </div>
+                                </div>
+                                <span class="font-bold text-coffee-900">46,00 zł</span>
+                            </div>
+                        </div>
+
+                        <!-- Koszty -->
+                        <div class="space-y-3 pt-4 border-t border-coffee-200 text-sm font-medium text-coffee-800">
+                            <div class="flex justify-between">
+                                <span>Suma częściowa:</span>
+                                <span class="font-bold text-coffee-900">95,00 zł</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span id="shipping-label">Koszt dostawy (Kurier):</span>
+                                <span id="shipping-cost" class="font-bold text-coffee-900">14,99 zł</span>
+                            </div>
+                            <div class="pt-4 border-t-2 border-coffee-200 flex justify-between text-lg font-extrabold text-coffee-900">
+                                <span>Kwota całkowita:</span>
+                                <span id="grand-total" class="text-copper">109,99 zł</span>
+                            </div>
+                        </div>
+
+                        <!-- Wymagane checkboxy akceptacji regulaminu -->
+                        <div class="space-y-3 pt-4 border-t border-coffee-200 text-xs font-medium text-coffee-800">
+                            <label class="flex items-start gap-3 cursor-pointer">
+                                <input type="checkbox" required class="w-4 h-4 mt-0.5 rounded border-coffee-300 text-copper focus:ring-copper">
+                                <span>Oświadczam, że zapoznałem się z <a href="#" class="text-copper font-bold underline">Regulaminem Sklepu</a> oraz <a href="#" class="text-copper font-bold underline">Polityką Prywatności</a> i akceptuję ich postanowienia. <span class="text-copper">*</span></span>
+                            </label>
+                            <label class="flex items-start gap-3 cursor-pointer">
+                                <input type="checkbox" class="w-4 h-4 mt-0.5 rounded border-coffee-300 text-copper focus:ring-copper">
+                                <span>Wyrażam zgodę na przesyłanie informacji handlowych i marketingowych drogą elektroniczną.</span>
+                            </label>
+                        </div>
+
+                        <!-- Główny przycisk finalizacji zakupu -->
+                        <div class="pt-2">
+                            <button type="submit" class="w-full bg-gradient-to-r from-copper to-coffee-700 hover:from-copper-dark hover:to-coffee-800 text-white font-bold py-4 px-6 rounded-2xl shadow-lg hover:shadow-xl transition-all text-base flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-lock"></i> Kupuję i płacę (109,99 zł)
+                            </button>
+                        </div>
+
+                        <div class="text-center text-xs text-coffee-600 font-medium">
+                            <p><i class="fa-solid fa-shield-check text-copper mr-1"></i> Transakcja szyfrowana protokołem SSL</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </form>
+
+    </main>
+
+    <!-- 3. Stopka Serwisu (<footer>) -->
+    <footer class="bg-coffee-900 border-t-2 border-coffee-800 py-12 px-4 sm:px-6 lg:px-8 text-sm text-coffee-100 mt-auto">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div class="space-y-1">
+                <span class="text-white font-extrabold tracking-wider text-base">The Perfect Cup Sp. z o.o.</span>
+                <p class="text-coffee-300 text-xs">NIP: 1234567890 | REGON: 123456789</p>
+            </div>
+
+            <div class="text-coffee-300 text-xs font-medium">
+                &copy; <span id="current-year">2026</span> The Perfect Cup. Wszelkie prawa zastrzeżone.
+            </div>
+
+            <div class="flex items-center gap-4 text-coffee-200">
+                <a href="#" class="hover:text-copper transition-colors" aria-label="Przejdź na górę strony">
+                    <i class="fa-solid fa-arrow-up text-lg"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Skrypty Interaktywne -->
+    <script>
+        const navToggler = document.getElementById('nav-toggler');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        navToggler.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        document.getElementById('current-year').textContent = new Date().getFullYear() || 2026;
+
+        // Odsłanianie pól faktury firmowej
+        function toggleInvoiceFields() {
+            const checkbox = document.getElementById('invoice-checkbox');
+            const fields = document.getElementById('invoice-fields');
+            if (checkbox.checked) {
+                fields.classList.remove('hidden');
+            } else {
+                fields.classList.add('hidden');
+            }
+        }
+
+        let currentSubtotal = 95.00;
+
+        // Dynamiczna aktualizacja kosztu dostawy i kwoty całkowitej
+        function updateShipping(cost, name) {
+            const shippingCostEl = document.getElementById('shipping-cost');
+            const shippingLabelEl = document.getElementById('shipping-label');
+            const grandTotalEl = document.getElementById('grand-total');
+            
+            shippingCostEl.textContent = cost.toFixed(2).replace('.', ',') + ' zł';
+            shippingLabelEl.textContent = 'Koszt dostawy (' + name + '):';
+            
+            const total = currentSubtotal + cost;
+            grandTotalEl.textContent = total.toFixed(2).replace('.', ',') + ' zł';
+        }
+
+        // Symulacja wysłania zamówienia i przekierowanie do konto.html
+        function handleCheckoutSubmit(e) {
+            e.preventDefault();
+            alert('Dziękujemy! Twoje zamówienie zostało pomyślnie złożone. Przekierowujemy do panelu klienta...');
+            window.location.href = 'konto.html';
+        }
+    </script>
+</body>
+</html>

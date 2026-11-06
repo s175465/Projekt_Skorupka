@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cupping z Mistrzem Świata – warsztaty sensoryczne w Krakowie | The Perfect Cup</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            50: '#fdfbf7',
+                            100: '#f7f1e3',
+                            200: '#eddcc7',
+                            300: '#dec39e',
+                            600: '#8c6239',
+                            700: '#6f4e37',
+                            800: '#4a3324',
+                            900: '#2c1e14',
+                        },
+                        copper: {
+                            DEFAULT: '#b87333',
+                            light: '#d49856',
+                            dark: '#965a25'
+                        },
+                        lightbg: {
+                            DEFAULT: '#ffffff',
+                            alt: '#f4ede2',
+                            card: '#ffffff'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #2c1e14;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 30px -5px rgba(111, 78, 55, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-white text-coffee-900 antialiased selection:bg-copper selection:text-white flex flex-col min-h-screen">
+
+    <!-- 1. Pasek Nawigacyjny (<header>, <nav>) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b-2 border-coffee-200 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo / Identyfikator marki -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-copper to-coffee-700 flex items-center justify-center text-white text-xl font-bold group-hover:scale-105 transition-transform shadow-md">
+                    <i class="fa-solid fa-mug-hot"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-extrabold tracking-wider text-coffee-900">THE PERFECT CUP</span>
+                    <span class="text-xs text-copper font-bold tracking-widest uppercase">Kawiarnia & Palarnia</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center gap-7 font-semibold text-coffee-900">
+                <a href="index.html#o-nas" class="hover:text-copper transition-colors">O nas</a>
+                <a href="index.html#oferta" class="hover:text-copper transition-colors">Oferta</a>
+                <a href="index.html#kontakt" class="hover:text-copper transition-colors">Kontakt</a>
+                <a href="blog.html" class="hover:text-copper transition-colors">Blog</a>
+                <a href="sklep.html" class="bg-gradient-to-r from-copper to-coffee-700 hover:from-copper-dark hover:to-coffee-800 text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-md hover:shadow-lg">
+                    Sklep online
+                </a>
+            </nav>
+
+            <!-- Navbar-toggler (Mobile menu button) -->
+			<div class="flex items-center gap-5">
+				<button id="nav-toggler" aria-label="Przełącz nawigację" class="md:hidden text-coffee-900 hover:text-copper focus:outline-none p-2">
+					<i class="fa-solid fa-bars text-2xl"></i>
+				</button>
+				<!-- Ikona konta użytkownika i koszyka zakupowego z licznikiem -->
+			
+				<a href="konto.html" aria-label="Konto użytkownika" class="text-coffee-900 hover:text-copper transition-colors text-xl p-2 relative">
+					<i class="fa-solid fa-user"></i>
+				</a>
+				<a href="koszyk.html" aria-label="Koszyk zakupowy" class="text-coffee-900 hover:text-copper transition-colors text-xl p-2 relative">
+					<i class="fa-solid fa-cart-shopping"></i>
+					<span class="absolute -top-1 -right-1 bg-copper text-white text-[10px] font-extrabold w-5 h-5 rounded-full flex items-center justify-center shadow-md">2
+					</span>
+				</a>
+			</div>
+        </div>
+
+        <!-- Mobile Menu Container -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b-2 border-coffee-200 px-6 py-5 space-y-4 shadow-xl">
+            <a href="index.html#o-nas" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">O nas</a>
+            <a href="index.html#oferta" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Oferta</a>
+            <a href="index.html#kontakt" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Kontakt</a>
+			<a href="blog.html" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Blog</a>
+            <a href="sklep.html" class="bg-gradient-to-r from-copper to-coffee-700 hover:from-copper-dark hover:to-coffee-800 text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-md hover:shadow-lg">Sklep online</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Główna zawartość podstrony -->
+    <main class="flex-grow pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full">
+
+        <!-- 1. Nawigacja Okruszkowa (<nav aria-label="breadcrumb">) -->
+        <nav aria-label="breadcrumb" class="mb-8">
+            <ol class="flex flex-wrap items-center gap-2 text-xs sm:text-sm font-bold text-coffee-600">
+                <li>
+                    <a href="index.html" class="hover:text-copper transition-colors flex items-center gap-1">
+                        <i class="fa-solid fa-house text-xs"></i> Strona Główna
+                    </a>
+                </li>
+                <li><i class="fa-solid fa-chevron-right text-[10px] text-coffee-400"></i></li>
+                <li>
+                    <a href="blog.html" class="hover:text-copper transition-colors">Blog</a>
+                </li>
+                <li><i class="fa-solid fa-chevron-right text-[10px] text-coffee-400"></i></li>
+                <li class="text-copper truncate max-w-[200px] sm:max-w-xs" aria-current="page">
+                    Cupping z Mistrzem Świata
+                </li>
+            </ol>
+        </nav>
+
+        <!-- 2. Struktura Artykułu (<article>) -->
+        <article class="space-y-8">
+            
+            <!-- Nagłówek Artykułu (<h1>) -->
+            <header class="space-y-4 border-b-2 border-coffee-200 pb-6">
+                <span class="inline-block bg-copper/20 text-copper text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">
+                    Cuppingi & Warsztaty
+                </span>
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-coffee-900 leading-tight">
+                    Cupping z Mistrzem Świata – warsztaty sensoryczne w Krakowie
+                </h1>
+
+                <!-- Pasek Metadanych -->
+                <div class="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-coffee-700 font-medium pt-2">
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-calendar text-copper"></i> 18 Października 2026</span>
+                    <span>•</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-user text-copper"></i> Redakcja TPC</span>
+                    <span>•</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-clock text-copper"></i> Szacowany czas czytania: 5 min</span>
+                    <span>•</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-tag text-copper"></i> Cuppingi</span>
+                </div>
+            </header>
+
+            <!-- Wiodąca Grafika Artykułu -->
+            <div class="rounded-3xl overflow-hidden border-2 border-coffee-200 shadow-lg">
+                <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=1200&auto=format&fit=crop" alt="Warsztaty Cuppingowe w Krakowie" class="w-full h-72 sm:h-96 object-cover">
+            </div>
+
+            <!-- Treść właściwa artykułu -->
+            <div class="space-y-6 text-coffee-900 text-base sm:text-lg leading-relaxed font-medium">
+
+                <!-- Wyróżniony lead -->
+                <p class="text-xl sm:text-2xl font-bold text-coffee-900 leading-snug border-l-4 border-copper pl-4 py-1 text-coffee-800">
+                    W miniony weekend krakowska palarnia The Perfect Cup zamieniła się w centrum polskiej sceny Speciality. Ponad 50 pasjonatów czarnego naparu wzięło udział w ekskluzywnych warsztatach oceny sensorycznej prowadzonych przez aktualnego Mistrza World Cup Tasters.
+                </p>
+
+                <p>
+                    Rozpoznawanie niuansów smakowych w kawie wysokiej jakości wymaga nie tylko wyczulonego podniebienia, ale przede wszystkim odpowiedniej metodologii i powtarzalnych warunków testowych. Podczas 3-godzinnego panelu uczestnicy mieli okazję przetestować 12 rzadkich mikrolotów z Afryki i Ameryki Łacińskiej.
+                </p>
+
+                <!-- Śródtytuł (<h2>) -->
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-coffee-900 pt-4">
+                    Jak przebiega profesjonalny cupping SCA?
+                </h2>
+
+                <p>
+                    Oficjalny protokół Specialty Coffee Association (SCA) zakłada ocenę kawy w kilku ściśle określonych fazach: od badania aromatu suchego zmielonego ziarna (fragrance), przez aromat naparu po zalaniu gorącą wodą (aroma), aż po właściwą degustację po przełamaniu skorupki ziaren.
+                </p>
+
+                <!-- Cytat blokowy (<blockquote class="blockquote">) -->
+                <blockquote class="blockquote bg-lightbg-alt border-l-4 border-copper p-6 rounded-r-2xl my-8 italic shadow-sm">
+                    <p class="text-lg sm:text-xl text-coffee-900 font-bold mb-2">
+                        „Kawa to najbardziej skomplikowany chemicznie produkt spożywczy na świecie. Zawiera ponad 800 związków aromatycznych – dwukrotnie więcej niż czerwone wino. Nauka ich rozróżniania i nazywania to klucz do świadomej degustacji.”
+                    </p>
+                    <cite class="text-sm font-extrabold text-copper uppercase tracking-wider not-italic block">— Gość Specjalny, Mistrz World Cup Tasters</cite>
+                </blockquote>
+
+                <!-- Śródtytuł (<h3>) -->
+                <h3 class="text-xl sm:text-2xl font-extrabold text-coffee-900 pt-2">
+                    Porównanie ocenianych ziaren podczas warsztatów
+                </h3>
+
+                <!-- Tabela danych tematycznych -->
+                <div class="overflow-x-auto my-6 border-2 border-coffee-200 rounded-2xl shadow-sm">
+                    <table class="w-full text-left text-sm text-coffee-900 border-collapse">
+                        <thead class="bg-coffee-900 text-white font-extrabold">
+                            <tr>
+                                <th class="p-3.5">Kraj / Region</th>
+                                <th class="p-3.5">Odmiana ziarna</th>
+                                <th class="p-3.5">Obróbka</th>
+                                <th class="p-3.5">Dominujące nuty smakowe</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-coffee-200 bg-white">
+                            <tr class="hover:bg-lightbg-alt transition-colors">
+                                <td class="p-3.5 font-bold">Etiopia Yirgacheffe</td>
+                                <td class="p-3.5">Heirloom</td>
+                                <td class="p-3.5">Washed (Myta)</td>
+                                <td class="p-3.5 text-copper font-bold">Jaśmin, bergamotka, herbata Earl Grey</td>
+                            </tr>
+                            <tr class="hover:bg-lightbg-alt transition-colors">
+                                <td class="p-3.5 font-bold">Kolumbia Huila</td>
+                                <td class="p-3.5">Pink Bourbon</td>
+                                <td class="p-3.5">Anaerobic (Beztlenowa)</td>
+                                <td class="p-3.5 text-copper font-bold">Truskawka, różowy grejpfrut, kakao</td>
+                            </tr>
+                            <tr class="hover:bg-lightbg-alt transition-colors">
+                                <td class="p-3.5 font-bold">Gwatemala Huehuetenango</td>
+                                <td class="p-3.5">Caturra & Catuai</td>
+                                <td class="p-3.5">Natural (Naturalna)</td>
+                                <td class="p-3.5 text-copper font-bold">Śliwka, czekolada deserowa, orzech</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>
+                    Po przeprowadzeniu oceny sensorycznej uczestnicy oddali swoje głosy na najlepsze ziarno wieczoru. Zwycięzcą okazała się beztlenowa Kolumbia Pink Bourbon, charakteryzująca się soczystą kwasowością i intensywnym aromatem owoców tropikalnych.
+                </p>
+
+                <!-- Druga grafika z podpisem (<figure>, <figcaption>) -->
+                <figure class="my-8 space-y-2">
+                    <div class="rounded-3xl overflow-hidden border-2 border-coffee-200 shadow-md">
+                        <img src="https://images.unsplash.com/photo-1762195657410-112fbc6f2d17?q=80&w=1631&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" alt="Ocena i klasyfikacja aromatu naparu podczas cuppingu." class="w-full h-64 sm:h-80 object-cover">
+                    </div>
+                    <figcaption class="text-xs sm:text-sm text-center text-coffee-600 font-bold italic">
+                        Fot. Uczestniczka warsztatów podczas fazy oceniania aromatu naparu.
+                    </figcaption>
+                </figure>
+
+            </div>
+
+            <!-- 3. Stopka Artykułu -->
+            <footer class="pt-8 border-t-2 border-coffee-200 space-y-8">
+                
+                <!-- Tagi tematyczne -->
+                <div class="flex flex-wrap items-center gap-2">
+                    <span class="text-xs font-extrabold text-coffee-900 mr-2 uppercase tracking-wider">Tagi:</span>
+                    <a href="#" class="bg-lightbg-alt border border-coffee-200 text-coffee-900 hover:border-copper px-3 py-1.5 rounded-full text-xs font-bold transition-all">#Cupping</a>
+                    <a href="#" class="bg-lightbg-alt border border-coffee-200 text-coffee-900 hover:border-copper px-3 py-1.5 rounded-full text-xs font-bold transition-all">#KrakówEvents</a>
+                    <a href="#" class="bg-lightbg-alt border border-coffee-200 text-coffee-900 hover:border-copper px-3 py-1.5 rounded-full text-xs font-bold transition-all">#SpecialtyCoffee</a>
+                    <a href="#" class="bg-lightbg-alt border border-coffee-200 text-coffee-900 hover:border-copper px-3 py-1.5 rounded-full text-xs font-bold transition-all">#Sensoryka</a>
+                </div>
+
+                <!-- Blok biogramu autora -->
+                <div class="bg-lightbg-alt border-2 border-coffee-200 rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-6 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop" alt="Avatar Autora - Anna Kowalska" class="w-20 h-20 rounded-full object-cover border-2 border-copper shrink-0 shadow-md">
+                    <div class="space-y-2 text-center sm:text-left">
+                        <span class="text-xs font-extrabold text-copper uppercase tracking-wider">O Autorze</span>
+                        <h4 class="text-xl font-extrabold text-coffee-900">Anna Kowalska</h4>
+                        <p class="text-coffee-800 text-sm font-medium leading-relaxed">
+                            Head Baristka w The Perfect Cup, certyfikowana sensoryczka SCA oraz organizatorka krakowskich warsztatów kawowych. Od 8 lat zgłębia tajemnice metodyk alternatywnych i wypału ziaren.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Przyciski udostępniania w social media -->
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white border-2 border-coffee-200 rounded-2xl p-5">
+                    <span class="text-sm font-extrabold text-coffee-900">Udostępnij ten artykuł:</span>
+                    <div class="flex items-center gap-3">
+                        <a href="#" aria-label="Udostępnij na Facebooku" class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:opacity-90 transition-opacity shadow-sm">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" aria-label="Udostępnij na Twitterze" class="w-10 h-10 rounded-full bg-sky-500 text-white flex items-center justify-center hover:opacity-90 transition-opacity shadow-sm">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+                        <a href="#" aria-label="Udostępnij na LinkedIn" class="w-10 h-10 rounded-full bg-blue-700 text-white flex items-center justify-center hover:opacity-90 transition-opacity shadow-sm">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" aria-label="Kopiuj link" class="w-10 h-10 rounded-full bg-coffee-900 text-white flex items-center justify-center hover:bg-copper transition-colors shadow-sm">
+                            <i class="fa-solid fa-link"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </footer>
+        </article>
+
+        <!-- 4. Nawigacja Relacyjna (Poprzedni / Następny artykuł) -->
+        <nav aria-label="Nawigacja relacyjna" class="my-12 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <a href="#" class="bg-lightbg-alt border-2 border-coffee-200 rounded-2xl p-5 hover:border-copper transition-all group flex items-center gap-4">
+                <i class="fa-solid fa-arrow-left text-copper text-lg group-hover:-translate-x-1 transition-transform"></i>
+                <div class="space-y-1">
+                    <span class="text-[10px] font-extrabold text-coffee-600 uppercase tracking-wider">Poprzedni artykuł</span>
+                    <h5 class="text-sm font-extrabold text-coffee-900 group-hover:text-copper transition-colors line-clamp-1">
+                        Poznaj naszego Głównego Roastera – Michał o sztuce wypalania
+                    </h5>
+                </div>
+            </a>
+            <a href="#" class="bg-lightbg-alt border-2 border-coffee-200 rounded-2xl p-5 hover:border-copper transition-all group flex items-center justify-end text-right gap-4">
+                <div class="space-y-1">
+                    <span class="text-[10px] font-extrabold text-coffee-600 uppercase tracking-wider">Następny artykuł</span>
+                    <h5 class="text-sm font-extrabold text-coffee-900 group-hover:text-copper transition-colors line-clamp-1">
+                        Nowe serce naszej palarni – piec Giesen wjeżdża do Krakowa!
+                    </h5>
+                </div>
+                <i class="fa-solid fa-arrow-right text-copper text-lg group-hover:translate-x-1 transition-transform"></i>
+            </a>
+        </nav>
+
+        <!-- 5. Sekcja Komentarzy -->
+        <section class="border-t-2 border-coffee-200 pt-12 space-y-10">
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-coffee-900 flex items-center gap-3">
+                <i class="fa-solid fa-comments text-copper"></i> Komentarze (2)
+            </h3>
+
+            <!-- Formularz dodawania opinii -->
+            <form onsubmit="handleCommentSubmit(event)" class="bg-lightbg-alt border-2 border-coffee-200 rounded-3xl p-6 sm:p-8 space-y-6 shadow-sm">
+                <h4 class="text-lg font-extrabold text-coffee-900">Zostaw swój komentarz</h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label for="author-name" class="block text-sm font-bold text-coffee-900">Imię / Nick <span class="text-copper">*</span></label>
+                        <input type="text" id="author-name" required placeholder="np. Piotr Kawosz" class="w-full bg-white border-2 border-coffee-200 rounded-xl px-4 py-3 text-coffee-900 focus:outline-none focus:border-copper font-medium text-sm">
+                    </div>
+                    <div class="space-y-2">
+                        <label for="author-email" class="block text-sm font-bold text-coffee-900">Adres e-mail <span class="text-copper">*</span></label>
+                        <input type="email" id="author-email" required placeholder="jan@example.com" class="w-full bg-white border-2 border-coffee-200 rounded-xl px-4 py-3 text-coffee-900 focus:outline-none focus:border-copper font-medium text-sm">
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <label for="comment-text" class="block text-sm font-bold text-coffee-900">Treść komentarza <span class="text-copper">*</span></label>
+                    <textarea id="comment-text" rows="4" required placeholder="Podziel się swoją opinią o cuppingu..." class="w-full bg-white border-2 border-coffee-200 rounded-xl px-4 py-3 text-coffee-900 focus:outline-none focus:border-copper font-medium text-sm"></textarea>
+                </div>
+                <button type="submit" class="bg-gradient-to-r from-copper to-coffee-700 hover:from-copper-dark hover:to-coffee-800 text-white font-bold px-8 py-3.5 rounded-full shadow-md text-sm transition-all">
+                    Opublikuj komentarz
+                </button>
+                <div id="comment-success" class="hidden p-4 bg-emerald-50 border-2 border-emerald-300 rounded-xl text-emerald-800 text-sm font-bold">
+                    <i class="fa-solid fa-circle-check mr-1 text-emerald-600"></i> Dziękujemy! Twój komentarz został dodany i czeka na weryfikację.
+                </div>
+            </form>
+
+            <!-- Lista opublikowanych komentarzy -->
+            <div class="space-y-6">
+                <!-- Komentarz 1 -->
+                <div class="bg-white border-2 border-coffee-200 rounded-3xl p-6 space-y-3 custom-shadow">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-copper/20 text-copper font-extrabold flex items-center justify-center text-sm border border-copper/30">
+                                MŁ
+                            </div>
+                            <div>
+                                <h5 class="text-sm font-extrabold text-coffee-900">Marek Łukasik</h5>
+                                <span class="text-xs text-coffee-600 font-bold">19 Października 2026 o 14:20</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-coffee-800 text-sm font-medium leading-relaxed pl-13">
+                        Byłem na tych warsztatach i Kolumbia Pink Bourbon powaliła mnie na kolana! Niezwykłe doświadczenie, szczególnie faza porównywania nut zapachowych przed i po zalaniu ziaren. Czekam na kolejne edycje w Krakowie!
+                    </p>
+                </div>
+
+                <!-- Komentarz 2 -->
+                <div class="bg-white border-2 border-coffee-200 rounded-3xl p-6 space-y-3 custom-shadow">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-coffee-700/20 text-coffee-700 font-extrabold flex items-center justify-center text-sm border border-coffee-700/30">
+                                KW
+                            </div>
+                            <div>
+                                <h5 class="text-sm font-extrabold text-coffee-900">Katarzyna Wójcik</h5>
+                                <span class="text-xs text-coffee-600 font-bold">20 Października 2026 o 09:45</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-coffee-800 text-sm font-medium leading-relaxed pl-13">
+                        Świetny wpis i podsumowanie protokołu SCA. Czy planujecie w najbliższym czasie warsztaty przeznaczone stricte dla początkujących z metod przelewowych (Drip V60/Chemex)?
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- 6. Stopka Serwisu (<footer>) -->
+    <footer class="bg-coffee-900 border-t-2 border-coffee-800 py-12 px-4 sm:px-6 lg:px-8 text-sm text-coffee-100 mt-auto">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div class="space-y-1">
+                <span class="text-white font-extrabold tracking-wider text-base">The Perfect Cup Sp. z o.o.</span>
+                <p class="text-coffee-300 text-xs">NIP: 1234567890 | REGON: 123456789</p>
+            </div>
+
+            <div class="text-coffee-300 text-xs font-medium">
+                &copy; <span id="current-year">2026</span> The Perfect Cup. Wszelkie prawa zastrzeżone.
+            </div>
+
+            <div class="flex items-center gap-4 text-coffee-200">
+                <a href="#" class="hover:text-copper transition-colors" aria-label="Przejdź na górę strony">
+                    <i class="fa-solid fa-arrow-up text-lg"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Skrypty Interaktywne -->
+    <script>
+        const navToggler = document.getElementById('nav-toggler');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        navToggler.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        document.getElementById('current-year').textContent = new Date().getFullYear() || 2026;
+
+        function handleCommentSubmit(e) {
+            e.preventDefault();
+            const successMsg = document.getElementById('comment-success');
+            successMsg.classList.remove('hidden');
+            e.target.reset();
+            setTimeout(() => {
+                successMsg.classList.add('hidden');
+            }, 6000);
+        }
+    </script>
+</body>
+</html>

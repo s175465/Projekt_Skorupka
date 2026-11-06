@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sklep Online & Ziarna Kawy | The Perfect Cup</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            50: '#fdfbf7',
+                            100: '#f7f1e3',
+                            200: '#eddcc7',
+                            300: '#dec39e',
+                            600: '#8c6239',
+                            700: '#6f4e37',
+                            800: '#4a3324',
+                            900: '#2c1e14',
+                        },
+                        copper: {
+                            DEFAULT: '#b87333',
+                            light: '#d49856',
+                            dark: '#965a25'
+                        },
+                        lightbg: {
+                            DEFAULT: '#ffffff',
+                            alt: '#f4ede2',
+                            card: '#ffffff'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #2c1e14;
+        }
+        .hero-shop-bg {
+            background: linear-gradient(rgba(28, 20, 20, 0.55), rgba(28, 20, 20, 0.65)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 30px -5px rgba(111, 78, 55, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-white text-coffee-900 antialiased selection:bg-copper selection:text-white flex flex-col min-h-screen">
+
+    <!-- 1. Pasek Nawigacyjny (<header>, <nav>) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b-2 border-coffee-200 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Identyfikator marki (Logo) -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-copper to-coffee-700 flex items-center justify-center text-white text-xl font-bold group-hover:scale-105 transition-transform shadow-md">
+                    <i class="fa-solid fa-mug-hot"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-extrabold tracking-wider text-coffee-900">THE PERFECT CUP</span>
+                    <span class="text-xs text-copper font-bold tracking-widest uppercase">Kawiarnia & Palarnia</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center gap-7 font-semibold text-coffee-900">
+                <a href="index.html#o-nas" class="hover:text-copper transition-colors">O nas</a>
+                <a href="index.html#oferta" class="hover:text-copper transition-colors">Oferta</a>
+                <a href="index.html#kontakt" class="hover:text-copper transition-colors">Kontakt</a>
+                <a href="blog.html" class="hover:text-copper transition-colors">Blog</a>
+                <a href="sklep.html" class="bg-gradient-to-r from-copper to-coffee-700 hover:from-copper-dark hover:to-coffee-800 text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-md hover:shadow-lg">
+                    Sklep online
+                </a>
+            </nav>
+
+            <!-- Ikony Konta, Koszyka oraz Menu Mobilne -->
+            <div class="flex items-center gap-3">
+                <a href="konto.html" aria-label="Konto użytkownika" class="text-coffee-900 hover:text-copper transition-colors text-lg p-2 relative">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+                <a href="koszyk.html" aria-label="Koszyk zakupowy" class="text-coffee-900 hover:text-copper transition-colors text-lg p-2 relative">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="absolute top-0 right-0 bg-copper text-white text-[10px] font-extrabold w-4 h-4 rounded-full flex items-center justify-center shadow-sm">
+                        2
+                    </span>
+                </a>
+                <button id="nav-toggler" aria-label="Przełącz nawigację" class="md:hidden text-coffee-900 hover:text-copper focus:outline-none p-2 ml-1">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Container -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b-2 border-coffee-200 px-6 py-5 space-y-4 shadow-xl">
+            <a href="index.html#o-nas" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">O nas</a>
+            <a href="index.html#oferta" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Oferta</a>
+            <a href="index.html#kontakt" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Kontakt</a>
+			<a href="blog.html" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Blog</a>
+            <a href="sklep.html" class="bg-gradient-to-r from-copper to-coffee-700 hover:from-copper-dark hover:to-coffee-800 text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-md hover:shadow-lg">Sklep online</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section Sklepu -->
+    <section class="hero-shop-bg pt-32 pb-16 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto space-y-6 z-10 relative">
+            <span class="inline-flex items-center gap-2 bg-black/40 border border-copper/60 text-coffee-100 px-4 py-1.5 rounded-full text-xs font-extrabold tracking-widest uppercase backdrop-blur-sm shadow-md">
+                <i class="fa-solid fa-store text-copper-light"></i> Sklep Online
+            </span>
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight drop-shadow-md">
+                Świeżo palona <span class="text-transparent bg-clip-text bg-gradient-to-r from-copper-light via-coffee-300 to-copper-light">kawa specialty</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-coffee-100 max-w-2xl mx-auto font-medium leading-relaxed drop-shadow">
+                Wybierz ziarna z najlepszych plantacji świata, wypalane na zamówienie w naszej krakowskiej palarni.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+
+        <!-- 1. Nawigacja Okruszkowa (breadcrumb) -->
+        <nav aria-label="breadcrumb" class="mb-8">
+            <ol class="flex flex-wrap items-center gap-2 text-xs sm:text-sm font-bold text-coffee-600">
+                <li>
+                    <a href="index.html" class="hover:text-copper transition-colors flex items-center gap-1">
+                        <i class="fa-solid fa-house text-xs"></i> Strona Główna
+                    </a>
+                </li>
+                <li><i class="fa-solid fa-chevron-right text-[10px] text-coffee-400"></i></li>
+                <li class="text-copper" aria-current="page">Sklep</li>
+            </ol>
+        </nav>
+
+        <!-- 2. Układ Główny Dwukolumnowy (<aside> + <main>) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+            <!-- Panel Filtrów Bocznych (<aside>) -->
+            <aside class="lg:col-span-3 space-y-6">
+                <div class="bg-lightbg-alt border-2 border-coffee-200 rounded-3xl p-6 shadow-sm space-y-6">
+                    <div class="flex items-center justify-between border-b border-coffee-200 pb-4">
+                        <h3 class="text-lg font-extrabold text-coffee-900 flex items-center gap-2">
+                            <i class="fa-solid fa-filter text-copper"></i> Filtry
+                        </h3>
+                        <button onclick="resetFilters()" class="text-xs font-bold text-copper hover:underline">
+                            Resetuj
+                        </button>
+                    </div>
+
+                    <!-- Filtry Kategorii (Checkbox) -->
+                    <div class="space-y-3">
+                        <h4 class="text-sm font-extrabold text-coffee-900">Kategoria</h4>
+                        <div class="space-y-2 text-sm font-medium text-coffee-800">
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input type="checkbox" checked class="w-4 h-4 rounded border-coffee-300 text-copper focus:ring-copper">
+                                <span>Ziarna do przelewu (6)</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input type="checkbox" checked class="w-4 h-4 rounded border-coffee-300 text-copper focus:ring-copper">
+                                <span>Ziarna do espresso (8)</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input type="checkbox" class="w-4 h-4 rounded border-coffee-300 text-copper focus:ring-copper">
+                                <span>Zestawy degustacyjne (3)</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input type="checkbox" class="w-4 h-4 rounded border-coffee-300 text-copper focus:ring-copper">
+                                <span>Akcesoria i gadżety (5)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Zakres cenowy -->
+                    <div class="space-y-3 pt-4 border-t border-coffee-200">
+                        <h4 class="text-sm font-extrabold text-coffee-900">Zakres cenowy</h4>
+                        <div class="flex items-center gap-2">
+                            <input type="number" placeholder="Min" value="30" class="w-full bg-white border border-coffee-200 rounded-xl px-3 py-2 text-sm text-coffee-900 focus:outline-none focus:border-copper font-medium">
+                            <span class="text-coffee-600">-</span>
+                            <input type="number" placeholder="Max" value="120" class="w-full bg-white border border-coffee-200 rounded-xl px-3 py-2 text-sm text-coffee-900 focus:outline-none focus:border-copper font-medium">
+                        </div>
+                    </div>
+
+                    <!-- Opcje dostępności / cech asortymentu (Wariant / Rozmiar) -->
+                    <div class="space-y-3 pt-4 border-t border-coffee-200">
+                        <h4 class="text-sm font-extrabold text-coffee-900">Wielkość opakowania</h4>
+                        <div class="space-y-2 text-sm font-medium text-coffee-800">
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input type="checkbox" checked class="w-4 h-4 rounded border-coffee-300 text-copper focus:ring-copper">
+                                <span>250g</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input type="checkbox" class="w-4 h-4 rounded border-coffee-300 text-copper focus:ring-copper">
+                                <span>500g</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input type="checkbox" class="w-4 h-4 rounded border-coffee-300 text-copper focus:ring-copper">
+                                <span>1000g</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Profil palenia -->
+                    <div class="space-y-3 pt-4 border-t border-coffee-200">
+                        <h4 class="text-sm font-extrabold text-coffee-900">Stopień wypalenia</h4>
+                        <div class="space-y-2 text-sm font-medium text-coffee-800">
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input type="checkbox" checked class="w-4 h-4 rounded border-coffee-300 text-copper focus:ring-copper">
+                                <span>Jasny</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input type="checkbox" checked class="w-4 h-4 rounded border-coffee-300 text-copper focus:ring-copper">
+                                <span>Średni</span>
+                            </label>
+							<label class="flex items-center gap-3 cursor-pointer">
+                                <input type="checkbox" checked class="w-4 h-4 rounded border-coffee-300 text-copper focus:ring-copper">
+                                <span>Ciemny</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Obszar Prezentacji Produktów (<main>) -->
+            <div class="lg:col-span-9 space-y-8">
+
+                <!-- Górny pasek narzędziowy -->
+                <div class="bg-lightbg-alt border-2 border-coffee-200 rounded-3xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
+                    <span class="text-sm font-bold text-coffee-800">
+                        Znaleziono <strong class="text-coffee-900">6</strong> produktów
+                    </span>
+                    <div class="flex items-center gap-3 w-full sm:w-auto">
+                        <label for="sort-select" class="text-sm font-bold text-coffee-800 whitespace-nowrap">Sortuj:</label>
+                        <select id="sort-select" class="bg-white border border-coffee-200 rounded-xl px-4 py-2.5 text-sm font-bold text-coffee-900 focus:outline-none focus:border-copper w-full sm:w-auto">
+                            <option value="popularity">Domyślnie (Popularność)</option>
+                            <option value="price-asc">Cena: rosnąco</option>
+                            <option value="price-desc">Cena: malejąco</option>
+                            <option value="name">Nazwa (A-Z)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Siatka produktów (6 pozycji w układzie kafelkowym) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <!-- Produkt 1 -->
+                    <div class="bg-lightbg-alt border-2 border-coffee-200 rounded-3xl overflow-hidden hover:border-copper transition-all duration-300 flex flex-col justify-between custom-shadow group">
+                        <div>
+                            <div class="relative h-60 overflow-hidden bg-coffee-100">
+                                <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?q=80&w=600&auto=format&fit=crop" alt="Etiopia Yirgacheffe" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                                <span class="absolute top-4 left-4 bg-gradient-to-r from-copper to-coffee-700 text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow">
+                                    Bestseller
+                                </span>
+                            </div>
+                            <div class="p-6 space-y-2">
+                                <div class="flex items-center gap-1 text-amber-500 text-xs">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <span class="text-coffee-600 font-bold ml-1">(48)</span>
+                                </div>
+                                <h3 class="text-lg font-extrabold text-coffee-900 group-hover:text-copper transition-colors line-clamp-1">
+                                    Etiopia Yirgacheffe 250g
+                                </h3>
+                                <p class="text-coffee-800 text-xs leading-relaxed font-medium line-clamp-2">
+                                    Nuty jaśminu, bergamotki oraz cytrusów. Ziarna jasnopalone idealne do metod przelewowych.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="p-6 pt-0 flex items-center justify-between mt-4">
+                            <div>
+                                <span class="text-lg font-extrabold text-coffee-900">49,00 zł</span>
+                            </div>
+                            <a href="produkt.html" class="bg-gradient-to-r from-copper to-coffee-700 hover:from-copper-dark hover:to-coffee-800 text-white text-xs font-bold px-4 py-2.5 rounded-full transition-all shadow-md">
+                                Zobacz <i class="fa-solid fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Produkt 2 -->
+                    <div class="bg-lightbg-alt border-2 border-coffee-200 rounded-3xl overflow-hidden hover:border-copper transition-all duration-300 flex flex-col justify-between custom-shadow group">
+                        <div>
+                            <div class="relative h-60 overflow-hidden bg-coffee-100">
+                                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=600&auto=format&fit=crop" alt="Kolumbia Huila" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                                <span class="absolute top-4 left-4 bg-gradient-to-r from-copper to-coffee-700 text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow">
+                                    Klasyk Espresso
+                                </span>
+                            </div>
+                            <div class="p-6 space-y-2">
+                                <div class="flex items-center gap-1 text-amber-500 text-xs">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star-half-stroke"></i>
+                                    <span class="text-coffee-600 font-bold ml-1">(36)</span>
+                                </div>
+                                <h3 class="text-lg font-extrabold text-coffee-900 group-hover:text-copper transition-colors line-clamp-1">
+                                    Kolumbia Huila 250g
+                                </h3>
+                                <p class="text-coffee-800 text-xs leading-relaxed font-medium line-clamp-2">
+                                    Nuty czekolady deserowej, karmelu oraz czerwonych owoców. Doskonała do kawiarki i ekspresu.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="p-6 pt-0 flex items-center justify-between mt-4">
+                            <div>
+                                <span class="text-lg font-extrabold text-coffee-900">46,00 zł</span>
+                            </div>
+                            <a href="produkt.html" class="bg-gradient-to-r from-copper to-coffee-700 hover:from-copper-dark hover:to-coffee-800 text-white text-xs font-bold px-4 py-2.5 rounded-full transition-all shadow-md">
+                                Zobacz <i class="fa-solid fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Produkt 3 -->
+                    <div class="bg-lightbg-alt border-2 border-coffee-200 rounded-3xl overflow-hidden hover:border-copper transition-all duration-300 flex flex-col justify-between custom-shadow group">
+                        <div>
+                            <div class="relative h-60 overflow-hidden bg-coffee-100">
+                                <img src="https://images.unsplash.com/photo-1587734195503-904fca47e0e9?q=80&w=600&auto=format&fit=crop" alt="Brazylia Santos" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                                <span class="absolute top-4 left-4 bg-red-700 text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow">
+                                    Promocja -15%
+                                </span>
+                            </div>
+                            <div class="p-6 space-y-2">
+                                <div class="flex items-center gap-1 text-amber-500 text-xs">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <span class="text-coffee-600 font-bold ml-1">(52)</span>
+                                </div>
+                                <h3 class="text-lg font-extrabold text-coffee-900 group-hover:text-copper transition-colors line-clamp-1">
+                                    Brazylia Santos 250g
+                                </h3>
+                                <p class="text-coffee-800 text-xs leading-relaxed font-medium line-clamp-2">
+                                    Gładki profil o niskiej kwasowości z wyraźnymi nutami orzechów laskowych i mlecznej czekolady.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="p-6 pt-0 flex items-center justify-between mt-4">
+                            <div>
+                                <span class="text-lg font-extrabold text-red-600">35,70 zł</span>
+                                <span class="text-xs text-coffee-900 line-through font-bold block">42,00 zł</span>
+                            </div>
+                            <a href="produkt.html" class="bg-gradient-to-r from-copper to-coffee-700 hover:from-copper-dark hover:to-coffee-800 text-white text-xs font-bold px-4 py-2.5 rounded-full transition-all shadow-md">
+                                Zobacz <i class="fa-solid fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="bg-lightbg-alt border-2 border-coffee-200 rounded-3xl overflow-hidden hover:border-copper transition-all duration-300 flex flex-col justify-between custom-shadow group">
+                    <div>
+                        <div class="relative h-60 overflow-hidden bg-coffee-100">
+						
+                            <img src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?q=80&w=600&auto=format&fit=crop" alt="Gwatemala Blend" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <span class="absolute top-4 left-4 bg-gradient-to-r from-copper to-coffee-700 text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow">
+                                House Blend
+                            </span>
+                        </div>
+                        <div class="p-6 space-y-2">
+                            <div class="flex items-center gap-1 text-amber-500 text-xs">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <span class="text-coffee-600 font-bold ml-1">(29)</span>
+                            </div>
+                            <h4 class="text-lg font-extrabold text-coffee-900 group-hover:text-copper transition-colors line-clamp-1">
+                                The Perfect Blend 250g
+                            </h4>
+                            <p class="text-coffee-800 text-xs leading-relaxed font-medium line-clamp-2">
+                                Nasza autorska kompozycja ziaren do espresso. Pełne body, słodki finisz i jedwabista crema.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 flex items-center justify-between mt-4">
+                        <span class="text-lg font-extrabold text-coffee-900">45,00 zł</span>
+                        <a href="produkt.html" class="bg-gradient-to-r from-copper to-coffee-700 hover:from-copper-dark hover:to-coffee-800 text-white text-xs font-bold px-4 py-2.5 rounded-full transition-all shadow-md">
+                            Zobacz <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                    <!-- Produkt 5 -->
+                    <div class="bg-lightbg-alt border-2 border-coffee-200 rounded-3xl overflow-hidden hover:border-copper transition-all duration-300 flex flex-col justify-between custom-shadow group">
+                        <div>
+                            <div class="relative h-60 overflow-hidden bg-coffee-100">
+                                <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=600&auto=format&fit=crop" alt="Kenia Nyeri" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+								<span class="absolute top-4 left-4 bg-gradient-to-r from-copper to-coffee-700 text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow">
+                                    Single Origin
+                                </span>
+                            </div>
+                            <div class="p-6 space-y-2">
+                                <div class="flex items-center gap-1 text-amber-500 text-xs">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <span class="text-coffee-600 font-bold ml-1">(18)</span>
+                                </div>
+                                <h3 class="text-lg font-extrabold text-coffee-900 group-hover:text-copper transition-colors line-clamp-1">
+                                    Kenia Nyeri AA 250g
+                                </h3>
+                                <p class="text-coffee-800 text-xs leading-relaxed font-medium line-clamp-2">
+                                    Niezwykle owocowy profil z nutami czarnej porzeczki, rabarbaru i czerwonego grejpfruta.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="p-6 pt-0 flex items-center justify-between mt-4">
+                            <div>
+                                <span class="text-lg font-extrabold text-coffee-900">54,00 zł</span>
+                            </div>
+                            <a href="produkt.html" class="bg-gradient-to-r from-copper to-coffee-700 hover:from-copper-dark hover:to-coffee-800 text-white text-xs font-bold px-4 py-2.5 rounded-full transition-all shadow-md">
+                                Zobacz <i class="fa-solid fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Produkt 6 -->
+                    <div class="bg-lightbg-alt border-2 border-coffee-200 rounded-3xl overflow-hidden hover:border-copper transition-all duration-300 flex flex-col justify-between custom-shadow group">
+                        <div>
+                            <div class="relative h-60 overflow-hidden bg-coffee-100">
+                                <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=600&auto=format&fit=crop" alt="Costa Rica Tarrazu" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                                <span class="absolute top-4 left-4 bg-gradient-to-r from-copper to-coffee-700 text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow">
+                                    Single Origin
+                                </span>
+                            </div>
+                            <div class="p-6 space-y-2">
+                                <div class="flex items-center gap-1 text-amber-500 text-xs">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star-half-stroke"></i>
+                                    <span class="text-coffee-600 font-bold ml-1">(24)</span>
+                                </div>
+                                <h3 class="text-lg font-extrabold text-coffee-900 group-hover:text-copper transition-colors line-clamp-1">
+                                    Costa Rica Tarrazu 250g
+                                </h3>
+                                <p class="text-coffee-800 text-xs leading-relaxed font-medium line-clamp-2">
+                                    Zrównoważone body z nutami miodu, zielonego jabłka i orzechów pekan.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="p-6 pt-0 flex items-center justify-between mt-4">
+                            <div>
+                                <span class="text-lg font-extrabold text-coffee-900">48,00 zł</span>
+                            </div>
+                            <a href="produkt.html" class="bg-gradient-to-r from-copper to-coffee-700 hover:from-copper-dark hover:to-coffee-800 text-white text-xs font-bold px-4 py-2.5 rounded-full transition-all shadow-md">
+                                Zobacz <i class="fa-solid fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Statyczna paginacja na dole strony -->
+                <div class="flex items-center justify-center gap-2 pt-8">
+                    <button class="w-10 h-10 rounded-xl bg-coffee-900 text-white font-bold flex items-center justify-center text-sm shadow">
+                        1
+                    </button>
+                    <a href="#" class="w-10 h-10 rounded-xl bg-lightbg-alt border border-coffee-200 text-coffee-900 font-bold flex items-center justify-center text-sm hover:border-copper transition-colors">
+                        2
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-xl bg-lightbg-alt border border-coffee-200 text-coffee-900 font-bold flex items-center justify-center text-sm hover:border-copper transition-colors">
+                        3
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-xl bg-lightbg-alt border border-coffee-200 text-coffee-900 font-bold flex items-center justify-center text-sm hover:border-copper transition-colors">
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- 3. Stopka Serwisu (<footer>) -->
+    <footer class="bg-coffee-900 border-t-2 border-coffee-800 py-12 px-4 sm:px-6 lg:px-8 text-sm text-coffee-100 mt-auto">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div class="space-y-1">
+                <span class="text-white font-extrabold tracking-wider text-base">The Perfect Cup Sp. z o.o.</span>
+                <p class="text-coffee-300 text-xs">NIP: 1234567890 | REGON: 123456789</p>
+            </div>
+
+            <div class="text-coffee-300 text-xs font-medium">
+                &copy; <span id="current-year">2026</span> The Perfect Cup. Wszelkie prawa zastrzeżone.
+            </div>
+
+            <div class="flex items-center gap-4 text-coffee-200">
+                <a href="#" class="hover:text-copper transition-colors" aria-label="Przejdź na górę strony">
+                    <i class="fa-solid fa-arrow-up text-lg"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Skrypty Interaktywne -->
+    <script>
+        const navToggler = document.getElementById('nav-toggler');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        navToggler.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        document.getElementById('current-year').textContent = new Date().getFullYear() || 2026;
+
+        function resetFilters() {
+            const checkboxes = document.querySelectorAll('aside input[type="checkbox"]');
+            checkboxes.forEach(cb => cb.checked = false);
+            alert('Filtry zostały zresetowane.');
+        }
+    </script>
+</body>
+</html>
