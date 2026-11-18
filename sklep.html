@@ -77,7 +77,7 @@
             <nav class="hidden md:flex items-center gap-7 font-semibold text-coffee-900">
                 <a href="index.html#o-nas" class="hover:text-copper transition-colors">O nas</a>
                 <a href="index.html#oferta" class="hover:text-copper transition-colors">Oferta</a>
-                <a href="index.html#kontakt" class="hover:text-copper transition-colors">Kontakt</a>
+                <a href="kontakt.html" class="hover:text-copper transition-colors">Kontakt</a>
                 <a href="blog.html" class="hover:text-copper transition-colors">Blog</a>
                 <a href="sklep.html" class="bg-gradient-to-r from-copper to-coffee-700 hover:from-copper-dark hover:to-coffee-800 text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-md hover:shadow-lg">
                     Sklep online
@@ -105,7 +105,7 @@
         <div id="mobile-menu" class="hidden md:hidden bg-white border-b-2 border-coffee-200 px-6 py-5 space-y-4 shadow-xl">
             <a href="index.html#o-nas" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">O nas</a>
             <a href="index.html#oferta" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Oferta</a>
-            <a href="index.html#kontakt" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Kontakt</a>
+            <a href="kontakt.html" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Kontakt</a>
 			<a href="blog.html" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Blog</a>
             <a href="sklep.html" class="bg-gradient-to-r from-copper to-coffee-700 hover:from-copper-dark hover:to-coffee-800 text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-md hover:shadow-lg">Sklep online</a>
             </div>
@@ -492,25 +492,110 @@
 
     </main>
 
-    <!-- 3. Stopka Serwisu (<footer>) -->
-    <footer class="bg-coffee-900 border-t-2 border-coffee-800 py-12 px-4 sm:px-6 lg:px-8 text-sm text-coffee-100 mt-auto">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-            <div class="space-y-1">
-                <span class="text-white font-extrabold tracking-wider text-base">The Perfect Cup Sp. z o.o.</span>
-                <p class="text-coffee-300 text-xs">NIP: 1234567890 | REGON: 123456789</p>
+    <!-- Rozbudowany moduł korporacyjny stopki (4 kolumny) -->
+    <footer class="bg-coffee-900 text-coffee-100 pt-16 pb-12 px-4 sm:px-6 lg:px-8 border-t-2 border-coffee-800 mt-auto">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+            
+            <!-- Kolumna 1: O marce -->
+            <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-full bg-gradient-to-br from-copper to-coffee-700 flex items-center justify-center text-white text-base font-bold shadow-md">
+                        <i class="fa-solid fa-mug-hot"></i>
+                    </div>
+                    <span class="text-lg font-extrabold tracking-wider text-white">THE PERFECT CUP</span>
+                </div>
+                <p class="text-coffee-300 text-xs leading-relaxed font-medium">
+                    Rzemieślnicza palarnia i kawiarnia specialty z Krakowa. Tworzymy niezapomniane doznania sensoryczne, wypalając najwyższej jakości ziarna Arabica z pasją i szacunkiem dla natury.
+                </p>
+                <div class="flex items-center gap-3 pt-2">
+                    <a href="#" aria-label="Facebook" class="w-9 h-9 rounded-full bg-coffee-800 text-coffee-200 hover:bg-copper hover:text-white flex items-center justify-center transition-colors text-sm shadow-sm">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-full bg-coffee-800 text-coffee-200 hover:bg-copper hover:text-white flex items-center justify-center transition-colors text-sm shadow-sm">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="#" aria-label="TikTok" class="w-9 h-9 rounded-full bg-coffee-800 text-coffee-200 hover:bg-copper hover:text-white flex items-center justify-center transition-colors text-sm shadow-sm">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                    <a href="#" aria-label="YouTube" class="w-9 h-9 rounded-full bg-coffee-800 text-coffee-200 hover:bg-copper hover:text-white flex items-center justify-center transition-colors text-sm shadow-sm">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                </div>
             </div>
 
-            <div class="text-coffee-300 text-xs font-medium">
-                &copy; <span id="current-year">2026</span> The Perfect Cup. Wszelkie prawa zastrzeżone.
+            <!-- Kolumna 2: Szybka nawigacja -->
+            <div class="space-y-4">
+                <h4 class="text-sm font-extrabold text-white uppercase tracking-wider border-b border-coffee-800 pb-2">Szybka nawigacja</h4>
+                <ul class="space-y-2.5 text-xs font-medium text-coffee-300">
+                    <li><a href="index.html" class="hover:text-copper transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-copper"></i> Strona główna</a></li>
+                    <li><a href="index.html#o-nas" class="hover:text-copper transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-copper"></i> O nas</a></li>
+                    <li><a href="index.html#oferta" class="hover:text-copper transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-copper"></i> Oferta</a></li>
+                    <li><a href="blog.html" class="hover:text-copper transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-copper"></i> Blog</a></li>
+                    <li><a href="kontakt.html" class="hover:text-copper transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-copper"></i> Kontakt</a></li>
+                </ul>
             </div>
 
-            <div class="flex items-center gap-4 text-coffee-200">
-                <a href="#" class="hover:text-copper transition-colors" aria-label="Przejdź na górę strony">
-                    <i class="fa-solid fa-arrow-up text-lg"></i>
-                </a>
+            <!-- Kolumna 3: Strefa klienta / Sklep -->
+            <div class="space-y-4">
+                <h4 class="text-sm font-extrabold text-white uppercase tracking-wider border-b border-coffee-800 pb-2">Strefa klienta</h4>
+                <ul class="space-y-2.5 text-xs font-medium text-coffee-300">
+                    <li><a href="sklep.html" class="hover:text-copper transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-copper"></i> Sklep online</a></li>
+                    <li><a href="koszyk.html" class="hover:text-copper transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-copper"></i> Koszyk</a></li>
+                    <li><a href="konto.html" class="hover:text-copper transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-copper"></i> Moje konto</a></li>
+                    <li><a href="polityka-prywatnosci.html" class="hover:text-copper transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-copper"></i> Polityka prywatności</a></li>
+                </ul>
+            </div>
+
+            <!-- Kolumna 4: Newsletter i kontakt -->
+            <div class="space-y-4">
+                <h4 class="text-sm font-extrabold text-white uppercase tracking-wider border-b border-coffee-800 pb-2">Newsletter i kontakt</h4>
+                <p class="text-coffee-300 text-xs">Zapisz się do newslettera i zyskaj 10% rabatu na pierwsze zakupy!</p>
+                
+                <!-- Formularz zapisu (input-group) -->
+                <form onsubmit="handleFooterNewsletter(event)" class="space-y-2">
+                    <div class="flex items-center">
+                        <input type="email" required placeholder="Twój adres e-mail..." class="w-full bg-coffee-800 border border-coffee-700 rounded-l-xl px-3 py-2.5 text-xs text-white placeholder-coffee-400 focus:outline-none focus:border-copper font-medium">
+                        <button type="submit" aria-label="Zapisz się" class="bg-copper hover:bg-copper-dark text-white px-4 py-2.5 rounded-r-xl text-xs font-bold transition-colors whitespace-nowrap">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div id="footer-newsletter-msg" class="hidden text-[10px] text-emerald-400 font-bold">
+                        Dziękujemy za zapis do newslettera!
+                    </div>
+                </form>
+
+                <div class="pt-2 text-xs text-coffee-300 space-y-1 font-medium">
+                    <p><i class="fa-solid fa-envelope text-copper mr-1.5"></i> kontakt@theperfectcup.pl</p>
+                    <p><i class="fa-solid fa-phone text-copper mr-1.5"></i> +48 123 456 789</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Dolny Pasek Prawny (Sub-footer) -->
+        <div class="max-w-7xl mx-auto pt-8 border-t border-coffee-800 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left text-xs text-coffee-400 font-medium">
+            <div>
+                &copy; <span id="current-year">2026</span> The Perfect Cup Sp. z o.o. Wszelkie prawa zastrzeżone. NIP: 1234567890.
+            </div>
+            <div class="flex items-center gap-6">
+                <span>Projekt i realizacja: Joanna Skorupka, The Perfect Cup</span>
+                <a href="polityka-prywatnosci.html" class="hover:text-copper transition-colors underline">Polityka Prywatności</a>
             </div>
         </div>
     </footer>
+
+    <!-- Skrypt obsługujący newsletter w stopce -->
+    <script>
+        function handleFooterNewsletter(e) {
+            e.preventDefault();
+            const msg = document.getElementById('footer-newsletter-msg');
+            msg.classList.remove('hidden');
+            e.target.reset();
+            setTimeout(() => {
+                msg.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
 
     <!-- Skrypty Interaktywne -->
     <script>
