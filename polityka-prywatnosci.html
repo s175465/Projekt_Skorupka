@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polityka Prywatności i Plików Cookies | The Perfect Cup</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            50: '#fdfbf7',
+                            100: '#f7f1e3',
+                            200: '#eddcc7',
+                            300: '#dec39e',
+                            600: '#8c6239',
+                            700: '#6f4e37',
+                            800: '#4a3324',
+                            900: '#2c1e14',
+                        },
+                        copper: {
+                            DEFAULT: '#b87333',
+                            light: '#d49856',
+                            dark: '#965a25'
+                        },
+                        lightbg: {
+                            DEFAULT: '#ffffff',
+                            alt: '#f4ede2',
+                            card: '#ffffff'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #2c1e14;
+        }
+    </style>
+</head>
+<body class="bg-white text-coffee-900 antialiased selection:bg-copper selection:text-white flex flex-col min-h-screen">
+
+    <!-- 1. Pasek Nawigacyjny (<header>, <nav>) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b-2 border-coffee-200 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Identyfikator marki (Logo) -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-copper to-coffee-700 flex items-center justify-center text-white text-xl font-bold group-hover:scale-105 transition-transform shadow-md">
+                    <i class="fa-solid fa-mug-hot"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-extrabold tracking-wider text-coffee-900">THE PERFECT CUP</span>
+                    <span class="text-xs text-copper font-bold tracking-widest uppercase">Kawiarnia & Palarnia</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center gap-7 font-semibold text-coffee-900">
+                <a href="index.html#o-nas" class="hover:text-copper transition-colors">O nas</a>
+                <a href="index.html#oferta" class="hover:text-copper transition-colors">Oferta</a>
+                <a href="kontakt.html" class="hover:text-copper transition-colors">Kontakt</a>
+                <a href="blog.html" class="hover:text-copper transition-colors">Blog</a>
+                <a href="sklep.html" class="bg-gradient-to-r from-copper to-coffee-700 hover:from-copper-dark hover:to-coffee-800 text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-md hover:shadow-lg">
+                    Sklep online
+                </a>
+            </nav>
+
+            <!-- Ikony Konta, Koszyka oraz Menu Mobilne -->
+            <div class="flex items-center gap-3">
+                <a href="konto.html" aria-label="Konto użytkownika" class="text-coffee-900 hover:text-copper transition-colors text-lg p-2 relative">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+                <a href="koszyk.html" aria-label="Koszyk zakupowy" class="text-coffee-900 hover:text-copper transition-colors text-lg p-2 relative">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="absolute top-0 right-0 bg-copper text-white text-[10px] font-extrabold w-4 h-4 rounded-full flex items-center justify-center shadow-sm">
+                        2
+                    </span>
+                </a>
+                <button id="nav-toggler" aria-label="Przełącz nawigację" class="md:hidden text-coffee-900 hover:text-copper focus:outline-none p-2 ml-1">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Container -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b-2 border-coffee-200 px-6 py-5 space-y-4 shadow-xl">
+            <a href="index.html#o-nas" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">O nas</a>
+            <a href="index.html#oferta" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Oferta</a>
+            <a href="kontakt.html" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Kontakt</a>
+            <a href="sklep.html" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Sklep online</a>
+            <a href="blog.html" class="mobile-link block text-lg font-semibold text-coffee-900 hover:text-copper transition-colors">Blog</a>
+            <div class="pt-2">
+                <a href="kontakt.html" class="mobile-link block w-full text-center bg-gradient-to-r from-copper to-coffee-700 text-white py-3 rounded-xl font-bold shadow-md">
+                    Zamów / Zapytaj
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Główna zawartość dokumentacji prawnej (Układ Single, wyśrodkowany, bez rozpraszaczy) -->
+    <main class="flex-grow pt-28 pb-24 px-4 sm:px-6 lg:px-8 w-full">
+        
+        <!-- Kontener o kontrolowanej szerokości czytania (odpowiednik col-12 col-lg-8 mx-auto) -->
+        <div class="max-w-3xl mx-auto">
+
+            <!-- 1. Nawigacja Okruszkowa (breadcrumb) -->
+            <nav aria-label="breadcrumb" class="mb-8">
+                <ol class="flex flex-wrap items-center gap-2 text-xs sm:text-sm font-bold text-coffee-600">
+                    <li>
+                        <a href="index.html" class="hover:text-copper transition-colors flex items-center gap-1">
+                            <i class="fa-solid fa-house text-xs"></i> Strona Główna
+                        </a>
+                    </li>
+                    <li><i class="fa-solid fa-chevron-right text-[10px] text-coffee-400"></i></li>
+                    <li class="text-copper" aria-current="page">Polityka Prywatności</li>
+                </ol>
+            </nav>
+
+            <!-- 2. Struktura Treści (<article>) -->
+            <article class="space-y-10 text-coffee-900 leading-relaxed">
+
+                <!-- Nagłówek Dokumentu -->
+                <header class="border-b-2 border-coffee-200 pb-8 space-y-4">
+                    <span class="inline-flex items-center gap-2 bg-lightbg-alt border border-coffee-200 text-copper px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider">
+                        <i class="fa-solid fa-shield-halved"></i> Dokumentacja Prawna
+                    </span>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold text-coffee-900 tracking-tight leading-tight">
+                        Polityka Prywatności i Plików Cookies
+                    </h1>
+                    <p class="text-sm font-bold text-coffee-600 flex items-center gap-2">
+                        <i class="fa-solid fa-clock-rotate-left text-copper"></i> Data ostatniej aktualizacji: 1 Listopada 2026 r.
+                    </p>
+                </header>
+
+                <!-- Wprowadzenie -->
+                <p class="text-base sm:text-lg font-medium text-coffee-800">
+                    Niniejsza Polityka Prywatności określa zasady przetwarzania i ochrony danych osobowych przekazywanych przez Użytkowników w związku z korzystaniem ze sklepu internetowego, bloga oraz usług świadczonych drogą elektroniczną za pośrednictwem serwisu <strong>The Perfect Cup</strong>.
+                </p>
+
+                <!-- § 1. Administrator Danych Osobowych -->
+                <section class="space-y-4">
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-coffee-900 pt-2">
+                        § 1. Administrator Danych Osobowych
+                    </h2>
+                    <p class="text-base font-medium text-coffee-800">
+                        1. Administratorem danych osobowych zbieranych za pośrednictwem serwisu internetowego jest spółka <strong>The Perfect Cup Sp. z o.o.</strong> z siedzibą w Krakowie (ul. Kawowa 15/2, 31-000 Kraków), wpisana do Rejestru Przedsiębiorców Krajowego Rejestru Sądowego, posiadająca numer NIP: <strong>1234567890</strong> oraz numer REGON: <strong>123456789</strong>.
+                    </p>
+                    <p class="text-base font-medium text-coffee-800">
+                        2. W sprawach związanych z ochroną danych osobowych oraz realizacją przysługujących Ci praw możesz skontaktować się z Administratorem drogą elektroniczną pod adresem e-mail: <a href="mailto:iodo@theperfectcup.pl" class="text-copper font-bold hover:underline">iodo@theperfectcup.pl</a> lub korespondencyjnie na adres siedziby firmy.
+                    </p>
+                </section>
+
+                <!-- § 2. Cele i Podstawy Przetwarzania Danych -->
+                <section class="space-y-4">
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-coffee-900 pt-2">
+                        § 2. Cele i Podstawy Przetwarzania Danych
+                    </h2>
+                    <p class="text-base font-medium text-coffee-800">
+                        Dane osobowe Użytkowników przetwarzane są zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. (RODO) w następujących celach:
+                    </p>
+                    <ul class="list-disc pl-6 space-y-3 text-base font-medium text-coffee-800 marker:text-copper">
+                        <li>
+                            <strong>Realizacja zamówień i umowy sprzedaży</strong> – w tym przyjmowanie zamówień, wystawianie dokumentów księgowych oraz organizacja dostawy produktów (podstawa prawna: art. 6 ust. 1 lit. b RODO – niezbędność do wykonania umowy).
+                        </li>
+                        <li>
+                            <strong>Prowadzenie Konta Klienta</strong> – umożliwienie dostępu do historii zakupów, zapisanych adresów dostawy oraz zarządzania ustawieniami profilu (podstawa prawna: art. 6 ust. 1 lit. b RODO).
+                        </li>
+                        <li>
+                            <strong>Obsługa zapytań przez formularz kontaktowy</strong> – udzielanie odpowiedzi na wiadomości przesłane drogą elektroniczną lub telefoniczną (podstawa prawna: art. 6 ust. 1 lit. f RODO – prawnie uzasadniony interes Administratora).
+                        </li>
+                        <li>
+                            <strong>Wypełnienie obowiązków podatkowych i księgowych</strong> – przechowywanie faktur i dokumentacji sprzedażowej przez okres wymagany przepisami prawa (podstawa prawna: art. 6 ust. 1 lit. c RODO).
+                        </li>
+                        <li>
+                            <strong>Marketing bezpośredni i newsletter</strong> – przesyłanie informacji o nowościach, cuppingach i ofertach specjalnych wyłącznie na podstawie dobrowolnie wyrażonej zgody (podstawa prawna: art. 6 ust. 1 lit. a RODO).
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- § 3. Prawa Użytkownika (RODO) -->
+                <section class="space-y-4">
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-coffee-900 pt-2">
+                        § 3. Prawa Użytkownika (RODO)
+                    </h2>
+                    <p class="text-base font-medium text-coffee-800">
+                        W związku z przetwarzaniem przez nas Twoich danych osobowych przysługuje Ci szereg uprawnień gwarantowanych przez przepisy RODO:
+                    </p>
+                    <div class="bg-lightbg-alt border-l-4 border-copper p-6 rounded-r-2xl space-y-3 text-sm sm:text-base font-medium text-coffee-900">
+                        <p><strong>Prawo dostępu do danych (art. 15 RODO):</strong> masz prawo uzyskać potwierdzenie, czy przetwarzamy Twoje dane oraz otrzymać ich kopię.</p>
+                        <p><strong>Prawo do sprostowania danych (art. 16 RODO):</strong> możesz żądać niezwłocznego poprawienia nieprawidłowych lub uzupełnienia niekompletnych danych.</p>
+                        <p><strong>Prawo do usunięcia danych – „prawo do bycia zapomnianym” (art. 17 RODO):</strong> możesz żądać usunięcia swoich danych, gdy nie są już niezbędne do celów, w których zostały zebrane.</p>
+                        <p><strong>Prawo do ograniczenia przetwarzania (art. 18 RODO) oraz przenoszenia danych (art. 20 RODO).</strong></p>
+                        <p><strong>Prawo do wniesienia sprzeciwu (art. 21 RODO)</strong> wobec przetwarzania opartego na prawnie uzasadnionym interesie Administratora.</p>
+                        <p><strong>Prawo do wniesienia skargi</strong> do organu nadzorczego – Prezesa Urzędu Ochrony Danych Osobowych (ul. Stawki 2, 00-193 Warszawa).</p>
+                    </div>
+                </section>
+
+                <!-- § 4. Polityka Plików Cookies -->
+                <section class="space-y-5">
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-coffee-900 pt-2">
+                        § 4. Polityka Plików Cookies
+                    </h2>
+                    <p class="text-base font-medium text-coffee-800">
+                        Serwis internetowy The Perfect Cup wykorzystuje pliki cookies (tzw. „ciasteczka”) – niewielkie pliki tekstowe zapisywane na urządzeniu końcowym Użytkownika. Służą one zapewnieniu prawidłowego działania koszyka zakupowego, utrzymaniu sesji zalogowanego użytkownika oraz prowadzeniu anonimowych statystyk odwiedzin.
+                    </p>
+
+                    <!-- Zestawienie tabelaryczne rodzajów cookies w klasie table-responsive / overflow-x-auto -->
+                    <div class="table-responsive overflow-x-auto border-2 border-coffee-200 rounded-2xl shadow-sm my-6">
+                        <table class="w-full text-left text-sm text-coffee-900 border-collapse">
+                            <thead class="bg-coffee-900 text-white font-extrabold">
+                                <tr>
+                                    <th class="p-4 whitespace-nowrap">Rodzaj plików cookies</th>
+                                    <th class="p-4">Cel wykorzystywania</th>
+                                    <th class="p-4 whitespace-nowrap">Czas przechowywania</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-coffee-200 bg-white font-medium">
+                                <tr class="hover:bg-lightbg-alt transition-colors">
+                                    <td class="p-4 font-extrabold text-coffee-900">Niezbędne (Techniczne)</td>
+                                    <td class="p-4 text-coffee-800">Umożliwiają prawidłowe poruszanie się po stronie, obsługę koszyka zakupowego, realizację zamówienia oraz utrzymanie sesji po zalogowaniu do Konta Klienta.</td>
+                                    <td class="p-4 text-copper font-bold whitespace-nowrap">Sesyjne / do 24 godz.</td>
+                                </tr>
+                                <tr class="hover:bg-lightbg-alt transition-colors">
+                                    <td class="p-4 font-extrabold text-coffee-900">Funkcjonalne</td>
+                                    <td class="p-4 text-coffee-800">Zapamiętują wybrane przez Użytkownika ustawienia, takie jak preferencje filtrowania produktów w sklepie czy akceptacja komunikatu o cookies.</td>
+                                    <td class="p-4 text-copper font-bold whitespace-nowrap">Do 30 dni</td>
+                                </tr>
+                                <tr class="hover:bg-lightbg-alt transition-colors">
+                                    <td class="p-4 font-extrabold text-coffee-900">Analityczne i Statystyczne</td>
+                                    <td class="p-4 text-coffee-800">Pomagają nam zrozumieć, w jaki sposób Użytkownicy korzystają z serwisu (np. najpopularniejsze wpisy na blogu), co pozwala optymalizować strukturę strony.</td>
+                                    <td class="p-4 text-copper font-bold whitespace-nowrap">Do 12 miesięcy</td>
+                                </tr>
+                                <tr class="hover:bg-lightbg-alt transition-colors">
+                                    <td class="p-4 font-extrabold text-coffee-900">Marketingowe</td>
+                                    <td class="p-4 text-coffee-800">Używane wyłącznie po uzyskaniu zgody Użytkownika w celu dopasowania treści promocyjnych oraz informacji o wydarzeniach kawowych.</td>
+                                    <td class="p-4 text-copper font-bold whitespace-nowrap">Do 90 dni</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p class="text-base font-medium text-coffee-800">
+                        Użytkownik może w każdej chwili samodzielnie zmienić ustawienia dotyczące plików cookies w swojej przeglądarce internetowej, w tym całkowicie zablokować ich automatyczną obsługę. Ograniczenie stosowania plików cookies niezbędnych może jednak wpłynąć na niektóre funkcjonalności sklepu (np. zapamiętywanie zawartości koszyka).
+                    </p>
+                </section>
+
+            </article>
+
+        </div>
+
+    </main>
+
+    <!-- Rozbudowany moduł korporacyjny stopki (4 kolumny) -->
+    <footer class="bg-coffee-900 text-coffee-100 pt-16 pb-12 px-4 sm:px-6 lg:px-8 border-t-2 border-coffee-800 mt-auto">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+            
+            <!-- Kolumna 1: O marce -->
+            <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-full bg-gradient-to-br from-copper to-coffee-700 flex items-center justify-center text-white text-base font-bold shadow-md">
+                        <i class="fa-solid fa-mug-hot"></i>
+                    </div>
+                    <span class="text-lg font-extrabold tracking-wider text-white">THE PERFECT CUP</span>
+                </div>
+                <p class="text-coffee-300 text-xs leading-relaxed font-medium">
+                    Rzemieślnicza palarnia i kawiarnia specialty z Krakowa. Tworzymy niezapomniane doznania sensoryczne, wypalając najwyższej jakości ziarna Arabica z pasją i szacunkiem dla natury.
+                </p>
+                <div class="flex items-center gap-3 pt-2">
+                    <a href="#" aria-label="Facebook" class="w-9 h-9 rounded-full bg-coffee-800 text-coffee-200 hover:bg-copper hover:text-white flex items-center justify-center transition-colors text-sm shadow-sm">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-full bg-coffee-800 text-coffee-200 hover:bg-copper hover:text-white flex items-center justify-center transition-colors text-sm shadow-sm">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="#" aria-label="TikTok" class="w-9 h-9 rounded-full bg-coffee-800 text-coffee-200 hover:bg-copper hover:text-white flex items-center justify-center transition-colors text-sm shadow-sm">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                    <a href="#" aria-label="YouTube" class="w-9 h-9 rounded-full bg-coffee-800 text-coffee-200 hover:bg-copper hover:text-white flex items-center justify-center transition-colors text-sm shadow-sm">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Kolumna 2: Szybka nawigacja -->
+            <div class="space-y-4">
+                <h4 class="text-sm font-extrabold text-white uppercase tracking-wider border-b border-coffee-800 pb-2">Szybka nawigacja</h4>
+                <ul class="space-y-2.5 text-xs font-medium text-coffee-300">
+                    <li><a href="index.html" class="hover:text-copper transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-copper"></i> Strona główna</a></li>
+                    <li><a href="index.html#o-nas" class="hover:text-copper transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-copper"></i> O nas</a></li>
+                    <li><a href="index.html#oferta" class="hover:text-copper transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-copper"></i> Oferta</a></li>
+                    <li><a href="blog.html" class="hover:text-copper transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-copper"></i> Blog</a></li>
+                    <li><a href="kontakt.html" class="hover:text-copper transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-copper"></i> Kontakt</a></li>
+                </ul>
+            </div>
+
+            <!-- Kolumna 3: Strefa klienta / Sklep -->
+            <div class="space-y-4">
+                <h4 class="text-sm font-extrabold text-white uppercase tracking-wider border-b border-coffee-800 pb-2">Strefa klienta</h4>
+                <ul class="space-y-2.5 text-xs font-medium text-coffee-300">
+                    <li><a href="sklep.html" class="hover:text-copper transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-copper"></i> Sklep online</a></li>
+                    <li><a href="koszyk.html" class="hover:text-copper transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-copper"></i> Koszyk</a></li>
+                    <li><a href="konto.html" class="hover:text-copper transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-copper"></i> Moje konto</a></li>
+                    <li><a href="polityka-prywatnosci.html" class="hover:text-copper transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-copper"></i> Polityka prywatności</a></li>
+                </ul>
+            </div>
+
+            <!-- Kolumna 4: Newsletter i kontakt -->
+            <div class="space-y-4">
+                <h4 class="text-sm font-extrabold text-white uppercase tracking-wider border-b border-coffee-800 pb-2">Newsletter i kontakt</h4>
+                <p class="text-coffee-300 text-xs">Zapisz się do newslettera i zyskaj 10% rabatu na pierwsze zakupy!</p>
+                
+                <!-- Formularz zapisu (input-group) -->
+                <form onsubmit="handleFooterNewsletter(event)" class="space-y-2">
+                    <div class="flex items-center">
+                        <input type="email" required placeholder="Twój adres e-mail..." class="w-full bg-coffee-800 border border-coffee-700 rounded-l-xl px-3 py-2.5 text-xs text-white placeholder-coffee-400 focus:outline-none focus:border-copper font-medium">
+                        <button type="submit" aria-label="Zapisz się" class="bg-copper hover:bg-copper-dark text-white px-4 py-2.5 rounded-r-xl text-xs font-bold transition-colors whitespace-nowrap">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div id="footer-newsletter-msg" class="hidden text-[10px] text-emerald-400 font-bold">
+                        Dziękujemy za zapis do newslettera!
+                    </div>
+                </form>
+
+                <div class="pt-2 text-xs text-coffee-300 space-y-1 font-medium">
+                    <p><i class="fa-solid fa-envelope text-copper mr-1.5"></i> kontakt@theperfectcup.pl</p>
+                    <p><i class="fa-solid fa-phone text-copper mr-1.5"></i> +48 123 456 789</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Dolny Pasek Prawny (Sub-footer) -->
+        <div class="max-w-7xl mx-auto pt-8 border-t border-coffee-800 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left text-xs text-coffee-400 font-medium">
+            <div>
+                &copy; <span id="current-year">2026</span> The Perfect Cup Sp. z o.o. Wszelkie prawa zastrzeżone. NIP: 1234567890.
+            </div>
+            <div class="flex items-center gap-6">
+                <span>Projekt i realizacja: Joanna Skorupka, The Perfect Cup</span>
+                <a href="polityka-prywatnosci.html" class="hover:text-copper transition-colors underline">Polityka Prywatności</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Skrypt obsługujący newsletter w stopce -->
+    <script>
+        function handleFooterNewsletter(e) {
+            e.preventDefault();
+            const msg = document.getElementById('footer-newsletter-msg');
+            msg.classList.remove('hidden');
+            e.target.reset();
+            setTimeout(() => {
+                msg.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+
+    <!-- Skrypty Interaktywne -->
+    <script>
+        const navToggler = document.getElementById('nav-toggler');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        navToggler.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        document.getElementById('current-year').textContent = new Date().getFullYear() || 2026;
+    </script>
+</body>
+</html>
